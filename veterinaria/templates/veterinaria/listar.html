@@ -1,0 +1,21 @@
+{% extends 'veterinaria/base.html' %}
+
+{% block content %}
+<h2>Listado de Mascotas Ingresadas</h2>
+<table>
+    <tr>
+        <th>Nombre</th>
+        <th>Especie</th>
+        <th>Raza</th>
+        <th>Peso (kg)</th>
+    </tr>
+    {% for mascota in mascotas %}
+    <tr>
+        <td>{{ mascota.nombre }}</td>
+        <td>{{ mascota.especie }}</td>
+        <td>{{ mascota.raza }}</td>
+        <td>{{ mascota.peso }}</td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

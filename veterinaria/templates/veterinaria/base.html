@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Veterinaria San Juan</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 30px; }
+        nav { margin-bottom: 20px; }
+        nav a { margin-right: 15px; text-decoration: none; color: #0066cc; font-weight: bold; }
+        table { border-collapse: collapse; width: 60%; margin-top: 15px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Clínica Veterinaria - Sistema de Registro</h1>
+    <nav>
+        <a href="{% url 'listar_mascotas' %}">Listar Mascotas</a>
+        <a href="{% url 'crear_mascota' %}">Registrar Mascota</a>
+    </nav>
+    <hr>
+    {% block content %}
+    {% endblock %}
+</body>
+</html>
