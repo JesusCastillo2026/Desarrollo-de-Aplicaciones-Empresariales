@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Eliminar Paciente</title>
+</head>
+<body>
+    <h2>¿Estás seguro de que deseas eliminar al paciente {{ paciente.nombre }}?</h2>
+    
+    <p>Esta acción no se puede deshacer.</p>
+    
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit">Sí, eliminar paciente</button>
+    </form>
+    
+    <br>
+    <a href="{% url 'listar_clinica' %}">Cancelar y volver al listado</a>
+</body>
+</html>

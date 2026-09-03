@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Paciente</title>
+</head>
+<body>
+    <h2>Editar Paciente: {{ paciente.nombre }}</h2>
+    
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Actualizar Datos</button>
+    </form>
+    
+    <br>
+    <a href="{% url 'listar_clinica' %}">Cancelar y volver al listado</a>
+</body>
+</html>

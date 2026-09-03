@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Gestión Clínica</title>
+</head>
+<body>
+    <h1>Sistema de Gestión Clínica Veterinaria</h1>
+    
+    <a href="{% url 'crear_propietario' %}">+ Registrar Propietario</a> | 
+    <a href="{% url 'crear_paciente' %}">+ Registrar Paciente</a>
+
+<h2>Pacientes Registrados (all)</h2>
+    <table border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Especie</th>
+            <th>Raza</th>
+            <th>Propietario Responsable</th>
+            <th>Acciones</th>
+        </tr>
+        {% for pac in pacientes %}
+        <tr>
+            <td>{{ pac.nombre }}</td>
+            <td>{{ pac.especie }}</td>
+            <td>{{ pac.raza }}</td>
+            <td>{{ pac.propietario.nombres }} {{ pac.propietario.apellidos }}</td>
+            <td>
+                <a href="{% url 'editar_paciente' pac.id %}">Editar</a> |
+                <a href="{% url 'eliminar_paciente' pac.id %}">Eliminar</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Propietarios (order_by apellidos)</h2>
+    <table border="1">
+        <tr>
+            <th>Apellidos</th>
+            <th>Nombres</th>
+            <th>DNI</th>
+            <th>Teléfono</th>
+        </tr>
+        {% for prop in propietarios %}
+        <tr>
+            <td>{{ prop.apellidos }}</td>
+            <td>{{ prop.nombres }}</td>
+            <td>{{ prop.dni }}</td>
+            <td>{{ prop.telefono }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Medicamentos Disponibles (filter stock > 0)</h2>
+    <table border="1">
+        <tr>
+            <th>Nombre</th>
+            <th>Stock</th>
+            <th>Precio</th>
+        </tr>
+        {% for med in medicamentos %}
+        <tr>
+            <td>{{ med.nombre }}</td>
+            <td>{{ med.stock }}</td>
+            <td>S/ {{ med.precio }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <h2>Servicios Clínicos (order_by precio)</h2>
+    <table border="1">
+        <tr>
+            <th>Servicio</th>
+            <th>Duración (min)</th>
+            <th>Precio</th>
+        </tr>
+        {% for serv in servicios %}
+        <tr>
+            <td>{{ serv.nombre }}</td>
+            <td>{{ serv.duracion_minutos }}</td>
+            <td>S/ {{ serv.precio }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
