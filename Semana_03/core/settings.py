@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'veterinaria',
+    'gestion_clinica',  # <- Aquí debe estar la app de la Semana 03
 ]
 
 MIDDLEWARE = [

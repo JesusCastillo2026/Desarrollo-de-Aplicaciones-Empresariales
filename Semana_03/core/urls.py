@@ -3,5 +3,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('veterinaria.urls')),
+    path('', include('gestion_clinica.urls')),  # <- Apuntando a gestion_clinica
 ]
