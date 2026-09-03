@@ -40,19 +40,14 @@ def crear_paciente(request):
     return render(request, 'gestion_clinica/crear_paciente.html', {'form': form})
 
 def editar_paciente(request, id):
-    # Recupera el objeto almacenado o devuelve error 404 si no existe
     paciente = get_object_or_404(Paciente, id=id)
-    
     if request.method == 'POST':
-        # Instancia el formulario con los datos enviados y el objeto existente
         form = PacienteForm(request.POST, instance=paciente)
         if form.is_valid():
-            form.save()  # ORM ejecuta el UPDATE en SQLite
-            return redirect('listar_clinica')
+            form.save()
+            return redirect('/')
     else:
-        # Petición GET: Carga el formulario con los datos actuales
         form = PacienteForm(instance=paciente)
-        
     return render(request, 'gestion_clinica/editar_paciente.html', {'form': form, 'paciente': paciente})
 
 def eliminar_paciente(request, id):
