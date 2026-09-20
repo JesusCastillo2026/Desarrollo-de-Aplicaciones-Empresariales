@@ -72,3 +72,20 @@ A medida que la clínica crece, surge la necesidad de manejar historiales médic
 * Relación 1:N: Se mantiene `Propietario` gestionando múltiples `Paciente`.
 * Relación 1:1: Creación de la entidad `HistorialMedico` como una ficha complementaria exclusiva vinculada directamente a `Paciente`.
 * Relación N:M: Asociación entre `Paciente` y `Servicio` a través de la entidad transaccional `PacienteServicio`.
+
+---
+
+## Semana 05: Personalización del Django Admin, ModelAdmin e Inlines
+
+**Problemática**
+El equipo administrativo y médico de la clínica requiere una interfaz centralizada y segura (Backoffice) para gestionar los registros complejos (mascotas, historiales y servicios) de forma ágil. El reto consiste en habilitar esta gestión sin tener que desarrollar desde cero múltiples vistas y plantillas complejas, aprovechando las herramientas nativas del framework para administrar datos altamente relacionados desde una sola pantalla sin perder el contexto del paciente.
+
+**Requisitos Funcionales**
+* **ADMIN SETUP:** Habilitación del panel administrativo de Django e integración de las 7 entidades de la base de datos de la clínica veterinaria.
+* **MODEL ADMIN:** Personalización de la interfaz de las entidades principales (`Paciente`, `Propietario`, `Medicamento`) configurando la presentación en columnas (`list_display`), agregando barras de búsqueda funcionales (`search_fields`) y habilitando paneles laterales de filtrado (`list_filter`) para optimizar la búsqueda de información (ej. filtrado por especie o control de stock).
+* **INLINE FORMS:** Edición de registros relacionados en la misma pantalla del registro principal mediante la implementación de formularios anidados (Inlines) para no romper el flujo de trabajo del staff.
+
+**Diseño del Modelo y Aplicación Creada**
+* **Backoffice Centralizado:** El Administrador de Django asume el control de la gestión interna para el staff, reutilizando el ORM y los modelos previamente definidos para generar automáticamente una interfaz segura.
+* **Gestión 1:1 Integrada:** Implementación de `StackedInline` para incrustar el formulario del `HistorialMedico` apilado verticalmente dentro de la vista de edición general del `Paciente`.
+* **Gestión N:M Transaccional:** Implementación de `TabularInline` para la tabla intermedia `PacienteServicio`. Permite agregar, editar estados o eliminar los servicios clínicos recibidos directamente desde el perfil del paciente mediante una cuadrícula dinámica, optimizando drásticamente los tiempos de registro.
