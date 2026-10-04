@@ -88,3 +88,23 @@ Con el ecosistema ampliado de 7 entidades completamente funcional, las vistas p�
 * Interfaz Modular: El Frontend de la clínica veterinaria ahora opera bajo un sistema de plantillas jerárquicas, donde las vistas de reporte de relaciones y listados heredan un diseño responsivo maestro.
 * Componentes Escalables: Los formularios para registrar pacientes, propietarios o editar atenciones comparten un único molde HTML, facilitando el mantenimiento y la consistencia visual en todo el sistema público.
 * Seguridad Garantizada: Se comprobó que las interfaces refactorizadas ofrecen un nivel de protección robusto para el usuario final (auto-escape), igualando la fiabilidad del entorno aislado del Backoffice desarrollado en la semana anterior.
+
+---
+
+## Semana 07: ORM avanzado, transacciones, reportes y optimización de consultas
+
+**Problemática**
+La clínica veterinaria necesita procesar operaciones que afectan varios registros de manera segura, generar reportes consolidados y mantener un buen rendimiento al consultar modelos relacionados. El reto de esta semana consiste en aprovechar las capacidades avanzadas del ORM de Django sin abandonar la estructura desarrollada en las semanas anteriores.
+
+**Requisitos Funcionales**
+* TRANSACTIONS: Registro de servicios mediante `transaction.atomic()`, garantizando rollback completo ante errores.
+* F EXPRESSIONS: Descuento seguro del campo `cupos_disponibles` del modelo `Servicio` mediante expresiones `F()`.
+* REPORTING: Construcción de reportes con `aggregate()`, `annotate()` y `values().annotate()` sobre `PacienteServicio`.
+* CUSTOM QUERYSET: Implementación de `PacienteQuerySet` con los métodos encadenables `solo_perros()` y `pesados()`, asignado mediante `as_manager()`.
+* N+1 OPTIMIZATION: Medición de consultas con `connection.queries` y optimización con `select_related()` y `prefetch_related()`.
+
+**Diseño del Modelo y Aplicación Creada**
+* Operación transaccional: La asignación de un servicio crea un registro en `PacienteServicio` y descuenta cupos en `Servicio` como una sola unidad de trabajo.
+* Reportes: Se calcula la recaudación global, servicios por paciente y agrupaciones por estado.
+* Reutilización de reglas de negocio: Los filtros frecuentes del modelo `Paciente` se centralizan en un QuerySet personalizado.
+* Rendimiento: Se reducen consultas redundantes al acceder a propietario, historial médico y servicios relacionados.
