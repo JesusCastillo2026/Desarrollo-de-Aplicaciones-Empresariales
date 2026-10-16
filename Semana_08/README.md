@@ -68,7 +68,7 @@ python manage.py medir_api_queries
 1. Se habilitó DRF en settings y requirements. Se eligió Paciente como recurso simple y PacienteServicio como recurso relacionado; estado y QuerySet son los ya añadidos en Semana 07.
 2. `PacienteSerializer(paciente).data` serializa un objeto; `PacienteSerializer(Paciente.objects.all(), many=True).data` serializa el conjunto completo.
 3. El peso debe ser positivo. Un peso de 8.50 kg es válido y uno de 0.00 kg se rechaza con un error de validación.
-4. Las vistas genéricas corresponden a lista/creación y detalle/actualización/eliminación. Se reemplazaron en el paso final por el ViewSet solicitado.
+4. Las vistas genéricas están disponibles como demostración en /api/genericos/pacientes/ y /api/genericos/pacientes/<id>/. El API final del ejercicio 5 usa el router en /api/pacientes/.
 5. `DefaultRouter` genera rutas de colección y detalle para cada registro sin escribir manualmente cada patrón.
 6. Las pruebas cubren GET lista/detalle (200), POST válido (201), POST inválido (400), PATCH (200), DELETE (204) y detalle inexistente (404).
 7. La atención anida paciente y servicio. La consulta se optimiza con `select_related('paciente__propietario', 'servicio')`; la prueba mide la diferencia con tres atenciones.

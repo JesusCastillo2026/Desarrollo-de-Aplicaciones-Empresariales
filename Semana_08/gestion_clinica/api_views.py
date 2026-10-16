@@ -1,4 +1,4 @@
-from rest_framework import filters, viewsets
+from rest_framework import filters, generics, viewsets
 from rest_framework.decorators import action
 from rest_framework.response import Response
 
@@ -13,8 +13,17 @@ from .serializers import (
 )
 
 
-# En el paso intermedio del ejercicio 4 se usan ListCreateAPIView y
-# RetrieveUpdateDestroyAPIView. El router del ejercicio 5 reemplaza esas URLs.
+# Vistas genéricas del ejercicio 4, conservadas bajo /api/genericos/ como demostración.
+class PacienteListCreateAPIView(generics.ListCreateAPIView):
+    queryset = Paciente.objects.select_related("propietario").all()
+    serializer_class = PacienteSerializer
+
+
+class PacienteDetailAPIView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Paciente.objects.select_related("propietario").all()
+    serializer_class = PacienteSerializer
+
+
 class PacienteViewSet(viewsets.ModelViewSet):
     queryset = Paciente.objects.select_related("propietario").all()
     serializer_class = PacienteSerializer

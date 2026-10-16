@@ -58,6 +58,12 @@ class APIEndpointTests(APITestCase):
         missing = self.client.get("/api/pacientes/99999/")
         self.assertEqual(missing.status_code, 404)
 
+    def test_generic_views_from_exercise_4(self):
+        response = self.client.get("/api/genericos/pacientes/")
+        self.assertEqual(response.status_code, 200)
+        detail = self.client.get(f"/api/genericos/pacientes/{self.paciente.pk}/")
+        self.assertEqual(detail.status_code, 200)
+
     def test_search_ordering_custom_action_and_state_filter(self):
         self.assertEqual(
             self.client.get("/api/pacientes/?search=Max").status_code, 200
