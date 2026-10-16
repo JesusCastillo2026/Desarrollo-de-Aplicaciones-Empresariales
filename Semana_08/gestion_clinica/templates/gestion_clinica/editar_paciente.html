@@ -1,0 +1,16 @@
+{% extends 'gestion_clinica/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center mb-4">
+    <div class="col-md-8">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-warning text-dark py-3">
+                <h5 class="m-0 fw-bold">Modificar Datos de: {{ paciente.nombre }}</h5>
+            </div>
+            <div class="card-body p-4">
+                {% include 'gestion_clinica/_formulario.html' with clase_boton='btn-warning' texto_boton='Actualizar Cambios' %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'gestion_clinica/base.html' %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-lg-7">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-primary text-white">
+                <h4 class="mb-0">Registrar Nuevo Servicio</h4>
+            </div>
+
+            <div class="card-body">
+                {% if messages %}
+                    {% for message in messages %}
+                        <div class="alert {% if message.tags == 'error' %}alert-danger{% else %}alert-success{% endif %}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endif %}
+
+                <form method="post">
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label class="form-label">Paciente</label>
+                        <select name="paciente" class="form-select" required>
+                            <option value="">Seleccione un paciente</option>
+                            {% for paciente in pacientes %}
+                                <option value="{{ paciente.id }}">{{ paciente.nombre }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Servicio</label>
+                        <select name="servicio" class="form-select" required>
+                            <option value="">Seleccione un servicio</option>
+                            {% for servicio in servicios %}
+                                <option value="{{ servicio.id }}">
+                                    {{ servicio.nombre }} (Cupos: {{ servicio.cupos_disponibles }})
+                                </option>
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Cantidad de sesiones/cupos</label>
+                        <input type="number" min="1" name="cantidad" value="1" class="form-control" required>
+                    </div>
+
+                    <div class="mb-3">
+                        <label class="form-label">Monto a cobrar (S/.)</label>
+                        <input type="number" min="0" step="0.01" name="monto" value="0.00" class="form-control" required>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Procesar Registro</button>
+                    <a href="{% url 'listar_pacientes' %}" class="btn btn-outline-secondary">Volver</a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
