@@ -127,3 +127,22 @@ La clínica veterinaria necesita compartir la información existente con cliente
 * Reutilización del ORM: el endpoint de atenciones filtra por estado y anida entidades relacionadas; el endpoint de pacientes reutiliza solo_perros() y pesados().
 * Verificación: pruebas automatizadas cubren códigos HTTP 200, 201, 400, 404 y 204, filtros, acción propia, relación anidada y comparación del número de consultas.
 * Seguridad: la API queda abierta para la práctica. Para su publicación requiere autenticación, permisos, HTTPS y límites de acceso.
+
+## Semana 09: Interfaz de usuario con React y Vite
+
+**Problemática**
+La clínica veterinaria necesita una interfaz dinámica para consultar pacientes, inventario, profesionales y atenciones. Se implementa un frontend con React y Vite que representa los datos publicados por la API de la Semana 08 mientras se practica JSX, composición de listas, renderizado condicional, estilos y relaciones anidadas.
+
+**Requisitos Funcionales**
+* SETUP: Creación y configuración del cliente React con Vite, scripts de desarrollo, lint y compilación de producción.
+* JSX Y LISTAS: Renderizado de pacientes, medicamentos, veterinarios y servicios con map() y claves estables.
+* CONDICIONALES: Filtros por nombre y especie, mensaje cuando no hay coincidencias, y estado de stock bajo o agotado.
+* RELACIONES: Visualización de atenciones de cada paciente y sus servicios asociados, con claves y montos formateados.
+* ESTILOS: Panel responsivo y componentes con CSS, incluyendo una propiedad de estilo dinámica.
+
+**Diseño del Modelo y Aplicación Creada**
+* Frontend independiente: aplicación Vite ubicada en Semana_09/frontend, con componentes y estilos dentro de src/.
+* Datos compatibles: arreglos de ejemplo escritos manualmente con los campos de los serializers de Paciente, Propietario, Medicamento, Veterinario, Servicio y PacienteServicio de la Semana 08.
+* Relaciones: cada paciente se enlaza con su propietario por identificador; las atenciones muestran las entidades paciente y servicio anidadas como en la respuesta JSON.
+* Validación: npm run lint y npm run build completan correctamente; los filtros y el estado vacío se verificaron en navegador.
+* Alcance: el cliente aún no consume la API; la integración se desarrollará posteriormente.
