@@ -108,3 +108,22 @@ La clínica veterinaria necesita procesar operaciones que afectan varios registr
 * Reportes: Se calcula la recaudación global, servicios por paciente y agrupaciones por estado.
 * Reutilización de reglas de negocio: Los filtros frecuentes del modelo `Paciente` se centralizan en un QuerySet personalizado.
 * Rendimiento: Se reducen consultas redundantes al acceder a propietario, historial médico y servicios relacionados.
+
+
+## Semana 08: API REST con Django REST Framework
+
+**Problemática**
+La clínica veterinaria necesita compartir la información existente con clientes externos, como una aplicación móvil o una interfaz desarrollada en React. Las páginas HTML y el panel administrativo no están diseñados para este intercambio de datos, por lo que se exponen los recursos mediante una API REST en formato JSON.
+
+**Requisitos Funcionales**
+* REST FRAMEWORK: Integración de Django REST Framework, sus ModelSerializers, la API navegable y las rutas generadas con DefaultRouter.
+* CRUD API: Exposición de Paciente y de los recursos de la clínica con ModelViewSet, con validación de peso mayor que cero y respuestas HTTP documentadas por pruebas.
+* RELATED RESOURCE: Exposición de las atenciones como recurso de solo lectura con datos anidados de Paciente, Propietario y Servicio, optimizando las consultas con select_related().
+* FILTERING: Búsqueda y ordenamiento de pacientes, filtro por estado de atención y acción propia que reutiliza el QuerySet personalizado de la Semana 07.
+
+**Diseño del Modelo y Aplicación Creada**
+* Recursos serializados: Paciente, Propietario, Medicamento, Veterinario, HistorialMedico, Servicio, Cita y PacienteServicio.
+* API modular: api_views.py concentra los ViewSets, serializers.py define validación y estructura JSON, y api_urls.py registra los recursos en un DefaultRouter bajo /api/.
+* Reutilización del ORM: el endpoint de atenciones filtra por estado y anida entidades relacionadas; el endpoint de pacientes reutiliza solo_perros() y pesados().
+* Verificación: pruebas automatizadas cubren códigos HTTP 200, 201, 400, 404 y 204, filtros, acción propia, relación anidada y comparación del número de consultas.
+* Seguridad: la API queda abierta para la práctica. Para su publicación requiere autenticación, permisos, HTTPS y límites de acceso.
