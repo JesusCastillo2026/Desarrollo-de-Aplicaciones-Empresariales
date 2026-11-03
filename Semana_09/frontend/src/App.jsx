@@ -135,8 +135,8 @@ function App() {
           <div><strong>Modo de práctica</strong><span>Datos locales de muestra</span></div>
         </div>
         <div className="sidebar-user">
-          <span className="user-avatar">YB</span>
-          <div><strong>Yunior Bestard</strong><span>Administrador</span></div>
+          <span className="user-avatar">JC</span>
+          <div><strong>Jesus Castillo</strong><span>Administrador</span></div>
           <span className="user-more" aria-hidden="true">···</span>
         </div>
       </aside>
