@@ -146,3 +146,24 @@ La clínica veterinaria necesita una interfaz dinámica para consultar pacientes
 * Relaciones: cada paciente se enlaza con su propietario por identificador; las atenciones muestran las entidades paciente y servicio anidadas como en la respuesta JSON.
 * Validación: npm run lint y npm run build completan correctamente; los filtros y el estado vacío se verificaron en navegador.
 * Alcance: el cliente aún no consume la API; la integración se desarrollará posteriormente.
+
+## Semana 10: Componentes, props, estado y eventos en React
+
+**Problemática**
+La interfaz de la clínica veterinaria de la Semana 9 concentraba su presentación dentro de un solo componente. En esta semana se organiza en componentes funcionales reutilizables y se agregan interacciones para que el usuario pueda buscar y registrar información.
+
+**Requisitos Funcionales**
+* COMPONENTES Y PROPS: Separación de tarjetas, listas y relaciones en componentes funcionales; envío de datos del padre al hijo mediante props.
+* COMPOSICIÓN: Uso de children para envolver contenido en un contenedor reutilizable.
+* ESTADO Y EVENTOS: Contadores locales con useState y onClick, además de botones desactivados por disponibilidad de stock.
+* BÚSQUEDA: Campos controlados con value y onChange que filtran registros por nombre.
+* FORMULARIO: Registro de pacientes con onSubmit, preventDefault, validación de peso mayor que cero y actualización inmutable del estado.
+* RELACIONES: Presentación de atenciones y servicios anidados con totales calculados.
+
+**Diseño del Modelo y Aplicación Creada**
+* Refactorización de React: App.jsx compone componentes separados bajo frontend/src/components, mientras data.js conserva los datos de práctica con forma compatible con la API de Semana 08.
+* Componentes reutilizables: listas y tarjetas para pacientes, medicamentos, veterinarios y atenciones; el contenedor Tarjeta recibe contenido mediante children.
+* Estado local: cada tarjeta de medicamento mantiene su propio contador y el formulario agrega pacientes mediante un arreglo nuevo.
+* Validación: el formulario exige nombre y peso positivo con la regla de la API; los datos ingresados permanecen en el estado de la sesión y aún no se guardan en Django.
+* Verificación: npm run lint y npm run build finalizan correctamente; se probaron búsquedas, contadores, formularios válido e inválido y la consola del navegador.
+* Versionado: node_modules y dist se excluyen con .gitignore.
