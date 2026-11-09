@@ -1,169 +1,73 @@
-# Desarrollo-de-Aplicaciones-Empresariales
+# Desarrollo de Aplicaciones Empresariales
 
----
+Repositorio académico del curso **Desarrollo de Aplicaciones Empresariales**. Reúne los proyectos y prácticas organizados por semana, con énfasis en el desarrollo web con Django, la construcción de una API REST y la creación de interfaces con React.
 
-## Semana 02: Arquitectura MVT, Enrutamiento y Renderizado Dinámico con DTL
+## Objetivo
 
-**Problemática**
-La clínica veterinaria requiere una solución web inicial para presentar su catálogo de servicios, información de contacto y listados clínicos sin depender de almacenamiento persistente. El reto consiste en establecer el patrón arquitectónico del framework Django y gestionar el flujo de datos desde el backend hacia el navegador web, comprobando la correcta renderización de estructuras en memoria cada vez que un usuario realiza una solicitud HTTP.
+Documentar la evolución de una aplicación para la gestión de una clínica veterinaria, desde la configuración inicial del entorno hasta la separación del backend y el frontend. Cada carpeta semanal contiene el trabajo correspondiente a esa etapa.
 
-**Requisitos Funcionales**
-* SETUP: Creación del entorno de trabajo, inicialización del proyecto Django y configuración de la aplicación web de gestión clínica.
-* ROUTING: Mapeo y distribución de peticiones URL desacopladas mediante el archivo urls.py del proyecto enlazado al urls.py de la aplicación.
-* CONTROLLERS: Implementación de funciones de vista (FBV) en views.py encargadas de procesar la lógica de negocio y preparar los diccionarios de contexto.
-* TEMPLATING: Despliegue de vistas dinámicas mediante el motor de plantillas de Django (DTL), recorriendo listas de datos en memoria mediante etiquetas `{% for %}` y validaciones con `{% if %}`.
+## Tecnologías
 
-**Diseño del Modelo y Aplicación Creada**
-* Arquitectura: Estructuración del proyecto bajo el patrón MVT (Modelo - Vista - Template) para separar responsabilidades entre lógica y presentación.
-* Manejo de Datos en Memoria: Paso de parámetros y colecciones (listas de diccionarios con doctores, pacientes y servicios) enviados directamente desde el contexto de la vista hacia los templates HTML.
-* Enrutamiento Modular: Centralización de rutas que permite navegar entre las diferentes páginas del sistema sin recargar de forma estática o rígida las URLs.
+- **Backend:** Python, Django y Django REST Framework
+- **Base de datos:** SQLite
+- **Frontend:** React y Vite
+- **Control de versiones:** Git y GitHub
 
----
+## Recorrido del curso
 
-## Semana 03: Implementación de base de datos SQLite y operaciones CRUD con Django ORM
+| Semana | Tema | Trabajo realizado |
+|:---:|---|---|
+| [01](Semana_01/) | Fundamentos de Django | Preparación del entorno, creación del proyecto y la aplicación, modelo inicial, vistas, rutas, plantillas, administración y documentación de ejecución. |
+| [02](Semana_02/) | Arquitectura MVT y renderizado | Organización de vistas, URLs y plantillas; presentación de datos en memoria y captura de información mediante formularios. |
+| [03](Semana_03/) | Persistencia y operaciones CRUD | Modelos, migraciones, SQLite y Django ORM para registrar, consultar, actualizar y eliminar datos. |
+| [04](Semana_04/) | Relaciones entre modelos | Relaciones 1:1, 1:N y N:M con modelo intermedio; consultas relacionadas y optimización con `select_related()` y `prefetch_related()`. |
+| [05](Semana_05/) | Django Admin | Registro y personalización de modelos con `ModelAdmin`, búsquedas, filtros e Inlines para editar entidades relacionadas. |
+| [06](Semana_06/) | Plantillas y seguridad | Herencia de plantillas, bloques, componentes reutilizables, filtros y revisión de la protección automática frente a XSS. |
+| [07](Semana_07/) | ORM avanzado | Transacciones, expresiones `F()`, reportes con agregaciones, QuerySets personalizados y optimización de consultas. |
+| [08](Semana_08/) | API REST | Serializadores, ViewSets, rutas, validaciones, filtros, relaciones anidadas y pruebas automatizadas con Django REST Framework. |
+| [09](Semana_09/) | React y Vite | Interfaz inicial con componentes, listas, renderizado condicional, filtros y estilos responsivos; datos de práctica compatibles con la API. |
+| [10](Semana_10/) | Componentes e interacción | Componentes reutilizables, props, estado, eventos, búsqueda y formularios controlados con validación. |
 
-**Problemática**
-La clínica veterinaria necesita evolucionar su sistema inicial (que almacenaba datos temporalmente en memoria) hacia una solución de almacenamiento persistente. El objetivo es evitar la pérdida de información clínica y de contacto de los clientes cada vez que se reinicia el servidor, permitiendo una gestión real y duradera.
+## Estructura
 
-**Requisitos Funcionales**
-* CREATE: Registro de nuevos propietarios y pacientes a través de formularios web vinculados a la base de datos.
-* READ: Lectura y renderizado dinámico de los registros almacenados utilizando QuerySets para listarlos en tablas HTML.
-* UPDATE: Capacidad de modificar la información existente mediante formularios prellenados con los datos actuales del registro.
-* DELETE: Eliminación segura de registros que incluye una pantalla intermedia de confirmación para evitar borrados accidentales.
+```text
+.
+├── Semana_01/
+├── Semana_02/
+├── Semana_03/
+├── Semana_04/
+├── Semana_05/
+├── Semana_06/
+├── Semana_07/
+├── Semana_08/
+├── Semana_09/
+├── Semana_10/
+├── Documentos 1-16/
+│   └── README.md
+├── README.md
+└── requirements.txt
+```
 
-**Diseño del Modelo y Aplicación Creada**
-* Arquitectura: Sistema construido sobre el patrón MVT de Django con almacenamiento en SQLite.
-* ORM: Todas las transacciones a la base de datos se manejan de forma segura a través de Django ORM, sin redactar sentencias SQL manuales.
-* Modelo Relacional (1:N): Se estructuraron entidades principales como Propietario y Paciente. Se implementó una clave foránea (ForeignKey) en la entidad Paciente para garantizar que cada mascota esté obligatoriamente vinculada a un dueño responsable.
+La carpeta [Documentos 1-16](Documentos%201-16/README.md) contiene el índice de guías por semana y los enlaces de descarga disponibles. Las semanas 11 a 16 quedan reservadas para incorporar material cuando se trabaje en ellas.
 
----
+## Ejecución de los proyectos
 
-## Semana 04: Ampliación del Modelo de Datos (1:1, 1:N, N:M) y Optimización de Consultas
+Las semanas son proyectos o etapas independientes; abre la carpeta de la semana que deseas ejecutar y sigue las instrucciones de su README. Para los proyectos Django, el flujo habitual es:
 
-**Problemática**
-A medida que la clínica crece, surge la necesidad de manejar historiales médicos exclusivos para cada mascota y registrar el historial de atenciones y servicios clínicos recibidos. El reto es escalar la base de datos para soportar relaciones avanzadas sin afectar el rendimiento de la aplicación, evitando la saturación del servidor por consultas redundantes ("N+1").
+1. Crear y activar un entorno virtual.
+2. Instalar las dependencias indicadas en `requirements.txt`.
+3. Ejecutar las migraciones cuando la semana utilice base de datos.
+4. Iniciar el servidor con `python manage.py runserver`.
 
-**Requisitos Funcionales**
-* MODELING EXTENSION: Implementación de relaciones estructurales complejas: 1:1 (OneToOneField) para expedientes clínicos, y N:M (ManyToManyField) con modelo intermedio (`through`) para registrar atributos propios de las atenciones (fecha y estado).
-* QUERY OPTIMIZATION: Refactorización de las vistas de lectura integrando los métodos `select_related()` y `prefetch_related()` para reducir drásticamente el número de consultas SQL en base a los JOINs de la base de datos.
-* ADVANCED CRUD: Creación, actualización y eliminación de registros en la tabla intermedia (`PacienteServicio`) mediante formularios personalizados expuestos en la interfaz.
+Para el frontend de React, ingresa a `Semana_09/frontend` o `Semana_10/frontend`, instala las dependencias con `npm install` y ejecuta `npm run dev`. Consulta el README de cada semana para los comandos y requisitos específicos.
 
-**Diseño del Modelo y Aplicación Creada**
-* Entidades Independientes: `Medicamento` y `Veterinario` operando de forma autónoma.
-* Relación 1:N: Se mantiene `Propietario` gestionando múltiples `Paciente`.
-* Relación 1:1: Creación de la entidad `HistorialMedico` como una ficha complementaria exclusiva vinculada directamente a `Paciente`.
-* Relación N:M: Asociación entre `Paciente` y `Servicio` a través de la entidad transaccional `PacienteServicio`.
+## Estado de integración
 
----
+- Las semanas 1 a 8 desarrollan el backend Django y la API.
+- Las semanas 9 y 10 desarrollan el frontend React con datos de práctica.
+- En la Semana 10, el formulario actualiza el estado de React durante la sesión; todavía no persiste los datos en Django ni consume la API.
+- Cada carpeta semanal contiene el alcance y las instrucciones específicas de esa práctica.
 
-## Semana 05: Personalización del Django Admin, ModelAdmin e Inlines
+## Autoría académica
 
-**Problemática**
-El equipo administrativo y médico de la clínica requiere una interfaz centralizada y segura (Backoffice) para gestionar los registros complejos de mascotas, historiales y servicios de forma ágil. El reto consiste en habilitar esta gestión sin tener que desarrollar desde cero múltiples vistas y plantillas, aprovechando las herramientas nativas del framework para administrar datos altamente relacionados desde una sola pantalla sin perder el contexto del paciente.
-
-**Requisitos Funcionales**
-* ADMIN SETUP: Habilitación del panel administrativo de Django e integración de las 7 entidades de la base de datos ampliada de la clínica veterinaria.
-* MODEL ADMIN: Personalización de la interfaz de las entidades principales (`Paciente`, `Propietario`, `Medicamento`) configurando la presentación en columnas (`list_display`), agregando barras de búsqueda funcionales (`search_fields`) y habilitando paneles laterales de filtrado (`list_filter`) para optimizar la búsqueda de información.
-* INLINE FORMS: Edición de registros relacionados en la misma pantalla del registro principal mediante la implementación de formularios anidados para optimizar el flujo de trabajo del staff clínico.
-
-**Diseño del Modelo y Aplicación Creada**
-* Backoffice Centralizado: El Administrador de Django asume el control de la gestión interna, reutilizando el ORM y los modelos previamente definidos para generar automáticamente una interfaz segura.
-* Gestión 1:1 Integrada: Implementación de `StackedInline` para incrustar el formulario del `HistorialMedico` apilado verticalmente dentro de la vista de edición general del `Paciente`.
-* Gestión N:M Transaccional: Implementación de `TabularInline` para la tabla intermedia `PacienteServicio`. Permite agregar, editar estados o eliminar los servicios clínicos recibidos directamente desde el perfil del paciente mediante una cuadrícula dinámica.
-
----
-
-## Semana 06: Refactorización de Plantillas (Herencia, Filtros, Includes) y Seguridad XSS
-
-**Problemática**
-Con el ecosistema ampliado de 7 entidades completamente funcional, las vistas públicas de la clínica (Frontend) comenzaron a presentar problemas de mantenibilidad debido a la redundancia de código HTML (como encabezados y pies de página repetidos). Además, los formularios públicos requerían una auditoría de seguridad para garantizar que los datos ingresados por los usuarios no expusieran el sistema a ataques de inyección. El reto consiste en aplicar buenas prácticas de diseño de plantillas en Django para centralizar la interfaz gráfica, facilitar la reutilización de componentes y validar los mecanismos de protección por defecto.
-
-**Requisitos Funcionales**
-* TEMPLATE INHERITANCE: Implementación de la etiqueta `{% extends %}` y `{% block content %}` para unificar el diseño de la aplicación bajo un único archivo maestro (`base.html`), eliminando la repetición de estructuras HTML5 y configuraciones de Bootstrap.
-* REUSABILITY: Extracción de estructuras repetitivas, específicamente la lógica de renderizado de los formularios de creación y edición, hacia archivos independientes inyectados dinámicamente mediante la etiqueta `{% include %}` parametrizada.
-* DATA FORMATTING: Aplicación de filtros de plantilla (como `|upper` y `|floatformat:2`) para estandarizar la presentación visual de datos clínicos y financieros directamente en el frontend, sin alterar los registros originales en la base de datos.
-* SECURITY & DOCUMENTATION: Validación práctica del mecanismo de auto-escape de Django frente a ataques XSS inyectando scripts maliciosos controlados en los formularios, y documentación de estructuras complejas de relaciones (N:M) mediante comentarios `{# #}` en el código fuente.
-
-**Diseño del Modelo y Aplicación Creada**
-* Interfaz Modular: El Frontend de la clínica veterinaria ahora opera bajo un sistema de plantillas jerárquicas, donde las vistas de reporte de relaciones y listados heredan un diseño responsivo maestro.
-* Componentes Escalables: Los formularios para registrar pacientes, propietarios o editar atenciones comparten un único molde HTML, facilitando el mantenimiento y la consistencia visual en todo el sistema público.
-* Seguridad Garantizada: Se comprobó que las interfaces refactorizadas ofrecen un nivel de protección robusto para el usuario final (auto-escape), igualando la fiabilidad del entorno aislado del Backoffice desarrollado en la semana anterior.
-
----
-
-## Semana 07: ORM avanzado, transacciones, reportes y optimización de consultas
-
-**Problemática**
-La clínica veterinaria necesita procesar operaciones que afectan varios registros de manera segura, generar reportes consolidados y mantener un buen rendimiento al consultar modelos relacionados. El reto de esta semana consiste en aprovechar las capacidades avanzadas del ORM de Django sin abandonar la estructura desarrollada en las semanas anteriores.
-
-**Requisitos Funcionales**
-* TRANSACTIONS: Registro de servicios mediante `transaction.atomic()`, garantizando rollback completo ante errores.
-* F EXPRESSIONS: Descuento seguro del campo `cupos_disponibles` del modelo `Servicio` mediante expresiones `F()`.
-* REPORTING: Construcción de reportes con `aggregate()`, `annotate()` y `values().annotate()` sobre `PacienteServicio`.
-* CUSTOM QUERYSET: Implementación de `PacienteQuerySet` con los métodos encadenables `solo_perros()` y `pesados()`, asignado mediante `as_manager()`.
-* N+1 OPTIMIZATION: Medición de consultas con `connection.queries` y optimización con `select_related()` y `prefetch_related()`.
-
-**Diseño del Modelo y Aplicación Creada**
-* Operación transaccional: La asignación de un servicio crea un registro en `PacienteServicio` y descuenta cupos en `Servicio` como una sola unidad de trabajo.
-* Reportes: Se calcula la recaudación global, servicios por paciente y agrupaciones por estado.
-* Reutilización de reglas de negocio: Los filtros frecuentes del modelo `Paciente` se centralizan en un QuerySet personalizado.
-* Rendimiento: Se reducen consultas redundantes al acceder a propietario, historial médico y servicios relacionados.
-
-
-## Semana 08: API REST con Django REST Framework
-
-**Problemática**
-La clínica veterinaria necesita compartir la información existente con clientes externos, como una aplicación móvil o una interfaz desarrollada en React. Las páginas HTML y el panel administrativo no están diseñados para este intercambio de datos, por lo que se exponen los recursos mediante una API REST en formato JSON.
-
-**Requisitos Funcionales**
-* REST FRAMEWORK: Integración de Django REST Framework, sus ModelSerializers, la API navegable y las rutas generadas con DefaultRouter.
-* CRUD API: Exposición de Paciente y de los recursos de la clínica con ModelViewSet, con validación de peso mayor que cero y respuestas HTTP documentadas por pruebas.
-* RELATED RESOURCE: Exposición de las atenciones como recurso de solo lectura con datos anidados de Paciente, Propietario y Servicio, optimizando las consultas con select_related().
-* FILTERING: Búsqueda y ordenamiento de pacientes, filtro por estado de atención y acción propia que reutiliza el QuerySet personalizado de la Semana 07.
-
-**Diseño del Modelo y Aplicación Creada**
-* Recursos serializados: Paciente, Propietario, Medicamento, Veterinario, HistorialMedico, Servicio, Cita y PacienteServicio.
-* API modular: api_views.py concentra los ViewSets, serializers.py define validación y estructura JSON, y api_urls.py registra los recursos en un DefaultRouter bajo /api/.
-* Reutilización del ORM: el endpoint de atenciones filtra por estado y anida entidades relacionadas; el endpoint de pacientes reutiliza solo_perros() y pesados().
-* Verificación: pruebas automatizadas cubren códigos HTTP 200, 201, 400, 404 y 204, filtros, acción propia, relación anidada y comparación del número de consultas.
-* Seguridad: la API queda abierta para la práctica. Para su publicación requiere autenticación, permisos, HTTPS y límites de acceso.
-
-## Semana 09: Interfaz de usuario con React y Vite
-
-**Problemática**
-La clínica veterinaria necesita una interfaz dinámica para consultar pacientes, inventario, profesionales y atenciones. Se implementa un frontend con React y Vite que representa los datos publicados por la API de la Semana 08 mientras se practica JSX, composición de listas, renderizado condicional, estilos y relaciones anidadas.
-
-**Requisitos Funcionales**
-* SETUP: Creación y configuración del cliente React con Vite, scripts de desarrollo, lint y compilación de producción.
-* JSX Y LISTAS: Renderizado de pacientes, medicamentos, veterinarios y servicios con map() y claves estables.
-* CONDICIONALES: Filtros por nombre y especie, mensaje cuando no hay coincidencias, y estado de stock bajo o agotado.
-* RELACIONES: Visualización de atenciones de cada paciente y sus servicios asociados, con claves y montos formateados.
-* ESTILOS: Panel responsivo y componentes con CSS, incluyendo una propiedad de estilo dinámica.
-
-**Diseño del Modelo y Aplicación Creada**
-* Frontend independiente: aplicación Vite ubicada en Semana_09/frontend, con componentes y estilos dentro de src/.
-* Datos compatibles: arreglos de ejemplo escritos manualmente con los campos de los serializers de Paciente, Propietario, Medicamento, Veterinario, Servicio y PacienteServicio de la Semana 08.
-* Relaciones: cada paciente se enlaza con su propietario por identificador; las atenciones muestran las entidades paciente y servicio anidadas como en la respuesta JSON.
-* Validación: npm run lint y npm run build completan correctamente; los filtros y el estado vacío se verificaron en navegador.
-* Alcance: el cliente aún no consume la API; la integración se desarrollará posteriormente.
-
-## Semana 10: Componentes, props, estado y eventos en React
-
-**Problemática**
-La interfaz de la clínica veterinaria de la Semana 9 concentraba su presentación dentro de un solo componente. En esta semana se organiza en componentes funcionales reutilizables y se agregan interacciones para que el usuario pueda buscar y registrar información.
-
-**Requisitos Funcionales**
-* COMPONENTES Y PROPS: Separación de tarjetas, listas y relaciones en componentes funcionales; envío de datos del padre al hijo mediante props.
-* COMPOSICIÓN: Uso de children para envolver contenido en un contenedor reutilizable.
-* ESTADO Y EVENTOS: Contadores locales con useState y onClick, además de botones desactivados por disponibilidad de stock.
-* BÚSQUEDA: Campos controlados con value y onChange que filtran registros por nombre.
-* FORMULARIO: Registro de pacientes con onSubmit, preventDefault, validación de peso mayor que cero y actualización inmutable del estado.
-* RELACIONES: Presentación de atenciones y servicios anidados con totales calculados.
-
-**Diseño del Modelo y Aplicación Creada**
-* Refactorización de React: App.jsx compone componentes separados bajo frontend/src/components, mientras data.js conserva los datos de práctica con forma compatible con la API de Semana 08.
-* Componentes reutilizables: listas y tarjetas para pacientes, medicamentos, veterinarios y atenciones; el contenedor Tarjeta recibe contenido mediante children.
-* Estado local: cada tarjeta de medicamento mantiene su propio contador y el formulario agrega pacientes mediante un arreglo nuevo.
-* Validación: el formulario exige nombre y peso positivo con la regla de la API; los datos ingresados permanecen en el estado de la sesión y aún no se guardan en Django.
-* Verificación: npm run lint y npm run build finalizan correctamente; se probaron búsquedas, contadores, formularios válido e inválido y la consola del navegador.
-* Versionado: node_modules y dist se excluyen con .gitignore.
+Trabajo desarrollado para el curso **Desarrollo de Aplicaciones Empresariales**. El contenido se organiza con fines académicos y de seguimiento de las prácticas semanales.
