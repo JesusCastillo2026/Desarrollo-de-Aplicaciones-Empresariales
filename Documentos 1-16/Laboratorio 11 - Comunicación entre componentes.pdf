@@ -1,0 +1,509 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 18 0 R 20 0 R] /Count 8 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 1158 >>
+stream
+0.08 0.24 0.21 rg 0 810 595 32 re f
+BT /F1 9 Tf 1 1 1 rg 42 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+0.09 0.34 0.27 rg 42 674 511 100 re f
+BT /F2 28 Tf 1 1 1 rg 66 727 Td (Laboratorio 11) Tj ET
+BT /F1 16 Tf 0.86 0.95 0.89 rg 66 697 Td (Comunicaci\363n entre componentes en React) Tj ET
+BT /F1 12 Tf 0.08 0.24 0.21 rg 62 635 Td (Estudiante: Jes\372s Castillo) Tj ET
+BT /F1 12 Tf 0.08 0.24 0.21 rg 62 610 Td (Secci\363n: C24T) Tj ET
+BT /F1 12 Tf 0.08 0.24 0.21 rg 62 585 Td (Curso: Desarrollo de Aplicaciones Empresariales) Tj ET
+BT /F1 12 Tf 0.08 0.24 0.21 rg 62 560 Td (Proyecto: Cl\355nica veterinaria \267 Datos locales de demostraci\363n) Tj ET
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 535 Td 14 TL
+(Este informe documenta la implementaci\363n de la pr\341ctica de la Semana 11. El desarrollo incluye) Tj
+T* (una parte de aprendizaje con un mini cat\341logo y carrito, y una segunda parte aplicada al panel) Tj
+T* (administrativo de pacientes.) Tj
+ET
+0.72 0.79 0.75 RG 42 42 511 0.5 re S
+BT /F1 8 Tf 0.42 0.49 0.46 rg 42 27 Td (Jes\372s Castillo \267 Secci\363n C24T \267 Laboratorio 11) Tj ET
+BT /F1 8 Tf 0.42 0.49 0.46 rg 528 27 Td (1 / 8) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 2543 >>
+stream
+0.08 0.24 0.21 rg 0 810 595 32 re f
+BT /F1 9 Tf 1 1 1 rg 42 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 20 Tf 0.08 0.24 0.21 rg 42 774 Td (Objetivo, problema y herramientas) Tj ET
+0.10 0.46 0.35 rg 42 765 511 1 re f
+BT /F2 13 Tf 0.10 0.40 0.30 rg 42 723 Td (Objetivo) Tj ET
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 701 Td 14 TL
+(Aplicar comunicaci\363n descendente del padre al hijo mediante props, comunicaci\363n ascendente) Tj
+T* (mediante funciones callback y estado elevado cuando varios componentes hermanos dependen de) Tj
+T* (los mismos datos. Tambi\351n se emplea useEffect con dependencias y limpieza.) Tj
+ET
+BT /F2 13 Tf 0.10 0.40 0.30 rg 42 636 Td (Problema abordado) Tj ET
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 614 Td 14 TL
+(Cuando cada hijo guarda su propia copia de los datos, el cat\341logo, el carrito, el buscador y) Tj
+T* (el resumen pueden quedar desincronizados. La pr\341ctica resuelve esto dejando una \372nica fuente) Tj
+T* (de verdad en el componente padre y calculando los valores derivados a partir del estado) Tj
+T* (actual.) Tj
+ET
+BT /F2 13 Tf 0.10 0.40 0.30 rg 42 535 Td (Herramientas) Tj ET
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 513 Td 14 TL
+(React 19, Vite 7, JavaScript, Node.js y npm; Visual Studio Code; navegador web; Git y GitHub.) Tj
+T* (Los datos son locales y siguen la forma de respuesta de la API trabajada en la Semana 8.) Tj
+ET
+BT /F2 13 Tf 0.10 0.40 0.30 rg 42 462 Td (Estructura de la soluci\363n) Tj ET
+0.94 0.96 0.94 rg 42 415 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 427 Td 12 TL
+(frontend/src/) Tj
+ET
+0.94 0.96 0.94 rg 42 387 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 399 Td 12 TL
+(practica/ datos.js \267 Practica.jsx \267 Catalogo.jsx) Tj
+ET
+0.94 0.96 0.94 rg 42 359 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 371 Td 12 TL
+(ProductoCard.jsx \267 Carrito.jsx) Tj
+ET
+0.94 0.96 0.94 rg 42 331 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 343 Td 12 TL
+(Buscador.jsx \267 Aviso.jsx) Tj
+ET
+0.94 0.96 0.94 rg 42 303 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 315 Td 12 TL
+(components/ PanelPacientes.jsx \267 PacienteResumen.jsx) Tj
+ET
+0.94 0.96 0.94 rg 42 275 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 287 Td 12 TL
+(PacienteListado.jsx \267 PacienteFila.jsx) Tj
+ET
+0.94 0.96 0.94 rg 42 247 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 259 Td 12 TL
+(PacienteFormularioAlta.jsx) Tj
+ET
+0.72 0.79 0.75 RG 42 42 511 0.5 re S
+BT /F1 8 Tf 0.42 0.49 0.46 rg 42 27 Td (Jes\372s Castillo \267 Secci\363n C24T \267 Laboratorio 11) Tj ET
+BT /F1 8 Tf 0.42 0.49 0.46 rg 528 27 Td (2 / 8) Tj ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 11 0 R >>
+endobj
+11 0 obj
+<< /Length 2461 >>
+stream
+0.08 0.24 0.21 rg 0 810 595 32 re f
+BT /F1 9 Tf 1 1 1 rg 42 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 20 Tf 0.08 0.24 0.21 rg 42 774 Td (Parte 1 \267 Cat\341logo y props) Tj ET
+0.10 0.46 0.35 rg 42 765 511 1 re f
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 735 Td 14 TL
+(El archivo datos.js define cinco productos con precio como texto y stock. Practica act\372a como) Tj
+T* (padre: filtra el cat\341logo, guarda carrito y b\372squeda, y pasa registros y callbacks a los) Tj
+T* (hijos. Catalogo representa cada registro con map\(\) y key.) Tj
+ET
+BT /F2 13 Tf 0.10 0.40 0.30 rg 42 670 Td (Paso de datos hacia abajo) Tj ET
+0.94 0.96 0.94 rg 42 623 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 635 Td 12 TL
+(const productosFiltrados = productos.filter\(\(producto\) =>) Tj
+ET
+0.94 0.96 0.94 rg 42 595 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 607 Td 12 TL
+(producto.nombre.toLowerCase\(\).includes\(busqueda.toLowerCase\(\)\)) Tj
+ET
+0.94 0.96 0.94 rg 42 567 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 579 Td 12 TL
+(\)) Tj
+ET
+0.94 0.96 0.94 rg 42 539 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 551 Td 12 TL
+(<Catalogo productos={productosFiltrados} onAgregar={agregarAlCarrito} />) Tj
+ET
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 536 Td 14 TL
+(Catalogo entrega cada producto a ProductoCard. La tarjeta muestra el precio usando) Tj
+T* (Number\(precio\).toFixed\(2\), marca el producto agotado cuando el stock es cero y desactiva su) Tj
+T* (bot\363n. Las props se leen como datos de entrada: el hijo no las modifica.) Tj
+ET
+BT /F2 13 Tf 0.10 0.40 0.30 rg 42 471 Td (Tipos de props usados) Tj ET
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 449 Td 14 TL
+(productos: arreglo, definido en Practica y le\355do por Catalogo. producto: objeto, definido en) Tj
+T* (Catalogo y le\355do por ProductoCard. onAgregar: funci\363n, definida por Practica y recibida por) Tj
+T* (Catalogo y ProductoCard. lineas: arreglo; onQuitar y onVaciar: funciones recibidas por) Tj
+T* (Carrito.) Tj
+ET
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 382 Td 14 TL
+(En Django, el context de una vista cumple un papel comparable al transportar datos hacia una) Tj
+T* (plantilla; la diferencia es que React mantiene una interfaz de componentes interactivos y las) Tj
+T* (props pasan valores entre componentes.) Tj
+ET
+0.72 0.79 0.75 RG 42 42 511 0.5 re S
+BT /F1 8 Tf 0.42 0.49 0.46 rg 42 27 Td (Jes\372s Castillo \267 Secci\363n C24T \267 Laboratorio 11) Tj ET
+BT /F1 8 Tf 0.42 0.49 0.46 rg 528 27 Td (3 / 8) Tj ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 13 0 R >>
+endobj
+13 0 obj
+<< /Length 3346 >>
+stream
+0.08 0.24 0.21 rg 0 810 595 32 re f
+BT /F1 9 Tf 1 1 1 rg 42 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 20 Tf 0.08 0.24 0.21 rg 42 774 Td (Parte 1 \267 Eventos y estado elevado) Tj ET
+0.10 0.46 0.35 rg 42 765 511 1 re f
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 735 Td 14 TL
+(El evento se enlaza con una funci\363n: onClick={\(\) => onAgregar\(producto\)}. Esta forma entrega) Tj
+T* (una funci\363n para ejecutarse al hacer clic. Escribir onClick={onAgregar\(producto\)} invoca la) Tj
+T* (funci\363n durante el renderizado en lugar de esperar el evento, lo que puede actualizar el) Tj
+T* (estado repetidamente o provocar un error de renderizado.) Tj
+ET
+BT /F2 13 Tf 0.10 0.40 0.30 rg 42 656 Td (Agregar y actualizar de forma inmutable) Tj ET
+0.94 0.96 0.94 rg 42 609 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 621 Td 12 TL
+(const agregarAlCarrito = \(producto\) => {) Tj
+ET
+0.94 0.96 0.94 rg 42 581 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 593 Td 12 TL
+(setCarrito\(\(actual\) => {) Tj
+ET
+0.94 0.96 0.94 rg 42 553 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 565 Td 12 TL
+(const existe = actual.find\(\(linea\) => linea.id === producto.id\)) Tj
+ET
+0.94 0.96 0.94 rg 42 525 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 537 Td 12 TL
+(return existe) Tj
+ET
+0.94 0.96 0.94 rg 42 497 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 509 Td 12 TL
+(? actual.map\(\(linea\) => linea.id === producto.id) Tj
+ET
+0.94 0.96 0.94 rg 42 469 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 481 Td 12 TL
+(? { ...linea, cantidad: linea.cantidad + 1 } : linea\)) Tj
+ET
+0.94 0.96 0.94 rg 42 441 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 453 Td 12 TL
+(: [...actual, { id: producto.id, nombre: producto.nombre,) Tj
+ET
+0.94 0.96 0.94 rg 42 413 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 425 Td 12 TL
+(precio: producto.precio, cantidad: 1 }]) Tj
+ET
+0.94 0.96 0.94 rg 42 385 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 397 Td 12 TL
+(}\)) Tj
+ET
+0.94 0.96 0.94 rg 42 357 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 369 Td 12 TL
+(}) Tj
+ET
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 354 Td 14 TL
+(El carrito vive en Practica porque Catalogo y Carrito son hermanos. El padre comparte el mismo) Tj
+T* (estado con ambos y recibe eventos por callbacks. map\(\), filter\(\) y spread producen arreglos) Tj
+T* (nuevos; no se muta el estado con push\(\) ni splice\(\).) Tj
+ET
+BT /F2 13 Tf 0.10 0.40 0.30 rg 42 289 Td (Resumen calculado, no duplicado) Tj ET
+0.94 0.96 0.94 rg 42 242 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 254 Td 12 TL
+(const total = lineas.reduce\() Tj
+ET
+0.94 0.96 0.94 rg 42 214 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 226 Td 12 TL
+(\(suma, linea\) => suma + Number\(linea.precio\) * linea.cantidad, 0) Tj
+ET
+0.94 0.96 0.94 rg 42 186 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 198 Td 12 TL
+(\)) Tj
+ET
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 183 Td 14 TL
+(Carrito calcula total y unidades desde las l\355neas. Al a\361adir dos capuchinos y un caf\351) Tj
+T* (americano, el resultado es 3 unidades y S/ 24.50. Como estos valores se obtienen del carrito,) Tj
+T* (almacenarlos tambi\351n en useState podr\355a causar inconsistencias y no es necesario.) Tj
+ET
+0.72 0.79 0.75 RG 42 42 511 0.5 re S
+BT /F1 8 Tf 0.42 0.49 0.46 rg 42 27 Td (Jes\372s Castillo \267 Secci\363n C24T \267 Laboratorio 11) Tj ET
+BT /F1 8 Tf 0.42 0.49 0.46 rg 528 27 Td (4 / 8) Tj ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 15 0 R >>
+endobj
+15 0 obj
+<< /Length 2826 >>
+stream
+0.08 0.24 0.21 rg 0 810 595 32 re f
+BT /F1 9 Tf 1 1 1 rg 42 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 20 Tf 0.08 0.24 0.21 rg 42 774 Td (Parte 1 \267 B\372squeda y efectos) Tj ET
+0.10 0.46 0.35 rg 42 765 511 1 re f
+BT /F2 13 Tf 0.10 0.40 0.30 rg 42 723 Td (Quitar, vaciar y buscar) Tj ET
+0.94 0.96 0.94 rg 42 676 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 688 Td 12 TL
+(const quitarDelCarrito = \(id\) =>) Tj
+ET
+0.94 0.96 0.94 rg 42 648 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 660 Td 12 TL
+(setCarrito\(\(actual\) => actual.filter\(\(linea\) => linea.id !== id\)\)) Tj
+ET
+0.94 0.96 0.94 rg 42 615 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 627 Td 12 TL
+(<Buscador valor={busqueda} onCambiar={setBusqueda} />) Tj
+ET
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 612 Td 14 TL
+(Buscador es un campo controlado por el valor que recibe del padre. Al escribir \223ca\224, el) Tj
+T* (cat\341logo muestra Caf\351 americano y Capuchino; al escribir \223zzz\224, no hay coincidencias y se) Tj
+T* (informa al usuario. Buscador y Catalogo no se llaman entre s\355: ambos dependen del estado) Tj
+T* (elevado de Practica.) Tj
+ET
+BT /F2 13 Tf 0.10 0.40 0.30 rg 42 533 Td (Ciclo de vida con useEffect) Tj ET
+0.94 0.96 0.94 rg 42 486 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 498 Td 12 TL
+(useEffect\(\(\) => {) Tj
+ET
+0.94 0.96 0.94 rg 42 458 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 470 Td 12 TL
+(document.title = `Carrito \(${unidades}\) \227 Cafeter\355a`) Tj
+ET
+0.94 0.96 0.94 rg 42 430 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 442 Td 12 TL
+(return \(\) => { document.title = TITULO_INICIAL }) Tj
+ET
+0.94 0.96 0.94 rg 42 402 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 414 Td 12 TL
+(}, [unidades]\)) Tj
+ET
+0.94 0.96 0.94 rg 42 369 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 381 Td 12 TL
+(useEffect\(\(\) => {) Tj
+ET
+0.94 0.96 0.94 rg 42 341 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 353 Td 12 TL
+(const timer = window.setTimeout\(onCerrar, 3000\)) Tj
+ET
+0.94 0.96 0.94 rg 42 313 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 325 Td 12 TL
+(return \(\) => window.clearTimeout\(timer\)) Tj
+ET
+0.94 0.96 0.94 rg 42 285 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 297 Td 12 TL
+(}, [nombre, onCerrar]\)) Tj
+ET
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 282 Td 14 TL
+(Con [] el efecto corre al montar; con [cantidad] corre al montar y cuando cambia la cantidad;) Tj
+T* (sin arreglo corre tras cada render. Aviso limpia el temporizador antes de repetir el efecto o) Tj
+T* (desmontarse. En StrictMode, React puede ejecutar ciclos adicionales de montaje y limpieza en) Tj
+T* (desarrollo para revelar efectos no seguros.) Tj
+ET
+0.72 0.79 0.75 RG 42 42 511 0.5 re S
+BT /F1 8 Tf 0.42 0.49 0.46 rg 42 27 Td (Jes\372s Castillo \267 Secci\363n C24T \267 Laboratorio 11) Tj ET
+BT /F1 8 Tf 0.42 0.49 0.46 rg 528 27 Td (5 / 8) Tj ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 17 0 R >>
+endobj
+17 0 obj
+<< /Length 3341 >>
+stream
+0.08 0.24 0.21 rg 0 810 595 32 re f
+BT /F1 9 Tf 1 1 1 rg 42 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 20 Tf 0.08 0.24 0.21 rg 42 774 Td (Parte 2 \267 Panel administrativo) Tj ET
+0.10 0.46 0.35 rg 42 765 511 1 re f
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 735 Td 14 TL
+(El panel gestiona pacientes de ejemplo con campos id, nombre, propietario, especie, edad, peso) Tj
+T* (decimal como texto y estado. PanelPacientes mantiene el estado compartido, la b\372squeda y los) Tj
+T* (callbacks. El formulario controla sus campos y valida antes de emitir un alta.) Tj
+ET
+BT /F2 13 Tf 0.10 0.40 0.30 rg 42 670 Td (Validaci\363n y alta) Tj ET
+0.94 0.96 0.94 rg 42 623 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 635 Td 12 TL
+(if \(!nombre.trim\(\) || !propietario.trim\(\)\) {) Tj
+ET
+0.94 0.96 0.94 rg 42 595 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 607 Td 12 TL
+(setError\("Completa los campos requeridos."\)) Tj
+ET
+0.94 0.96 0.94 rg 42 567 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 579 Td 12 TL
+(return) Tj
+ET
+0.94 0.96 0.94 rg 42 539 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 551 Td 12 TL
+(}) Tj
+ET
+0.94 0.96 0.94 rg 42 511 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 523 Td 12 TL
+(if \(!Number.isFinite\(peso\) || peso <= 0\) {) Tj
+ET
+0.94 0.96 0.94 rg 42 483 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 495 Td 12 TL
+(setError\("El peso debe ser mayor que cero."\)) Tj
+ET
+0.94 0.96 0.94 rg 42 455 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 467 Td 12 TL
+(return) Tj
+ET
+0.94 0.96 0.94 rg 42 427 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 439 Td 12 TL
+(}) Tj
+ET
+0.94 0.96 0.94 rg 42 399 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 411 Td 12 TL
+(onGuardar\({ ...formulario, peso: peso.toFixed\(2\), estado: "Activo" }\)) Tj
+ET
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 396 Td 14 TL
+(El formulario valida nombre y propietario obligatorios, edad entera no negativa y peso mayor) Tj
+T* (que cero. En una alta v\341lida env\355a el objeto al padre y limpia los campos; en una inv\341lida) Tj
+T* (presenta un mensaje accesible.) Tj
+ET
+BT /F2 13 Tf 0.10 0.40 0.30 rg 42 331 Td (Acciones y datos derivados) Tj ET
+0.94 0.96 0.94 rg 42 284 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 296 Td 12 TL
+(const eliminar = \(id\) => setPacientes\(\(actuales\) =>) Tj
+ET
+0.94 0.96 0.94 rg 42 256 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 268 Td 12 TL
+(actuales.filter\(\(paciente\) => paciente.id !== id\)\)) Tj
+ET
+0.94 0.96 0.94 rg 42 228 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 240 Td 12 TL
+(const alternar = \(id\) => setPacientes\(\(actuales\) =>) Tj
+ET
+0.94 0.96 0.94 rg 42 200 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 212 Td 12 TL
+(actuales.map\(\(p\) => p.id === id) Tj
+ET
+0.94 0.96 0.94 rg 42 172 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 184 Td 12 TL
+(? { ...p, estado: p.estado === "Inactivo" ? "Activo" : "Inactivo" } : p\)\)) Tj
+ET
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 169 Td 14 TL
+(Cada fila avisa al padre para eliminar o alternar el estado. PacienteResumen calcula cantidad,) Tj
+T* (activos y edad promedio sin crear estados duplicados. El filtro se guarda en PanelPacientes y) Tj
+T* (determina las filas visibles.) Tj
+ET
+0.72 0.79 0.75 RG 42 42 511 0.5 re S
+BT /F1 8 Tf 0.42 0.49 0.46 rg 42 27 Td (Jes\372s Castillo \267 Secci\363n C24T \267 Laboratorio 11) Tj ET
+BT /F1 8 Tf 0.42 0.49 0.46 rg 528 27 Td (6 / 8) Tj ET
+endstream
+endobj
+18 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 19 0 R >>
+endobj
+19 0 obj
+<< /Length 1799 >>
+stream
+0.08 0.24 0.21 rg 0 810 595 32 re f
+BT /F1 9 Tf 1 1 1 rg 42 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 20 Tf 0.08 0.24 0.21 rg 42 774 Td (Flujo y verificaci\363n) Tj ET
+0.10 0.46 0.35 rg 42 765 511 1 re f
+BT /F2 13 Tf 0.10 0.40 0.30 rg 42 723 Td (Flujo de interacci\363n) Tj ET
+0.94 0.96 0.94 rg 42 676 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 688 Td 12 TL
+(1. Acci\363n del usuario en un hijo \(tarjeta, formulario o fila\).) Tj
+ET
+0.94 0.96 0.94 rg 42 648 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 660 Td 12 TL
+(2. El hijo ejecuta el callback recibido por props.) Tj
+ET
+0.94 0.96 0.94 rg 42 620 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 632 Td 12 TL
+(3. El padre actualiza el estado creando datos nuevos.) Tj
+ET
+0.94 0.96 0.94 rg 42 592 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 604 Td 12 TL
+(4. El padre pasa los valores actualizados por props.) Tj
+ET
+0.94 0.96 0.94 rg 42 564 511 22 re f
+BT /F3 8 Tf 0.08 0.27 0.22 rg 52 576 Td 12 TL
+(5. React vuelve a renderizar los componentes afectados.) Tj
+ET
+BT /F2 13 Tf 0.10 0.40 0.30 rg 42 549 Td (Verificaci\363n t\351cnica) Tj ET
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 527 Td 14 TL
+(Se instal\363 el proyecto y se ejecutaron npm run lint y npm run build. ESLint termin\363 sin) Tj
+T* (errores y Vite compil\363 correctamente 42 m\363dulos, generando los recursos de producci\363n. La) Tj
+T* (revisi\363n de la interfaz se realiz\363 con el flujo de componentes y la compilaci\363n; no se) Tj
+T* (adjuntan capturas de navegador, por lo que estas evidencias visuales deben tomarse al abrir el) Tj
+T* (proyecto localmente.) Tj
+ET
+0.72 0.79 0.75 RG 42 42 511 0.5 re S
+BT /F1 8 Tf 0.42 0.49 0.46 rg 42 27 Td (Jes\372s Castillo \267 Secci\363n C24T \267 Laboratorio 11) Tj ET
+BT /F1 8 Tf 0.42 0.49 0.46 rg 528 27 Td (7 / 8) Tj ET
+endstream
+endobj
+20 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 21 0 R >>
+endobj
+21 0 obj
+<< /Length 1847 >>
+stream
+0.08 0.24 0.21 rg 0 810 595 32 re f
+BT /F1 9 Tf 1 1 1 rg 42 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 20 Tf 0.08 0.24 0.21 rg 42 774 Td (Alcance y conclusi\363n) Tj ET
+0.10 0.46 0.35 rg 42 765 511 1 re f
+BT /F2 13 Tf 0.10 0.40 0.30 rg 42 723 Td (Alcance y siguiente paso) Tj ET
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 701 Td 14 TL
+(La interfaz opera con datos locales y mantiene los cambios solo durante la sesi\363n del) Tj
+T* (navegador. La integraci\363n real con Django/API y la persistencia se reservan para la Semana 12,) Tj
+T* (conforme a la gu\355a. El repositorio no incluye node_modules ni dist. Para completar el modo de) Tj
+T* (entrega solicitado por la gu\355a, se recomienda a\361adir al documento acad\351mico las capturas del) Tj
+T* (navegador y de las salidas de terminal.) Tj
+ET
+BT /F2 13 Tf 0.10 0.40 0.30 rg 42 608 Td (Conclusi\363n personal) Tj ET
+BT /F1 10 Tf 0.12 0.20 0.19 rg 42 586 Td 14 TL
+(Al desarrollar este laboratorio comprend\355 mejor que la comunicaci\363n en React funciona de) Tj
+T* (manera ordenada cuando el estado compartido se mantiene en el componente padre. Practiqu\351 c\363mo) Tj
+T* (enviar informaci\363n a los hijos mediante props y c\363mo permitir que las acciones regresen al) Tj
+T* (padre mediante funciones. Tambi\351n comprob\351 que los datos derivados pueden calcularse a partir) Tj
+T* (del estado sin duplicarlo, y que useEffect requiere dependencias y limpieza adecuadas. La) Tj
+T* (pr\341ctica del cat\341logo y el panel me permiti\363 aplicar estos conceptos en una interfaz concreta,) Tj
+T* (dejando preparada la estructura para integrar la API en la siguiente semana.) Tj
+ET
+0.72 0.79 0.75 RG 42 42 511 0.5 re S
+BT /F1 8 Tf 0.42 0.49 0.46 rg 42 27 Td (Jes\372s Castillo \267 Secci\363n C24T \267 Laboratorio 11) Tj ET
+BT /F1 8 Tf 0.42 0.49 0.46 rg 528 27 Td (8 / 8) Tj ET
+endstream
+endobj
+xref
+0 22
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000163 00000 n 
+0000000260 00000 n 
+0000000362 00000 n 
+0000000457 00000 n 
+0000000603 00000 n 
+0000001813 00000 n 
+0000001959 00000 n 
+0000004554 00000 n 
+0000004702 00000 n 
+0000007216 00000 n 
+0000007364 00000 n 
+0000010763 00000 n 
+0000010911 00000 n 
+0000013790 00000 n 
+0000013938 00000 n 
+0000017332 00000 n 
+0000017480 00000 n 
+0000019332 00000 n 
+0000019480 00000 n 
+trailer
+<< /Size 22 /Root 1 0 R >>
+startxref
+21380
+%%EOF
