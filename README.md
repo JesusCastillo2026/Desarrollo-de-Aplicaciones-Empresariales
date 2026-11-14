@@ -1,16 +1,16 @@
 # Desarrollo de Aplicaciones Empresariales
 
-Repositorio académico del curso **Desarrollo de Aplicaciones Empresariales**. Reúne las prácticas semanales de desarrollo web, desde los fundamentos de Django hasta la construcción de interfaces con React y su futura integración con una API.
+Repositorio académico del curso **Desarrollo de Aplicaciones Empresariales**. Reúne prácticas semanales de desarrollo web, desde los fundamentos de Django hasta la integración de interfaces React con una API REST.
 
 ## Propósito
 
-Documentar la evolución de una aplicación para la gestión de una clínica veterinaria. Cada carpeta contiene el código y las instrucciones de la semana correspondiente. Los PDFs de las guías y los informes se encuentran en [Documentos 1-16](Documentos%201-16/README.md).
+Documentar la evolución de una aplicación para la gestión de una clínica veterinaria. Cada carpeta contiene el código y las instrucciones de ejecución de su semana. Las guías y los informes están en [Documentos 1-16](Documentos%201-16/README.md).
 
 ## Tecnologías
 
 - **Backend:** Python, Django y Django REST Framework
 - **Base de datos:** SQLite
-- **Frontend:** React y Vite
+- **Frontend:** React, Vite y Axios
 - **Control de versiones:** Git y GitHub
 
 ## Recorrido del curso
@@ -27,7 +27,8 @@ Documentar la evolución de una aplicación para la gestión de una clínica vet
 | [08](Semana_08/) | API REST | Serializadores, ViewSets, rutas, validaciones, filtros, relaciones y pruebas con Django REST Framework. |
 | [09](Semana_09/) | React y Vite | Componentes, listas, renderizado condicional, filtros y estilos adaptables. |
 | [10](Semana_10/) | Componentes e interacción | Props, estado, eventos, búsqueda y formularios controlados. |
-| [11](Semana_11/) | Comunicación entre componentes | Props descendentes, callbacks, estado elevado, datos derivados y `useEffect`; mini catálogo con carrito y panel administrativo de pacientes. |
+| [11](Semana_11/) | Comunicación entre componentes | Props, callbacks, estado elevado, datos derivados y `useEffect`; catálogo con carrito y panel de pacientes. |
+| [12](Semana_12/) | AJAX y servicios web | Integración de React con Django mediante Axios y CORS; estados de carga/error, búsqueda remota y CRUD REST de pacientes. |
 
 ## Estructura
 
@@ -37,29 +38,52 @@ Documentar la evolución de una aplicación para la gestión de una clínica vet
 ├── Semana_11/
 │   ├── README.md
 │   └── frontend/
-│       ├── src/practica/       # Mini catálogo y carrito
-│       ├── src/components/     # Panel de pacientes
-│       └── package.json
+├── Semana_12/
+│   ├── README.md
+│   ├── backend/                 # API Django independiente, basada en Semana 8
+│   └── frontend/                # React + Axios
 ├── Documentos 1-16/
 │   ├── README.md
-│   ├── Semana 01.pdf … Semana 10.pdf
-│   └── Laboratorio 11 - Comunicación entre componentes.pdf
+│   └── Semana 01.pdf … Semana 12.pdf
 ├── README.md
 └── requirements.txt
 ```
 
-## Ejecución de los proyectos
+## Ejecución
 
-Las semanas son ejercicios independientes. Abre la carpeta de la semana que quieras ejecutar y sigue su README. Para proyectos Django, el flujo usual es crear y activar un entorno virtual, instalar `requirements.txt`, ejecutar las migraciones indicadas e iniciar con `python manage.py runserver`.
+Las semanas son proyectos independientes. Sigue el README incluido en cada carpeta. Para proyectos React, entra a `frontend`, instala dependencias con `npm install` e inicia con `npm run dev`.
 
-Para las prácticas React de las semanas 9, 10 y 11, entra a la carpeta `frontend`, instala dependencias con `npm install` y ejecuta `npm run dev`. En Semana 11 también puedes verificar el código de forma estática con `npm run lint` y compilarlo para producción con `npm run build`.
+### Semana 12: integración completa
+
+Inicia Django en una terminal:
+
+```powershell
+cd Semana_12/backend
+python -m venv .venv
+.\.venv\Scripts\Activate.ps1
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py seed_lab12
+python manage.py runserver
+```
+
+En otra terminal, inicia React:
+
+```powershell
+cd Semana_12/frontend
+npm install
+npm run dev
+```
+
+Abre la URL local que presenta Vite. El frontend consulta `http://127.0.0.1:8000/api`; Django permite el origen local de Vite mediante CORS. La guía de arranque, las rutas y las verificaciones están en [Semana 12](Semana_12/README.md).
 
 ## Estado de integración
 
-- Semanas 1 a 8: backend Django y API REST.
-- Semanas 9 a 11: interfaces React y práctica de comunicación entre componentes.
-- Semana 11 conserva datos locales en memoria; no consume todavía la API ni persiste en Django. Esa integración corresponde a la Semana 12.
-- `node_modules` y `dist` se generan localmente y no forman parte del repositorio.
+- Semanas 1 a 8: fundamentos, persistencia y API con Django.
+- Semanas 9 a 11: interfaces React y comunicación entre componentes con datos de práctica.
+- Semana 12: React consume la API, ejecuta GET/POST/PATCH/DELETE y búsqueda remota; los cambios persisten en SQLite.
+- La API de práctica mantiene permisos abiertos para facilitar el laboratorio. Requiere autenticación y permisos restrictivos antes de un despliegue público.
+- `node_modules`, `dist`, los entornos virtuales y la base SQLite local se generan al ejecutar los proyectos y no se publican.
 
 ## Autoría académica
 

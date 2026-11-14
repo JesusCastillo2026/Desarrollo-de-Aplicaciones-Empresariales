@@ -1,0 +1,76 @@
+{% extends 'gestion_clinica/base.html' %}
+
+{% block content %}
+<div class="container">
+    <h2 class="mb-4">Reporte de Totales y Agrupaciones</h2>
+
+    <div class="card bg-primary text-white shadow-sm mb-4">
+        <div class="card-body">
+            <small>Recaudación total</small>
+            <h3 class="mb-0">S/. {{ total_recaudado|default:0|floatformat:2 }}</h3>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-7 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-success text-white">
+                    Atenciones por Paciente
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th>Paciente</th>
+                                <th>Total de Servicios</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for p in pacientes_anotados %}
+                            <tr>
+                                <td>{{ p.nombre }}</td>
+                                <td>{{ p.num_servicios }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="2">No hay pacientes que cumplan los filtros.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-5 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-warning">
+                    Estado de los Servicios
+                </div>
+                <div class="card-body p-0">
+                    <table class="table table-striped mb-0">
+                        <thead>
+                            <tr>
+                                <th>Estado</th>
+                                <th>Cantidad</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for item in estados_agrupados %}
+                            <tr>
+                                <td>{{ item.estado }}</td>
+                                <td>{{ item.total }}</td>
+                            </tr>
+                            {% empty %}
+                            <tr>
+                                <td colspan="2">Sin registros.</td>
+                            </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

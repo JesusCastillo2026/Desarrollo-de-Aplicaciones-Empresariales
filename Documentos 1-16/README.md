@@ -15,10 +15,10 @@ Guías e informes del curso **Desarrollo de Aplicaciones Empresariales**. La tab
 | 9 | Semana 9 | Interfaz con React y Vite: componentes, listas y filtros. | [Descargar PDF](<Semana 09.pdf>) |
 | 10 | Semana 10 | Componentes reutilizables, props, estado, eventos y formularios controlados. | [Descargar PDF](<Semana 10.pdf>) |
 | 11 | Semana 11 | Comunicación entre componentes React: props, callbacks, estado elevado, datos derivados y `useEffect`. Incluye catálogo con carrito y panel administrativo de pacientes. | [Descargar PDF](<Semana 11.pdf>) |
-| 12 | Semana 12 | Material de la semana pendiente de incorporación. | Pendiente |
+| 12 | Semana 12 | AJAX y servicios web: Axios, CORS, solicitudes GET/POST/PATCH/DELETE, búsqueda remota, validación del servidor y estados de carga y error. | [Descargar PDF](<Semana 12.pdf>) |
 | 13 | Semana 13 | Material de la semana pendiente de incorporación. | Pendiente |
 | 14 | Semana 14 | Material de la semana pendiente de incorporación. | Pendiente |
 | 15 | Semana 15 | Material de la semana pendiente de incorporación. | Pendiente |
 | 16 | Semana 16 | Material de la semana pendiente de incorporación. | Pendiente |
 
-Los PDFs de las semanas 1 a 10 están almacenados en esta carpeta. El informe de la Semana 11 también está alojado aquí para su descarga directa.
+Los PDFs de las semanas 1 a 12 están almacenados en esta carpeta para descargarlos directamente desde el repositorio.

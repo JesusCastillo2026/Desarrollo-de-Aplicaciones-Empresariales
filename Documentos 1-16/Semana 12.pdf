@@ -1,0 +1,357 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [6 0 R 8 0 R 10 0 R 12 0 R 14 0 R] /Count 5 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 1739 >>
+stream
+0.08 0.24 0.21 rg 0 810 595 32 re f
+BT /F1 9 Tf 1 1 1 rg 42 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+0.09 0.34 0.27 rg 42 665 511 110 re f
+BT /F2 28 Tf 1 1 1 rg 64 725 Td (Laboratorio 12) Tj ET
+BT /F1 16 Tf 0.88 0.95 0.89 rg 64 696 Td (AJAX y servicios web) Tj ET
+BT /F1 11 Tf 0.08 0.24 0.21 rg 62 625 Td (Estudiante: Jesus Castillo) Tj ET
+BT /F1 11 Tf 0.08 0.24 0.21 rg 62 604 Td (Seccion: C24T) Tj ET
+BT /F1 11 Tf 0.08 0.24 0.21 rg 62 583 Td (Curso: Desarrollo de Aplicaciones Empresariales) Tj ET
+BT /F1 11 Tf 0.08 0.24 0.21 rg 62 562 Td (Tema: AJAX y servicios web con React y Django) Tj ET
+BT /F1 8.5 Tf 0.12 0.2 0.19 rg 46 541 Td 11 TL
+(Este informe documenta la implementacion del laboratorio 12. Se conecta una interfaz React con la) Tj
+T* (API REST de la clinica veterinaria. Axios envia solicitudes HTTP; Django REST Framework valida,) Tj
+T* (persiste y devuelve datos JSON.) Tj
+ET
+BT /F2 12 Tf 0.1 0.4 0.3 rg 46 494 Td (Resultado desarrollado) Tj ET
+BT /F1 8.5 Tf 0.12 0.2 0.19 rg 46 477 Td 11 TL
+(Se entrega una practica CRUD y un panel de pacientes conectado a SQLite. Las dos vistas utilizan) Tj
+T* (un cliente Axios, busqueda del lado del servidor, formularios controlados y estados visibles de) Tj
+T* (carga y error.) Tj
+ET
+0.94 0.96 0.94 rg 46 422 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 426 Td 9 TL
+(Semana_12/backend/ Django, API REST, CORS, migraciones, datos de muestra) Tj
+ET
+0.94 0.96 0.94 rg 46 403 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 407 Td 9 TL
+(Semana_12/frontend/ React + Vite, Axios, panel administrativo) Tj
+ET
+0.72 0.79 0.75 RG 42 42 511 0.5 re S
+BT /F1 8 Tf 0.42 0.49 0.46 rg 42 27 Td (Jesus Castillo | C24T | Semana 12) Tj ET
+BT /F1 8 Tf 0.42 0.49 0.46 rg 520 27 Td (1/5) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 1620 >>
+stream
+0.08 0.24 0.21 rg 0 810 595 32 re f
+BT /F1 9 Tf 1 1 1 rg 42 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 20 Tf 0.08 0.24 0.21 rg 42 775 Td (Objetivo, problema y herramientas) Tj ET
+0.10 0.46 0.35 rg 42 765 511 1 re f
+BT /F2 12 Tf 0.1 0.4 0.3 rg 46 728 Td (Objetivo) Tj ET
+BT /F1 8.5 Tf 0.12 0.2 0.19 rg 46 711 Td 11 TL
+(Consumir servicios web desde React y comprender AJAX, HTTP, JSON, metodos REST y codigos de) Tj
+T* (estado. Integrar la API de pacientes de la Semana 8; resolver CORS; agregar busqueda y operaciones) Tj
+T* (para crear, consultar, editar y eliminar registros.) Tj
+ET
+BT /F2 12 Tf 0.1 0.4 0.3 rg 46 664 Td (Problema) Tj ET
+BT /F1 8.5 Tf 0.12 0.2 0.19 rg 46 647 Td 11 TL
+(Una interfaz en localhost:5173 y un backend en localhost:8000 tienen origenes distintos. El) Tj
+T* (navegador bloquea la solicitud si Django no autoriza CORS. Ademas, una interfaz que no diferencia) Tj
+T* (carga, error y lista vacia no explica si el servidor falla o si no existen coincidencias.) Tj
+ET
+BT /F2 12 Tf 0.1 0.4 0.3 rg 46 600 Td (Herramientas y responsabilidades) Tj ET
+BT /F1 8.5 Tf 0.12 0.2 0.19 rg 46 583 Td 11 TL
+(Python, Django 5.2, Django REST Framework, django-cors-headers, SQLite, JavaScript, React 19,) Tj
+T* (Vite, Axios, npm y Network del navegador. React controla vista y estado; Axios organiza HTTP; CORS) Tj
+T* (autoriza el origen; el ViewSet y el serializer procesan la solicitud; el ORM lee o cambia SQLite.) Tj
+ET
+0.72 0.79 0.75 RG 42 42 511 0.5 re S
+BT /F1 8 Tf 0.42 0.49 0.46 rg 42 27 Td (Jesus Castillo | C24T | Semana 12) Tj ET
+BT /F1 8 Tf 0.42 0.49 0.46 rg 520 27 Td (2/5) Tj ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 11 0 R >>
+endobj
+11 0 obj
+<< /Length 3294 >>
+stream
+0.08 0.24 0.21 rg 0 810 595 32 re f
+BT /F1 9 Tf 1 1 1 rg 42 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 20 Tf 0.08 0.24 0.21 rg 42 775 Td (CORS, Axios y consulta) Tj ET
+0.10 0.46 0.35 rg 42 765 511 1 re f
+BT /F1 8.5 Tf 0.12 0.2 0.19 rg 46 735 Td 11 TL
+(CORS se configura autorizando solo los origenes locales de Vite. El middleware debe ejecutarse) Tj
+T* (antes de CommonMiddleware. El cliente Axios centraliza la direccion del API, timeout y cabeceras) Tj
+T* (JSON; VITE_API_URL permite cambiar el servidor sin editar componentes.) Tj
+ET
+0.94 0.96 0.94 rg 46 680 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 684 Td 9 TL
+(INSTALLED_APPS = ['rest_framework', 'corsheaders', ...]) Tj
+ET
+0.94 0.96 0.94 rg 46 661 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 665 Td 9 TL
+(MIDDLEWARE = ['django.middleware.security.SecurityMiddleware',) Tj
+ET
+0.94 0.96 0.94 rg 46 642 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 646 Td 9 TL
+('corsheaders.middleware.CorsMiddleware', ...]) Tj
+ET
+0.94 0.96 0.94 rg 46 623 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 627 Td 9 TL
+(CORS_ALLOWED_ORIGINS = ['http://localhost:5173',) Tj
+ET
+0.94 0.96 0.94 rg 46 604 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 608 Td 9 TL
+('http://127.0.0.1:5173']) Tj
+ET
+0.94 0.96 0.94 rg 46 585 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 589 Td 9 TL
+(const api = axios.create\({) Tj
+ET
+0.94 0.96 0.94 rg 46 566 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 570 Td 9 TL
+(baseURL: import.meta.env.VITE_API_URL ||) Tj
+ET
+0.94 0.96 0.94 rg 46 547 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 551 Td 9 TL
+('http://127.0.0.1:8000/api', timeout: 8000) Tj
+ET
+0.94 0.96 0.94 rg 46 528 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 532 Td 9 TL
+(}\)) Tj
+ET
+BT /F2 12 Tf 0.1 0.4 0.3 rg 46 517 Td (GET, busqueda y estados) Tj ET
+BT /F1 8.5 Tf 0.12 0.2 0.19 rg 46 500 Td 11 TL
+(usePacientesApi consulta GET al montar la vista y cuando cambia la busqueda. El AbortController) Tj
+T* (cancela la solicitud anterior al cambiar el criterio o desmontar el componente. La interfaz) Tj
+T* (representa carga, error de red/servidor y respuesta vacia como estados distintos.) Tj
+ET
+0.94 0.96 0.94 rg 46 445 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 449 Td 9 TL
+(useEffect\(\(\) => {) Tj
+ET
+0.94 0.96 0.94 rg 46 426 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 430 Td 9 TL
+(const controller = new AbortController\(\)) Tj
+ET
+0.94 0.96 0.94 rg 46 407 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 411 Td 9 TL
+(api.get\('/pacientes/', { params: { search: busqueda },) Tj
+ET
+0.94 0.96 0.94 rg 46 388 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 392 Td 9 TL
+(signal: controller.signal }\)) Tj
+ET
+0.94 0.96 0.94 rg 46 369 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 373 Td 9 TL
+(.then\(\({ data }\) => setPacientes\(data\)\)) Tj
+ET
+0.94 0.96 0.94 rg 46 350 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 354 Td 9 TL
+(.catch\(mostrarError\)) Tj
+ET
+0.94 0.96 0.94 rg 46 331 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 335 Td 9 TL
+(return \(\) => controller.abort\(\)) Tj
+ET
+0.94 0.96 0.94 rg 46 312 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 316 Td 9 TL
+(}, [busqueda]\)) Tj
+ET
+0.72 0.79 0.75 RG 42 42 511 0.5 re S
+BT /F1 8 Tf 0.42 0.49 0.46 rg 42 27 Td (Jesus Castillo | C24T | Semana 12) Tj ET
+BT /F1 8 Tf 0.42 0.49 0.46 rg 520 27 Td (3/5) Tj ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 13 0 R >>
+endobj
+13 0 obj
+<< /Length 3025 >>
+stream
+0.08 0.24 0.21 rg 0 810 595 32 re f
+BT /F1 9 Tf 1 1 1 rg 42 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 20 Tf 0.08 0.24 0.21 rg 42 775 Td (Operaciones REST y flujo) Tj ET
+0.10 0.46 0.35 rg 42 765 511 1 re f
+BT /F2 12 Tf 0.1 0.4 0.3 rg 46 728 Td (Crear y editar) Tj ET
+0.94 0.96 0.94 rg 46 696 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 700 Td 9 TL
+(const respuesta = seleccionado) Tj
+ET
+0.94 0.96 0.94 rg 46 677 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 681 Td 9 TL
+(? await api.patch\(`/pacientes/${id}/`, datos\)) Tj
+ET
+0.94 0.96 0.94 rg 46 658 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 662 Td 9 TL
+(: await api.post\('/pacientes/', datos\)) Tj
+ET
+0.94 0.96 0.94 rg 46 639 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 643 Td 9 TL
+(// La lista local se reconcilia con la respuesta JSON) Tj
+ET
+0.94 0.96 0.94 rg 46 620 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 624 Td 9 TL
+(setPacientes\(actuales => actualizar\(actuales, respuesta.data\)\)) Tj
+ET
+BT /F2 12 Tf 0.1 0.4 0.3 rg 46 609 Td (Eliminar) Tj ET
+0.94 0.96 0.94 rg 46 577 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 581 Td 9 TL
+(if \(!window.confirm\('Confirmar eliminacion'\)\) return) Tj
+ET
+0.94 0.96 0.94 rg 46 558 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 562 Td 9 TL
+(await api.delete\(`/pacientes/${paciente.id}/`\)) Tj
+ET
+0.94 0.96 0.94 rg 46 539 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 543 Td 9 TL
+(setPacientes\(actuales => actuales.filter\(p => p.id !== id\)\)) Tj
+ET
+BT /F1 8.5 Tf 0.12 0.2 0.19 rg 46 535 Td 11 TL
+(El formulario valida propietario, nombre, raza, edad y peso; Django vuelve a validar en el) Tj
+T* (serializer. Los errores 400 se muestran al lado del formulario. PATCH actualiza parcialmente con) Tj
+T* (200; DELETE responde normalmente 204 y la interfaz contempla 404.) Tj
+ET
+BT /F2 12 Tf 0.1 0.4 0.3 rg 46 488 Td (Endpoints) Tj ET
+0.94 0.96 0.94 rg 46 456 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 460 Td 9 TL
+(GET /api/pacientes/?search=Luna -> 200) Tj
+ET
+0.94 0.96 0.94 rg 46 437 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 441 Td 9 TL
+(POST /api/pacientes/ -> 201) Tj
+ET
+0.94 0.96 0.94 rg 46 418 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 422 Td 9 TL
+(PATCH /api/pacientes/{id}/ -> 200) Tj
+ET
+0.94 0.96 0.94 rg 46 399 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 403 Td 9 TL
+(DELETE /api/pacientes/{id}/ -> 204) Tj
+ET
+0.94 0.96 0.94 rg 46 380 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 384 Td 9 TL
+(GET /api/propietarios/ -> 200) Tj
+ET
+BT /F2 12 Tf 0.1 0.4 0.3 rg 46 369 Td (Flujo) Tj ET
+BT /F1 8.5 Tf 0.12 0.2 0.19 rg 46 352 Td 11 TL
+(1. La persona opera en React. 2. Axios envia HTTP. 3. CORS permite el origen. 4. URL enruta al) Tj
+T* (ViewSet. 5. El serializer valida o representa datos. 6. ORM persiste en SQLite. 7. Django responde) Tj
+T* (JSON y estado HTTP. 8. React actualiza la lista o presenta el error.) Tj
+ET
+0.72 0.79 0.75 RG 42 42 511 0.5 re S
+BT /F1 8 Tf 0.42 0.49 0.46 rg 42 27 Td (Jesus Castillo | C24T | Semana 12) Tj ET
+BT /F1 8 Tf 0.42 0.49 0.46 rg 520 27 Td (4/5) Tj ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 15 0 R >>
+endobj
+15 0 obj
+<< /Length 2967 >>
+stream
+0.08 0.24 0.21 rg 0 810 595 32 re f
+BT /F1 9 Tf 1 1 1 rg 42 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 20 Tf 0.08 0.24 0.21 rg 42 775 Td (Ejecucion, alcance y conclusion) Tj ET
+0.10 0.46 0.35 rg 42 765 511 1 re f
+BT /F2 12 Tf 0.1 0.4 0.3 rg 46 728 Td (Arranque local) Tj ET
+0.94 0.96 0.94 rg 46 696 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 700 Td 9 TL
+(Backend: cd Semana_12/backend) Tj
+ET
+0.94 0.96 0.94 rg 46 677 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 681 Td 9 TL
+(python -m venv .venv; activar entorno) Tj
+ET
+0.94 0.96 0.94 rg 46 658 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 662 Td 9 TL
+(pip install -r requirements.txt) Tj
+ET
+0.94 0.96 0.94 rg 46 639 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 643 Td 9 TL
+(python manage.py migrate) Tj
+ET
+0.94 0.96 0.94 rg 46 620 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 624 Td 9 TL
+(python manage.py seed_lab12) Tj
+ET
+0.94 0.96 0.94 rg 46 601 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 605 Td 9 TL
+(python manage.py runserver) Tj
+ET
+0.94 0.96 0.94 rg 46 582 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 586 Td 9 TL
+(Frontend: cd Semana_12/frontend) Tj
+ET
+0.94 0.96 0.94 rg 46 563 503 15 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 53 567 Td 9 TL
+(npm install; npm run dev) Tj
+ET
+BT /F1 8.5 Tf 0.12 0.2 0.19 rg 46 559 Td 11 TL
+(La semilla crea pacientes y propietarios de demostracion sin duplicarlos. Con ambos servidores) Tj
+T* (activos, se pueden inspeccionar solicitudes en Developer Tools > Network.) Tj
+ET
+BT /F2 12 Tf 0.1 0.4 0.3 rg 46 523 Td (Verificacion y seguridad) Tj ET
+BT /F1 8.5 Tf 0.12 0.2 0.19 rg 46 506 Td 11 TL
+(La entrega incluye pasos reproducibles para npm run lint, npm run build y operaciones REST. No se) Tj
+T* (incluyen capturas simuladas. El entorno de esta sesion no permitio iniciar procesos locales para) Tj
+T* (ejecutar Django o npm, por lo que no afirmo una comprobacion end-to-end ejecutada aqui.) Tj
+ET
+BT /F1 8.5 Tf 0.12 0.2 0.19 rg 46 466 Td 11 TL
+(La API conserva AllowAny para el ejercicio. Antes de un despliegue publico se deben configurar) Tj
+T* (autenticacion, permisos, secretos y DEBUG=False.) Tj
+ET
+BT /F2 12 Tf 0.1 0.4 0.3 rg 46 430 Td (Conclusion personal) Tj ET
+BT /F1 8.5 Tf 0.12 0.2 0.19 rg 46 413 Td 11 TL
+(Al realizar este laboratorio comprendi como una interfaz React trabaja con datos persistentes de) Tj
+T* (Django mediante HTTP y JSON. Aprendi a configurar CORS, organizar peticiones con Axios y) Tj
+T* (useEffect, y distinguir carga, error y lista vacia. Aplique GET, POST, PATCH y DELETE con sus) Tj
+T* (codigos de respuesta y relacione la validacion del serializer con los mensajes mostrados a la) Tj
+T* (persona usuaria. Considero que esta integracion conecta los temas de React y Django trabajados en) Tj
+T* (el curso y deja una base para ampliar el sistema.) Tj
+ET
+0.72 0.79 0.75 RG 42 42 511 0.5 re S
+BT /F1 8 Tf 0.42 0.49 0.46 rg 42 27 Td (Jesus Castillo | C24T | Semana 12) Tj ET
+BT /F1 8 Tf 0.42 0.49 0.46 rg 520 27 Td (5/5) Tj ET
+endstream
+endobj
+xref
+0 16
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000142 00000 n 
+0000000239 00000 n 
+0000000341 00000 n 
+0000000436 00000 n 
+0000000582 00000 n 
+0000002373 00000 n 
+0000002519 00000 n 
+0000004191 00000 n 
+0000004339 00000 n 
+0000007686 00000 n 
+0000007834 00000 n 
+0000010912 00000 n 
+0000011060 00000 n 
+trailer
+<< /Size 16 /Root 1 0 R >>
+startxref
+14080
+%%EOF

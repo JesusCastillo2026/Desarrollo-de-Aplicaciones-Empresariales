@@ -1,0 +1,8 @@
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <div class="d-flex justify-content-end mt-4 gap-2">
+        <a href="/" class="btn btn-secondary">Cancelar</a>
+        <button type="submit" class="btn {{ clase_boton|default:'btn-primary' }}">{{ texto_boton|default:'Guardar' }}</button>
+    </div>
+</form>
