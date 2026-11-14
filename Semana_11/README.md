@@ -33,4 +33,4 @@ El carrito obtiene unidades y total con `reduce()` sin duplicar esos datos en es
 
 ## Alcance
 
-Los registros de ejemplo se mantienen en memoria y se reinician al recargar. No se consume la API ni se persiste en Django; esa integración está prevista para la Semana 12. Consulta el [informe del laboratorio](../Documentos%201-16/Laboratorio%2011%20-%20Comunicaci%C3%B3n%20entre%20componentes.pdf) para objetivos, decisiones y extractos explicados.
+Los registros de ejemplo se mantienen en memoria y se reinician al recargar. No se consume la API ni se persiste en Django; esa integración está prevista para la Semana 12. Consulta el [informe del laboratorio](../Documentos%201-16/Semana%2011.pdf) para objetivos, decisiones y extractos explicados.

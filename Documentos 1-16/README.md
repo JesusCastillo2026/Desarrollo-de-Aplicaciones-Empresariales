@@ -14,7 +14,7 @@ Guías e informes del curso **Desarrollo de Aplicaciones Empresariales**. La tab
 | 8 | Semana 8 | API REST con serializadores, ViewSets, filtros, validaciones y pruebas. | [Descargar PDF](<Semana 08.pdf>) |
 | 9 | Semana 9 | Interfaz con React y Vite: componentes, listas y filtros. | [Descargar PDF](<Semana 09.pdf>) |
 | 10 | Semana 10 | Componentes reutilizables, props, estado, eventos y formularios controlados. | [Descargar PDF](<Semana 10.pdf>) |
-| 11 | Semana 11 | Comunicación entre componentes React: props, callbacks, estado elevado, datos derivados y `useEffect`. Incluye catálogo con carrito y panel administrativo de pacientes. | [Informe del laboratorio (PDF)](<Laboratorio 11 - Comunicación entre componentes.pdf>) |
+| 11 | Semana 11 | Comunicación entre componentes React: props, callbacks, estado elevado, datos derivados y `useEffect`. Incluye catálogo con carrito y panel administrativo de pacientes. | [Descargar PDF](<Semana 11.pdf>) |
 | 12 | Semana 12 | Material de la semana pendiente de incorporación. | Pendiente |
 | 13 | Semana 13 | Material de la semana pendiente de incorporación. | Pendiente |
 | 14 | Semana 14 | Material de la semana pendiente de incorporación. | Pendiente |
