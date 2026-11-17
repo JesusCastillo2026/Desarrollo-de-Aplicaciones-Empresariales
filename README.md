@@ -4,7 +4,7 @@ Repositorio académico del curso **Desarrollo de Aplicaciones Empresariales**. R
 
 ## Propósito
 
-Documentar la evolución de una aplicación para la gestión de una clínica veterinaria. Cada carpeta contiene el código y las instrucciones de ejecución de su semana. Las guías y los informes están en [Documentos 1-16](Documentos%201-16/README.md).
+Documentar la evolución de aplicaciones de gestión y comercio electrónico. Cada carpeta contiene el código y las instrucciones de ejecución de su semana. Las guías y los informes están en [Documentos 1-16](Documentos%201-16/README.md).
 
 ## Tecnologías
 
@@ -28,62 +28,44 @@ Documentar la evolución de una aplicación para la gestión de una clínica vet
 | [09](Semana_09/) | React y Vite | Componentes, listas, renderizado condicional, filtros y estilos adaptables. |
 | [10](Semana_10/) | Componentes e interacción | Props, estado, eventos, búsqueda y formularios controlados. |
 | [11](Semana_11/) | Comunicación entre componentes | Props, callbacks, estado elevado, datos derivados y `useEffect`; catálogo con carrito y panel de pacientes. |
-| [12](Semana_12/) | AJAX y servicios web | Integración de React con Django mediante Axios y CORS; estados de carga/error, búsqueda remota y CRUD REST de pacientes. |
+| [12](Semana_12/) | AJAX y servicios web | Integración React-Django con Axios y CORS; búsqueda, estados de carga/error y CRUD REST de pacientes. |
+| [13](Semana_13/) | Diseño de comercio electrónico | Tipos de comercio, módulos, roles, requisitos, reglas, flujo de compra, arquitectura, scaffold Django/React y mapa de rutas. |
 
-## Estructura
+## Estructura destacada
 
 ```text
 .
 ├── Semana_01/ … Semana_10/
 ├── Semana_11/
-│   ├── README.md
-│   └── frontend/
 ├── Semana_12/
-│   ├── README.md
-│   ├── backend/                 # API Django independiente, basada en Semana 8
+│   ├── backend/                 # API Django de la clínica
 │   └── frontend/                # React + Axios
+├── Semana_13/
+│   ├── README.md                # Respuestas detalladas de ejercicios 1–14
+│   ├── practica/
+│   │   ├── backend/             # Scaffold de cafetería: catalogo y pedidos
+│   │   └── frontend/            # React: components, pages y api.js
+│   ├── integrador/              # Clínica: diseño y pantallas iniciales
+│   └── evidencias/              # Diagramas originales SVG
 ├── Documentos 1-16/
 │   ├── README.md
-│   └── Semana 01.pdf … Semana 12.pdf
+│   └── Semana 01.pdf … Semana 13.pdf
 ├── README.md
 └── requirements.txt
 ```
 
-## Ejecución
+## Semana 13
 
-Las semanas son proyectos independientes. Sigue el README incluido en cada carpeta. Para proyectos React, entra a `frontend`, instala dependencias con `npm install` e inicia con `npm run dev`.
-
-### Semana 12: integración completa
-
-Inicia Django en una terminal:
-
-```powershell
-cd Semana_12/backend
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-python manage.py migrate
-python manage.py seed_lab12
-python manage.py runserver
-```
-
-En otra terminal, inicia React:
-
-```powershell
-cd Semana_12/frontend
-npm install
-npm run dev
-```
-
-Abre la URL local que presenta Vite. El frontend consulta `http://127.0.0.1:8000/api`; Django permite el origen local de Vite mediante CORS. La guía de arranque, las rutas y las verificaciones están en [Semana 12](Semana_12/README.md).
+Las instrucciones de entorno, instalación y ejecución están en [Semana 13](Semana_13/README.md). La cafetería es una estructura inicial; los modelos y la API de comercio están planificados para Semana 14. La Parte 2 documenta la clínica veterinaria desarrollada en las semanas anteriores.
 
 ## Estado de integración
 
 - Semanas 1 a 8: fundamentos, persistencia y API con Django.
-- Semanas 9 a 11: interfaces React y comunicación entre componentes con datos de práctica.
-- Semana 12: React consume la API, ejecuta GET/POST/PATCH/DELETE y búsqueda remota; los cambios persisten en SQLite.
-- La API de práctica mantiene permisos abiertos para facilitar el laboratorio. Requiere autenticación y permisos restrictivos antes de un despliegue público.
-- `node_modules`, `dist`, los entornos virtuales y la base SQLite local se generan al ejecutar los proyectos y no se publican.
+- Semanas 9 a 11: interfaces React y comunicación entre componentes.
+- Semana 12: React consume la API de clínica, con CRUD y búsqueda remota.
+- Semana 13: define el diseño de comercio electrónico y la estructura de práctica; documenta la arquitectura y módulos de la clínica.
+- La API de ejercicios conserva permisos de desarrollo abiertos. Configura autenticación y permisos antes de cualquier despliegue público.
+- `node_modules`, `dist`, entornos virtuales y bases SQLite locales no se publican.
 
 ## Autoría académica
 

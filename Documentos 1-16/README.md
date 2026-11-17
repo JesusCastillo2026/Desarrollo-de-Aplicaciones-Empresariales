@@ -14,11 +14,11 @@ Guías e informes del curso **Desarrollo de Aplicaciones Empresariales**. La tab
 | 8 | Semana 8 | API REST con serializadores, ViewSets, filtros, validaciones y pruebas. | [Descargar PDF](<Semana 08.pdf>) |
 | 9 | Semana 9 | Interfaz con React y Vite: componentes, listas y filtros. | [Descargar PDF](<Semana 09.pdf>) |
 | 10 | Semana 10 | Componentes reutilizables, props, estado, eventos y formularios controlados. | [Descargar PDF](<Semana 10.pdf>) |
-| 11 | Semana 11 | Comunicación entre componentes React: props, callbacks, estado elevado, datos derivados y `useEffect`. Incluye catálogo con carrito y panel administrativo de pacientes. | [Descargar PDF](<Semana 11.pdf>) |
-| 12 | Semana 12 | AJAX y servicios web: Axios, CORS, solicitudes GET/POST/PATCH/DELETE, búsqueda remota, validación del servidor y estados de carga y error. | [Descargar PDF](<Semana 12.pdf>) |
-| 13 | Semana 13 | Material de la semana pendiente de incorporación. | Pendiente |
+| 11 | Semana 11 | Comunicación entre componentes React: props, callbacks, estado elevado, datos derivados y `useEffect`. | [Descargar PDF](<Semana 11.pdf>) |
+| 12 | Semana 12 | AJAX y servicios web: Axios, CORS, CRUD REST, búsqueda remota y estados de carga/error. | [Descargar PDF](<Semana 12.pdf>) |
+| 13 | Semana 13 | Aplicaciones de comercio electrónico: diseño, requisitos, arquitectura y estructura inicial Django/React. | [Descargar PDF](<Semana 13.pdf>) |
 | 14 | Semana 14 | Material de la semana pendiente de incorporación. | Pendiente |
 | 15 | Semana 15 | Material de la semana pendiente de incorporación. | Pendiente |
 | 16 | Semana 16 | Material de la semana pendiente de incorporación. | Pendiente |
 
-Los PDFs de las semanas 1 a 12 están almacenados en esta carpeta para descargarlos directamente desde el repositorio.
+Los PDFs de las semanas 1 a 13 están almacenados en esta carpeta para descargarlos directamente desde el repositorio.

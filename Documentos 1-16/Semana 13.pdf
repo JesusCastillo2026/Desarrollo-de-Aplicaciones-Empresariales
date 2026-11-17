@@ -1,0 +1,675 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [6 0 R 8 0 R 10 0 R 12 0 R 14 0 R 16 0 R 18 0 R 20 0 R 22 0 R 24 0 R 26 0 R 28 0 R 30 0 R 32 0 R] /Count 14 >>
+endobj
+3 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica /Encoding /WinAnsiEncoding >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+6 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 7 0 R >>
+endobj
+7 0 obj
+<< /Length 1840 >>
+stream
+0.09 0.22 0.19 rg 0 810 595 32 re f
+BT /F1 8 Tf 1 1 1 rg 40 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+0.10 0.36 0.28 rg 40 670 515 105 re f
+BT /F2 26 Tf 1 1 1 rg 60 724 Td (Laboratorio 13) Tj ET
+BT /F1 14 Tf 0.91 0.95 0.91 rg 60 696 Td (Aplicaciones de comercio electronico) Tj ET
+BT /F1 11 Tf 0.08 0.24 0.21 rg 58 610 Td (Estudiante: Jesus Castillo) Tj ET
+BT /F1 11 Tf 0.08 0.24 0.21 rg 58 589 Td (Seccion: C24T) Tj ET
+BT /F1 11 Tf 0.08 0.24 0.21 rg 58 568 Td (Curso: Desarrollo de Aplicaciones Empresariales) Tj ET
+BT /F1 11 Tf 0.08 0.24 0.21 rg 58 547 Td (Tema: Aplicaciones de comercio electronico) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 526 Td 10.4 TL
+(Este informe desarrolla los ejercicios 1 a 14 del laboratorio. La Parte 1 diseña y crea la estructura) Tj
+T* (inicial de una cafeteria en linea. La Parte 2 traslada el analisis al proyecto clinico veterinario) Tj
+T* (elaborado en las Semanas 8 a 12 de este repositorio.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 481.8 Td (Que incluye la entrega) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 464.8 Td 10.4 TL
+(Tablas de tipos de comercio, roles, requisitos, reglas y rutas; arquitectura y flujo de compra;) Tj
+T* (scaffold Django con las apps catalogo y pedidos; scaffold React con components, pages y cliente Axios;) Tj
+T* (propuesta equivalente para la clinica; y tres diagramas originales como evidencia grafica del diseno.) Tj
+ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 427.6 Td 10.4 TL
+(Alcance: Semana 13 es una fase de diseno y estructura. Los modelos completos y el API de la tienda) Tj
+T* (quedan para Semana 14. Los diagramas muestran el diseno propuesto, no capturas ni ejecuciones) Tj
+T* (simuladas.) Tj
+ET
+0.72 0.79 0.75 RG 40 40 515 0.5 re S
+BT /F1 7 Tf 0.42 0.49 0.46 rg 40 26 Td (Jesus Castillo | C24T | Semana 13) Tj ET
+BT /F1 7 Tf 0.42 0.49 0.46 rg 518 26 Td (1/14) Tj ET
+endstream
+endobj
+8 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 9 0 R >>
+endobj
+9 0 obj
+<< /Length 1918 >>
+stream
+0.09 0.22 0.19 rg 0 810 595 32 re f
+BT /F1 8 Tf 1 1 1 rg 40 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 17 Tf 0.08 0.24 0.21 rg 40 778 Td (Preparacion y Ejercicio 1) Tj ET
+0.12 0.46 0.35 rg 40 767 515 1 re f
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 759 Td (Preparacion) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 742 Td 10.4 TL
+(1. Revisar los temas de las Semanas 3, 4, 8 y 9-12. 2. Separar el trabajo en cafeteria y proyecto) Tj
+T* (integrador. 3. Definir vocabulario y alcance antes de crear codigo. 4. Registrar las decisiones en) Tj
+T* (tablas verificables para que guien el desarrollo posterior.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 697.8 Td (Tipos de comercio) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 680.8 Td 10.4 TL
+(B2C: empresa vende al consumidor final; ejemplo Tottus en su tienda en linea. B2B: empresa vende a) Tj
+T* (otras empresas; ejemplo Makro y sus ventas mayoristas. C2C: personas comercian entre si mediante una) Tj
+T* (plataforma; ejemplo publicaciones particulares de Mercado Libre.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 636.5999999999999 Td (Aplicacion a la cafeteria) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 619.5999999999999 Td 10.4 TL
+(La cafeteria es B2C: su cliente es la persona que compra una bebida o alimento. La API de Django puede) Tj
+T* (atender una web, una aplicacion movil y canales de redes sociales.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 585.8 Td (Canal y tipo no son lo mismo) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 568.8 Td 10.4 TL
+(M-commerce identifica que se compra usando un dispositivo movil. Social commerce indica que una red) Tj
+T* (social participa en el descubrimiento, promocion o compra. Describen por donde ocurre la interaccion;) Tj
+T* (B2C, B2B y C2C describen quien vende a quien.) Tj
+ET
+0.72 0.79 0.75 RG 40 40 515 0.5 re S
+BT /F1 7 Tf 0.42 0.49 0.46 rg 40 26 Td (Jesus Castillo | C24T | Semana 13) Tj ET
+BT /F1 7 Tf 0.42 0.49 0.46 rg 518 26 Td (2/14) Tj ET
+endstream
+endobj
+10 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 11 0 R >>
+endobj
+11 0 obj
+<< /Length 1609 >>
+stream
+0.09 0.22 0.19 rg 0 810 595 32 re f
+BT /F1 8 Tf 1 1 1 rg 40 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 17 Tf 0.08 0.24 0.21 rg 40 778 Td (Ejercicio 2 · Modulos y roles) Tj ET
+0.12 0.46 0.35 rg 40 767 515 1 re f
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 759 Td (Mapa de modulos por etapa) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 742 Td 10.4 TL
+(Semana 14: catalogo, productos, categorias, inventario y API inicial. Semana 15: carrito, clientes,) Tj
+T* (autenticacion, pedidos y panel administrativo. Semana 16: pasarela de pago, notificaciones, seguridad) Tj
+T* (reforzada, pruebas y despliegue.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 697.8 Td (Roles) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 680.8 Td 10.4 TL
+(Visitante: explora, busca y arma un carrito; pantalla de catalogo. Cliente: registra datos de entrega,) Tj
+T* (confirma el pedido y consulta el estado; pantallas de carrito, checkout y mis pedidos. Administrador:) Tj
+T* (mantiene productos y stock, revisa y actualiza pedidos; panel administrativo.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 636.5999999999999 Td (Justificacion) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 619.5999999999999 Td 10.4 TL
+(Separar modulos reduce el acoplamiento: el catalogo mantiene productos, pedidos registra compras) Tj
+T* (persistentes y pagos coordina con un proveedor externo. Los permisos se verifican en Django para cada) Tj
+T* (operacion; ocultar un boton en React no es control de acceso.) Tj
+ET
+0.72 0.79 0.75 RG 40 40 515 0.5 re S
+BT /F1 7 Tf 0.42 0.49 0.46 rg 40 26 Td (Jesus Castillo | C24T | Semana 13) Tj ET
+BT /F1 7 Tf 0.42 0.49 0.46 rg 518 26 Td (3/14) Tj ET
+endstream
+endobj
+12 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 13 0 R >>
+endobj
+13 0 obj
+<< /Length 2197 >>
+stream
+0.09 0.22 0.19 rg 0 810 595 32 re f
+BT /F1 8 Tf 1 1 1 rg 40 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 17 Tf 0.08 0.24 0.21 rg 40 778 Td (Ejercicio 3 · Requisitos) Tj ET
+0.12 0.46 0.35 rg 40 767 515 1 re f
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 759 Td (Requisitos funcionales) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 742 Td 10.4 TL
+(RF-01 Alta: mostrar productos activos con nombre, descripcion, precio y disponibilidad; aceptar cuando) Tj
+T* (cada tarjeta contiene esos campos. RF-02 Media: buscar por nombre/categoria; aceptar con resultados) Tj
+T* (pertinentes y estado sin coincidencias. RF-03 Alta: modificar cantidades del carrito; aceptar cuando) Tj
+T* (subtotal/total se recalculan y cantidad >=1. RF-04 Alta: confirmar pedido; aceptar si la API persiste) Tj
+T* (detalle, total y estado. RF-05 Alta: administrador mantiene catalogo e inventario; aceptar si un cambio) Tj
+T* (permitido se guarda y uno no autorizado se rechaza.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 666.6 Td (Requisitos no funcionales) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 649.6 Td 10.4 TL
+(RNF-01 Medio: p95 de GET catalogo <2 s bajo 100 sesiones concurrentes en staging. RNF-02 Alta: en) Tj
+T* (produccion HTTP se redirige a HTTPS y los secretos no aparecen en recursos del cliente. RNF-03 Alta:) Tj
+T* (pruebas de rol verifican 403 en cambios administrativos no autorizados. RNF-04 Medio: a 360 px y 1280) Tj
+T* (px no hay desbordamiento horizontal ni controles ocultos. RNF-05 Alta: el total coincide con la suma) Tj
+T* (decimal de lineas a dos decimales.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 584.6 Td (Diferencia y requisito vago) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 567.6 Td 10.4 TL
+(Un requisito funcional establece una accion o respuesta; uno no funcional establece calidad, limite o) Tj
+T* (propiedad verificable. 'Rapido y seguro' se precisa en dos pruebas: 95% de GET catalogo <2 s con 100) Tj
+T* (sesiones; HTTPS obligatorio en produccion y respuesta 403 cuando una cuenta sin rol llama una ruta) Tj
+T* (administrativa.) Tj
+ET
+0.72 0.79 0.75 RG 40 40 515 0.5 re S
+BT /F1 7 Tf 0.42 0.49 0.46 rg 40 26 Td (Jesus Castillo | C24T | Semana 13) Tj ET
+BT /F1 7 Tf 0.42 0.49 0.46 rg 518 26 Td (4/14) Tj ET
+endstream
+endobj
+14 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 15 0 R >>
+endobj
+15 0 obj
+<< /Length 2855 >>
+stream
+0.09 0.22 0.19 rg 0 810 595 32 re f
+BT /F1 8 Tf 1 1 1 rg 40 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 17 Tf 0.08 0.24 0.21 rg 40 778 Td (Ejercicio 4 · Arquitectura y compra) Tj ET
+0.12 0.46 0.35 rg 40 767 515 1 re f
+0.91 0.96 0.93 rg 48 660 82 48 re f
+0.1 0.38 0.28 RG 48 660 82 48 re S
+BT /F2 8 Tf 0.08 0.24 0.21 rg 58 689 Td (React) Tj ET
+BT /F1 7 Tf 0.08 0.24 0.21 rg 58 674 Td (Web) Tj ET
+0.3 0.48 0.39 RG 130 683 m 145 683 l S
+0.91 0.96 0.93 rg 149 660 82 48 re f
+0.1 0.38 0.28 RG 149 660 82 48 re S
+BT /F2 8 Tf 0.08 0.24 0.21 rg 159 689 Td (Axios) Tj ET
+BT /F1 7 Tf 0.08 0.24 0.21 rg 159 674 Td (JSON) Tj ET
+0.3 0.48 0.39 RG 130 683 m 145 683 l S
+0.91 0.96 0.93 rg 250 660 82 48 re f
+0.1 0.38 0.28 RG 250 660 82 48 re S
+BT /F2 8 Tf 0.08 0.24 0.21 rg 260 689 Td (Django) Tj ET
+BT /F1 7 Tf 0.08 0.24 0.21 rg 260 674 Td (DRF) Tj ET
+0.3 0.48 0.39 RG 130 683 m 145 683 l S
+0.91 0.96 0.93 rg 351 660 82 48 re f
+0.1 0.38 0.28 RG 351 660 82 48 re S
+BT /F2 8 Tf 0.08 0.24 0.21 rg 361 689 Td (ORM) Tj ET
+BT /F1 7 Tf 0.08 0.24 0.21 rg 361 674 Td (SQLite) Tj ET
+0.3 0.48 0.39 RG 130 683 m 145 683 l S
+0.91 0.96 0.93 rg 452 660 82 48 re f
+0.1 0.38 0.28 RG 452 660 82 48 re S
+BT /F2 8 Tf 0.08 0.24 0.21 rg 462 689 Td (Pago) Tj ET
+BT /F1 7 Tf 0.08 0.24 0.21 rg 462 674 Td (Token) Tj ET
+0.96 0.91 0.82 rg 200 620 170 24 re f
+BT /F1 8 Tf 0.35 0.25 0.12 rg 211 628 Td (Tarjeta se procesa en proveedor externo) Tj ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 593 Td (Arquitectura) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 576 Td 10.4 TL
+(React presenta las pantallas. Axios envia solicitudes HTTP y JSON. Django REST Framework enruta al) Tj
+T* (ViewSet, el serializer valida, el ORM accede a SQLite y la respuesta vuelve como JSON con estado HTTP.) Tj
+T* (La pasarela externa procesa el pago y devuelve una referencia/token.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 531.8 Td (Flujo de compra) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 514.8 Td 10.4 TL
+(1 Explorar: GET catalogo; sin pedido. 2 Elegir cantidades: carrito temporal en React. 3 Ingresar) Tj
+T* (entrega: Django valida formato. 4 Confirmar: servidor relee precio y stock y crea pedido pendiente. 5) Tj
+T* (Pagar: Django inicia la sesion externa. 6 Pasarela procesa datos sensibles. 7 Django valida) Tj
+T* (token/confirmacion, registra pago y actualiza stock/estado. 8 React consulta y muestra preparacion,) Tj
+T* (listo o entregado.) Tj
+ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 456.79999999999995 Td 10.4 TL
+(La aplicacion no recibe PAN/CVV: el navegador introduce los datos directamente en la pasarela. Django) Tj
+T* (recibe el identificador/token y confirmacion, lo que reduce la exposicion y evita guardar datos de) Tj
+T* (tarjeta.) Tj
+ET
+0.72 0.79 0.75 RG 40 40 515 0.5 re S
+BT /F1 7 Tf 0.42 0.49 0.46 rg 40 26 Td (Jesus Castillo | C24T | Semana 13) Tj ET
+BT /F1 7 Tf 0.42 0.49 0.46 rg 518 26 Td (5/14) Tj ET
+endstream
+endobj
+16 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 17 0 R >>
+endobj
+17 0 obj
+<< /Length 1713 >>
+stream
+0.09 0.22 0.19 rg 0 810 595 32 re f
+BT /F1 8 Tf 1 1 1 rg 40 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 17 Tf 0.08 0.24 0.21 rg 40 778 Td (Ejercicio 5 · Reglas de negocio) Tj ET
+0.12 0.46 0.35 rg 40 767 515 1 re f
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 759 Td (Cinco reglas) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 742 Td 10.4 TL
+(1 Precio: leer precio vigente de la BD al crear pedido; Django. Evita que el cliente manipule el total.) Tj
+T* (2 Stock: volver a comprobar y reservar atomicamente; servidor/BD. Evita sobreventa por concurrencia o) Tj
+T* (estado viejo. 3 Dinero: usar Decimal y columnas decimales, nunca float; Django/BD. Evita errores de) Tj
+T* (redondeo.) Tj
+ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 694.4 Td 10.4 TL
+(4 Tarjeta: procesar con proveedor certificado y guardar solo referencia/token y resultado;) Tj
+T* (pasarela/backend. Evita exponer PAN/CVV. 5 Carrito no equivale a pedido: el carrito es) Tj
+T* (temporal/editable, el pedido se persiste al confirmar y mantiene estados; React y Django. Evita marcar) Tj
+T* (como compra una intencion que nunca fue confirmada.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 639.8 Td (Por que React no controla inventario) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 622.8 Td 10.4 TL
+(El usuario puede alterar el navegador y una pantalla puede tener disponibilidad vieja. Dos clientes) Tj
+T* (pueden intentar comprar la ultima unidad a la vez. El servidor debe leer y cambiar stock dentro de una) Tj
+T* (transaccion o actualizacion atomica y responder conflicto si ya no hay unidades.) Tj
+ET
+0.72 0.79 0.75 RG 40 40 515 0.5 re S
+BT /F1 7 Tf 0.42 0.49 0.46 rg 40 26 Td (Jesus Castillo | C24T | Semana 13) Tj ET
+BT /F1 7 Tf 0.42 0.49 0.46 rg 518 26 Td (6/14) Tj ET
+endstream
+endobj
+18 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 19 0 R >>
+endobj
+19 0 obj
+<< /Length 2492 >>
+stream
+0.09 0.22 0.19 rg 0 810 595 32 re f
+BT /F1 8 Tf 1 1 1 rg 40 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 17 Tf 0.08 0.24 0.21 rg 40 778 Td (Ejercicio 6 · Apps de Django) Tj ET
+0.12 0.46 0.35 rg 40 767 515 1 re f
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 759 Td (Pasos) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 742 Td 10.4 TL
+(1 Entrar a la carpeta backend que contiene manage.py. 2 Crear las apps: python manage.py startapp) Tj
+T* (catalogo y python manage.py startapp pedidos. 3 Mantener core como configuracion del proyecto. 4) Tj
+T* (Registrar catalogo y pedidos en INSTALLED_APPS. 5 Ejecutar python manage.py check y revisar la salida.) Tj
+ET
+0.94 0.96 0.94 rg 42 688.8 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 693.8 Td 9 TL
+(INSTALLED_APPS = [) Tj
+ET
+0.94 0.96 0.94 rg 42 668.8 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 673.8 Td 9 TL
+('django.contrib.admin',) Tj
+ET
+0.94 0.96 0.94 rg 42 648.8 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 653.8 Td 9 TL
+('rest_framework',) Tj
+ET
+0.94 0.96 0.94 rg 42 628.8 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 633.8 Td 9 TL
+('catalogo',) Tj
+ET
+0.94 0.96 0.94 rg 42 608.8 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 613.8 Td 9 TL
+('pedidos',) Tj
+ET
+0.94 0.96 0.94 rg 42 588.8 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 593.8 Td 9 TL
+(]) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 577.8 Td (Estructura) Tj ET
+0.94 0.96 0.94 rg 42 544.8 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 549.8 Td 9 TL
+(backend/ manage.py | requirements.txt | core/settings.py) Tj
+ET
+0.94 0.96 0.94 rg 42 524.8 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 529.8 Td 9 TL
+(core/ urls.py | asgi.py | wsgi.py) Tj
+ET
+0.94 0.96 0.94 rg 42 504.79999999999995 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 509.79999999999995 Td 9 TL
+(catalogo/ apps.py | models.py | views.py | urls.py) Tj
+ET
+0.94 0.96 0.94 rg 42 484.79999999999995 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 489.79999999999995 Td 9 TL
+(pedidos/ apps.py | models.py | views.py | urls.py) Tj
+ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 480.79999999999995 Td 10.4 TL
+(Proyecto Django: configuracion global, conexiones, middleware y tabla principal de URLs. Aplicacion:) Tj
+T* (unidad de responsabilidad que se puede conectar al proyecto, por ejemplo catalogo. Las apps estan) Tj
+T* (preparadas; modelos y API completos son siguiente etapa.) Tj
+ET
+0.72 0.79 0.75 RG 40 40 515 0.5 re S
+BT /F1 7 Tf 0.42 0.49 0.46 rg 40 26 Td (Jesus Castillo | C24T | Semana 13) Tj ET
+BT /F1 7 Tf 0.42 0.49 0.46 rg 518 26 Td (7/14) Tj ET
+endstream
+endobj
+20 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 21 0 R >>
+endobj
+21 0 obj
+<< /Length 2116 >>
+stream
+0.09 0.22 0.19 rg 0 810 595 32 re f
+BT /F1 8 Tf 1 1 1 rg 40 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 17 Tf 0.08 0.24 0.21 rg 40 778 Td (Ejercicio 7 · Estructura React) Tj ET
+0.12 0.46 0.35 rg 40 767 515 1 re f
+0.96 0.94 0.90 rg 55 650 480 92 re f
+0.75 0.67 0.56 RG 55 650 480 92 re S
+BT /F3 9 Tf 0.18 0.16 0.13 rg 76 718 Td (frontend/) Tj T* (  src/) Tj T* (    api.js) Tj T* (    components/ProductoCard.jsx) Tj T* (    pages/ProductosPage.jsx) Tj ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 623 Td (Pasos) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 606 Td 10.4 TL
+(1 Crear frontend/src/components y frontend/src/pages. 2 Crear ProductoCard.jsx en components para una) Tj
+T* (tarjeta reutilizable. 3 Crear ProductosPage.jsx en pages como pantalla de catalogo. 4 Crear api.js con) Tj
+T* (el cliente Axios y la URL base de Django. 5 Mantener el estado de datos de prueba o consumo real como) Tj
+T* (tarea de Semana 14.) Tj
+ET
+0.94 0.96 0.94 rg 42 542.4 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 547.4 Td 9 TL
+(const api = axios.create\({) Tj
+ET
+0.94 0.96 0.94 rg 42 522.4 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 527.4 Td 9 TL
+(baseURL: import.meta.env.VITE_API_URL ||) Tj
+ET
+0.94 0.96 0.94 rg 42 502.4 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 507.4 Td 9 TL
+('http://127.0.0.1:8000/api',) Tj
+ET
+0.94 0.96 0.94 rg 42 482.4 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 487.4 Td 9 TL
+(timeout: 8000,) Tj
+ET
+0.94 0.96 0.94 rg 42 462.4 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 467.4 Td 9 TL
+(headers: { Accept: 'application/json' },) Tj
+ET
+0.94 0.96 0.94 rg 42 442.4 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 447.4 Td 9 TL
+(}\)) Tj
+ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 438.4 Td 10.4 TL
+(components contiene piezas reutilizables; pages contiene pantallas completas. api.js centraliza host y) Tj
+T* (cabeceras para que no se repitan en cada componente. ProductoCard recibe producto como prop y) Tj
+T* (representa sus datos.) Tj
+ET
+0.72 0.79 0.75 RG 40 40 515 0.5 re S
+BT /F1 7 Tf 0.42 0.49 0.46 rg 40 26 Td (Jesus Castillo | C24T | Semana 13) Tj ET
+BT /F1 7 Tf 0.42 0.49 0.46 rg 518 26 Td (8/14) Tj ET
+endstream
+endobj
+22 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 23 0 R >>
+endobj
+23 0 obj
+<< /Length 1657 >>
+stream
+0.09 0.22 0.19 rg 0 810 595 32 re f
+BT /F1 8 Tf 1 1 1 rg 40 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 17 Tf 0.08 0.24 0.21 rg 40 778 Td (Ejercicio 8 · Mapa de rutas) Tj ET
+0.12 0.46 0.35 rg 40 767 515 1 re f
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 759 Td (Tabla de rutas) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 742 Td 10.4 TL
+(Productos: API GET /api/productos/; React /productos. Detalle: GET /api/productos/{id}/; React) Tj
+T* (/productos/{id}. Carrito: POST /api/carrito/items/; React /carrito. Confirmar: POST /api/pedidos/;) Tj
+T* (React /checkout. Mis pedidos: GET /api/pedidos/mios/; React /mis-pedidos. Administracion: POST/PATCH) Tj
+T* (/api/productos/; React /admin/productos.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 687.4 Td (Verificacion indicada por la guia) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 670.4 Td 10.4 TL
+(Desde backend ejecutar python manage.py runserver; en frontend ejecutar npm install y npm run build. El) Tj
+T* (scaffold reserva GET productos y el checkout para Semana 14: la ruta propuesta no significa que el) Tj
+T* (endpoint ya este implementado.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 626.1999999999999 Td (Dos clases de ruta) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 609.1999999999999 Td 10.4 TL
+(La URL de API representa un recurso del servidor; responde JSON y estado HTTP y puede modificar datos.) Tj
+T* (La URL React selecciona que pagina renderiza el cliente; por si sola no consulta ni persiste nada.) Tj
+T* (Axios conecta ambas capas.) Tj
+ET
+0.72 0.79 0.75 RG 40 40 515 0.5 re S
+BT /F1 7 Tf 0.42 0.49 0.46 rg 40 26 Td (Jesus Castillo | C24T | Semana 13) Tj ET
+BT /F1 7 Tf 0.42 0.49 0.46 rg 518 26 Td (9/14) Tj ET
+endstream
+endobj
+24 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 25 0 R >>
+endobj
+25 0 obj
+<< /Length 1656 >>
+stream
+0.09 0.22 0.19 rg 0 810 595 32 re f
+BT /F1 8 Tf 1 1 1 rg 40 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 17 Tf 0.08 0.24 0.21 rg 40 778 Td (Ejercicio 9 · Proyecto integrador) Tj ET
+0.12 0.46 0.35 rg 40 767 515 1 re f
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 759 Td (Equivalencia aplicada) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 742 Td 10.4 TL
+(La Parte 2 se adapta a la clinica veterinaria construida en las Semanas 8-12 de este repositorio. Tipo:) Tj
+T* (servicio B2C de clinica, con panel web actual y opcion futura de canal movil. Entidad principal del) Tj
+T* (flujo: Cita; se asocia a Paciente y este a Propietario.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 697.8 Td (Modulos y roles) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 680.8 Td 10.4 TL
+(Pacientes y propietarios: existentes. Citas, servicios, historiales, medicamentos y reportes: recursos) Tj
+T* (del backend existente; algunas pantallas aun son futuras. Administrador: administra datos; personal) Tj
+T* (clinico: gestiona atenciones; propietario: consulta su informacion/citas, sujeto a autenticacion aun) Tj
+T* (pendiente.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 626.1999999999999 Td (Rutas) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 609.1999999999999 Td 10.4 TL
+(/api/pacientes/ -> /pacientes; /api/propietarios/ -> /propietarios; /api/citas/ -> /citas;) Tj
+T* (/api/servicios/ -> /servicios. Regla ya implementada: peso > 0 en serializer. Regla futura: la cita) Tj
+T* (debe vincular paciente existente y fecha valida.) Tj
+ET
+0.72 0.79 0.75 RG 40 40 515 0.5 re S
+BT /F1 7 Tf 0.42 0.49 0.46 rg 40 26 Td (Jesus Castillo | C24T | Semana 13) Tj ET
+BT /F1 7 Tf 0.42 0.49 0.46 rg 518 26 Td (10/14) Tj ET
+endstream
+endobj
+26 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 27 0 R >>
+endobj
+27 0 obj
+<< /Length 2126 >>
+stream
+0.09 0.22 0.19 rg 0 810 595 32 re f
+BT /F1 8 Tf 1 1 1 rg 40 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 17 Tf 0.08 0.24 0.21 rg 40 778 Td (Ejercicio 10 · Requisitos de clinica) Tj ET
+0.12 0.46 0.35 rg 40 767 515 1 re f
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 759 Td (Requisitos funcionales) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 742 Td 10.4 TL
+(CF-01 Alta: buscar pacientes por nombre, especie o propietario; solo aparecen coincidencias search.) Tj
+T* (CF-02 Alta: crear paciente ligado a propietario existente; API devuelve 201 y la fila se incorpora.) Tj
+T* (CF-03 Alta: editar y eliminar; PATCH 200 y DELETE 204. CF-04 Alta: registrar cita con paciente, fecha y) Tj
+T* (motivo; rechazar referencia inexistente. CF-05 Media: personal autorizado consulta servicios e) Tj
+T* (historial; usuario sin permiso recibe 403.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 677 Td (Requisitos no funcionales) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 660 Td 10.4 TL
+(CNF-01 Alta: permisos por rol cubren todas las rutas con pruebas de autorizacion. CNF-02 Media: p95 de) Tj
+T* (listado <2 s bajo 100 sesiones de prueba. CNF-03 Media: a 360 px el panel no se desplaza) Tj
+T* (horizontalmente y controles son accesibles.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 615.8 Td (Reglas) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 598.8 Td 10.4 TL
+(Peso paciente >0; cita enlazada a paciente valido y fecha valida; propietario solo consulta mascotas) Tj
+T* (asociadas; cancelacion libera la franja; cambios clinicos registran responsable y fecha. Las) Tj
+T* (validaciones autoritativas y permisos van en Django, no unicamente en React.) Tj
+ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 561.5999999999999 Td 10.4 TL
+(El proyecto de las semanas anteriores ya implementa pacientes, propietarios, citas, servicios,) Tj
+T* (historiales, medicamentos, serializadores y endpoints. Autenticacion/roles y algunas pantallas quedan) Tj
+T* (identificados como pendientes, no como producto terminado.) Tj
+ET
+0.72 0.79 0.75 RG 40 40 515 0.5 re S
+BT /F1 7 Tf 0.42 0.49 0.46 rg 40 26 Td (Jesus Castillo | C24T | Semana 13) Tj ET
+BT /F1 7 Tf 0.42 0.49 0.46 rg 518 26 Td (11/14) Tj ET
+endstream
+endobj
+28 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 29 0 R >>
+endobj
+29 0 obj
+<< /Length 2596 >>
+stream
+0.09 0.22 0.19 rg 0 810 595 32 re f
+BT /F1 8 Tf 1 1 1 rg 40 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 17 Tf 0.08 0.24 0.21 rg 40 778 Td (Ejercicio 11 · Arquitectura de clinica) Tj ET
+0.12 0.46 0.35 rg 40 767 515 1 re f
+0.91 0.96 0.93 rg 45 660 100 48 re f
+0.1 0.38 0.28 RG 45 660 100 48 re S
+BT /F2 8 Tf 0.08 0.24 0.21 rg 57 689 Td (React) Tj ET
+BT /F1 6 Tf 0.08 0.24 0.21 rg 53 674 Td (formulario) Tj ET
+0.3 0.48 0.39 RG 146 683 m 171 683 l S
+0.91 0.96 0.93 rg 174 660 100 48 re f
+0.1 0.38 0.28 RG 174 660 100 48 re S
+BT /F2 8 Tf 0.08 0.24 0.21 rg 186 689 Td (Axios) Tj ET
+BT /F1 6 Tf 0.08 0.24 0.21 rg 182 674 Td (POST JSON) Tj ET
+0.3 0.48 0.39 RG 275 683 m 300 683 l S
+0.91 0.96 0.93 rg 303 660 100 48 re f
+0.1 0.38 0.28 RG 303 660 100 48 re S
+BT /F2 8 Tf 0.08 0.24 0.21 rg 315 689 Td (Django API) Tj ET
+BT /F1 6 Tf 0.08 0.24 0.21 rg 311 674 Td (reglas + permiso) Tj ET
+0.3 0.48 0.39 RG 404 683 m 429 683 l S
+0.91 0.96 0.93 rg 432 660 100 48 re f
+0.1 0.38 0.28 RG 432 660 100 48 re S
+BT /F2 8 Tf 0.08 0.24 0.21 rg 444 689 Td (Serializer) Tj ET
+BT /F1 6 Tf 0.08 0.24 0.21 rg 440 674 Td (valida entidad) Tj ET
+0.91 0.96 0.93 rg 245 600 130 42 re f
+0.1 0.38 0.28 RG 245 600 130 42 re S
+BT /F2 8 Tf 0.08 0.24 0.21 rg 263 625 Td (ORM + SQLite) Tj ET
+BT /F1 7 Tf 0.08 0.24 0.21 rg 266 610 Td (guarda cita) Tj ET
+0.3 0.48 0.39 RG 482 658 m 482 620 l 378 620 l S
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 573 Td (Flujo) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 556 Td 10.4 TL
+(1 React carga el formulario de cita. 2 Axios envia POST JSON. 3 Django valida sesion/permiso, paciente,) Tj
+T* (fecha y reglas. 4 Serializer valida y convierte campos. 5 ORM persiste en SQLite. 6 Django devuelve 201) Tj
+T* (+ JSON. 7 React actualiza el listado y confirma el resultado.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 511.79999999999995 Td (Entidades) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 494.79999999999995 Td 10.4 TL
+(Propietario, Paciente, Cita, Servicio, PacienteServicio, HistorialMedico, Medicamento y Veterinario.) Tj
+T* (Cita es entidad principal del flujo; paciente es su referencia, y paciente enlaza propietario.) Tj
+ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 467.99999999999994 Td 10.4 TL
+(Django debe volver a validar disponibilidad y autorizacion aunque React valide el formulario. La base) Tj
+T* (actual mantiene permisos abiertos para el laboratorio; control de acceso por rol queda como mejora) Tj
+T* (antes de despliegue.) Tj
+ET
+0.72 0.79 0.75 RG 40 40 515 0.5 re S
+BT /F1 7 Tf 0.42 0.49 0.46 rg 40 26 Td (Jesus Castillo | C24T | Semana 13) Tj ET
+BT /F1 7 Tf 0.42 0.49 0.46 rg 518 26 Td (12/14) Tj ET
+endstream
+endobj
+30 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 31 0 R >>
+endobj
+31 0 obj
+<< /Length 2035 >>
+stream
+0.09 0.22 0.19 rg 0 810 595 32 re f
+BT /F1 8 Tf 1 1 1 rg 40 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 17 Tf 0.08 0.24 0.21 rg 40 778 Td (Ejercicios 12 y 13 · Estructura integradora) Tj ET
+0.12 0.46 0.35 rg 40 767 515 1 re f
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 759 Td (Ejercicio 12 · Django) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 742 Td 10.4 TL
+(La clinica ya conserva core como proyecto y gestion_clinica registrada como app, con modelos y API de) Tj
+T* (las semanas anteriores. Se reutiliza la implementacion de Semana 12 en lugar de duplicarla o separar) Tj
+T* (modelos existentes en apps incompatibles. La practica de cafeteria crea por separado catalogo y) Tj
+T* (pedidos.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 687.4 Td (Ejercicio 13 · React) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 670.4 Td 10.4 TL
+(El panel existente conserva frontend/src/components y api.js. Se agrega la carpeta pages con espacios) Tj
+T* (iniciales para PacientesPage, CitasPage y ServiciosPage. El mapa de rutas asocia /api/pacientes con) Tj
+T* (/pacientes, /api/citas con /citas y /api/servicios con /servicios.) Tj
+ET
+0.94 0.96 0.94 rg 42 617.1999999999999 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 622.1999999999999 Td 9 TL
+(frontend/src/components/ componentes reutilizables existentes) Tj
+ET
+0.94 0.96 0.94 rg 42 597.1999999999999 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 602.1999999999999 Td 9 TL
+(frontend/src/pages/ pantallas iniciales del panel) Tj
+ET
+0.94 0.96 0.94 rg 42 577.1999999999999 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 582.1999999999999 Td 9 TL
+(frontend/src/api.js cliente Axios existente) Tj
+ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 573.1999999999999 Td 10.4 TL
+(Las paginas iniciales son scaffolds. La ruta visual debe conectarse al router que se defina para el) Tj
+T* (panel; esta entrega no afirma que React Router ya este instalado.) Tj
+ET
+0.72 0.79 0.75 RG 40 40 515 0.5 re S
+BT /F1 7 Tf 0.42 0.49 0.46 rg 40 26 Td (Jesus Castillo | C24T | Semana 13) Tj ET
+BT /F1 7 Tf 0.42 0.49 0.46 rg 518 26 Td (13/14) Tj ET
+endstream
+endobj
+32 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 3 0 R /F2 4 0 R /F3 5 0 R >> >> /Contents 33 0 R >>
+endobj
+33 0 obj
+<< /Length 2475 >>
+stream
+0.09 0.22 0.19 rg 0 810 595 32 re f
+BT /F1 8 Tf 1 1 1 rg 40 820 Td (DESARROLLO DE APLICACIONES EMPRESARIALES) Tj ET
+BT /F2 17 Tf 0.08 0.24 0.21 rg 40 778 Td (Ejercicio 14 · Verificacion y publicacion) Tj ET
+0.12 0.46 0.35 rg 40 767 515 1 re f
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 759 Td (Comandos de verificacion) Tj ET
+0.94 0.96 0.94 rg 42 726 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 731 Td 9 TL
+(Backend cafeteria: python manage.py check) Tj
+ET
+0.94 0.96 0.94 rg 42 706 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 711 Td 9 TL
+(Frontend cafeteria: npm run lint) Tj
+ET
+0.94 0.96 0.94 rg 42 686 510 16 re f
+BT /F3 7 Tf 0.08 0.27 0.22 rg 49 691 Td 9 TL
+(Frontend cafeteria: npm run build) Tj
+ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 682 Td 10.4 TL
+(La guia pide registrar capturas reales de terminal, navegador/API y codigo, verificar ausencia de) Tj
+T* (node_modules y dist, y publicar la URL del repositorio. Este informe incluye diagramas vectoriales) Tj
+T* (originales como evidencia de diseno. No inventa capturas de ejecucion: el entorno disponible no) Tj
+T* (permitio correr procesos locales en esta sesion, asi que esas tres salidas y capturas deben tomarse al) Tj
+T* (ejecutar el proyecto.) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 617 Td (Repositorio) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 600 Td 10.4 TL
+(https://github.com/JesusCastillo2026/Desarrollo-de-Aplicaciones-Empresariales) Tj
+ET
+BT /F2 11 Tf 0.1 0.4 0.3 rg 42 576.6 Td (Conclusion personal) Tj ET
+BT /F1 8 Tf 0.12 0.2 0.19 rg 42 559.6 Td 10.4 TL
+(Al desarrollar este laboratorio entendi que una aplicacion de comercio electronico necesita reglas) Tj
+T* (claras antes de programarse. Distingui los tipos de comercio de los canales, defini modulos, roles y) Tj
+T* (requisitos que se pueden comprobar, y vi por que el servidor debe proteger precios, inventario y) Tj
+T* (permisos. El diagrama me ayudo a seguir la compra desde React hasta Django y la pasarela, y a) Tj
+T* (comprender que la tarjeta no debe pasar por nuestra API. Tambien prepare una estructura inicial de) Tj
+T* (Django y React para la cafeteria y relacione el mismo metodo de analisis con la clinica del curso.) Tj
+T* (Considero que dejar explicadas las rutas y las responsabilidades de cada capa facilita continuar con) Tj
+T* (modelos y endpoints en la siguiente semana.) Tj
+ET
+0.72 0.79 0.75 RG 40 40 515 0.5 re S
+BT /F1 7 Tf 0.42 0.49 0.46 rg 40 26 Td (Jesus Castillo | C24T | Semana 13) Tj ET
+BT /F1 7 Tf 0.42 0.49 0.46 rg 518 26 Td (14/14) Tj ET
+endstream
+endobj
+xref
+0 34
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000206 00000 n 
+0000000303 00000 n 
+0000000405 00000 n 
+0000000500 00000 n 
+0000000646 00000 n 
+0000002538 00000 n 
+0000002684 00000 n 
+0000004654 00000 n 
+0000004802 00000 n 
+0000006464 00000 n 
+0000006612 00000 n 
+0000008862 00000 n 
+0000009010 00000 n 
+0000011918 00000 n 
+0000012066 00000 n 
+0000013832 00000 n 
+0000013980 00000 n 
+0000016525 00000 n 
+0000016673 00000 n 
+0000018842 00000 n 
+0000018990 00000 n 
+0000020700 00000 n 
+0000020848 00000 n 
+0000022557 00000 n 
+0000022705 00000 n 
+0000024884 00000 n 
+0000025032 00000 n 
+0000027681 00000 n 
+0000027829 00000 n 
+0000029917 00000 n 
+0000030065 00000 n 
+trailer
+<< /Size 34 /Root 1 0 R >>
+startxref
+32593
+%%EOF
