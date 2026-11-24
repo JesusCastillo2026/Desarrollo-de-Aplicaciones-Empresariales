@@ -16,9 +16,10 @@ Guías e informes del curso **Desarrollo de Aplicaciones Empresariales**. La tab
 | 10 | Semana 10 | Componentes reutilizables, props, estado, eventos y formularios controlados. | [Descargar PDF](<Semana 10.pdf>) |
 | 11 | Semana 11 | Comunicación entre componentes React: props, callbacks, estado elevado, datos derivados y `useEffect`. | [Descargar PDF](<Semana 11.pdf>) |
 | 12 | Semana 12 | AJAX y servicios web: Axios, CORS, CRUD REST, búsqueda remota y estados de carga/error. | [Descargar PDF](<Semana 12.pdf>) |
-| 13 | Semana 13 | Aplicaciones de comercio electrónico: diseño, requisitos, arquitectura y estructura inicial Django/React. | [Descargar PDF](<Semana 13.pdf>) |
+| 13 | Semana 13 | Laboratorio aplicado al proyecto integrador PikaFit: requisitos, roles, reglas, arquitectura Node.js/Express, MongoDB, API, web JavaScript y Android Kotlin. | [Descargar PDF](<Semana 13.pdf>) |
 | 14 | Semana 14 | Material de la semana pendiente de incorporación. | Pendiente |
 | 15 | Semana 15 | Material de la semana pendiente de incorporación. | Pendiente |
 | 16 | Semana 16 | Material de la semana pendiente de incorporación. | Pendiente |
 
 Los PDFs de las semanas 1 a 13 están almacenados en esta carpeta para descargarlos directamente desde el repositorio.
+

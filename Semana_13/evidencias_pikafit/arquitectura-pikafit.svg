@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="520" viewBox="0 0 1100 520">
+  <defs><marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto"><path d="M0,0 L0,6 L9,3 z" fill="#2563eb"/></marker></defs>
+  <rect width="1100" height="520" rx="24" fill="#f4f7fb"/>
+  <text x="48" y="58" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#10233f">Arquitectura actual de PikaFit</text>
+  <text x="48" y="88" font-family="Arial,sans-serif" font-size="15" fill="#52637a">Dos clientes consumen la misma API REST; el servidor administra acceso a MongoDB.</text>
+  <g font-family="Arial,sans-serif">
+    <rect x="55" y="145" width="250" height="118" rx="15" fill="#e8f1ff" stroke="#78a7ed" stroke-width="2"/>
+    <text x="180" y="181" text-anchor="middle" font-size="20" font-weight="700" fill="#174082">Web PikaFit</text>
+    <text x="180" y="211" text-anchor="middle" font-size="15" fill="#304760">HTML · CSS · JavaScript</text>
+    <text x="180" y="237" text-anchor="middle" font-size="14" fill="#304760">fetch() · token de sesión</text>
+    <rect x="55" y="317" width="250" height="118" rx="15" fill="#e9f8f2" stroke="#6dc5a0" stroke-width="2"/>
+    <text x="180" y="354" text-anchor="middle" font-size="20" font-weight="700" fill="#116149">App Android</text>
+    <text x="180" y="384" text-anchor="middle" font-size="15" fill="#304760">Kotlin · Jetpack Compose</text>
+    <text x="180" y="410" text-anchor="middle" font-size="14" fill="#304760">HTTP · JSON · coroutines</text>
+    <rect x="425" y="215" width="275" height="150" rx="18" fill="#eaf0ff" stroke="#718ce0" stroke-width="2"/>
+    <text x="562" y="255" text-anchor="middle" font-size="22" font-weight="700" fill="#263b84">API REST</text>
+    <text x="562" y="288" text-anchor="middle" font-size="16" fill="#304760">Node.js · Express</text>
+    <text x="562" y="317" text-anchor="middle" font-size="14" fill="#304760">Autenticación · roles · reglas</text>
+    <text x="562" y="342" text-anchor="middle" font-size="14" fill="#304760">Rutas /api/* · JSON</text>
+    <rect x="820" y="215" width="225" height="150" rx="18" fill="#fff3df" stroke="#e3b25f" stroke-width="2"/>
+    <text x="932" y="255" text-anchor="middle" font-size="22" font-weight="700" fill="#795119">MongoDB</text>
+    <text x="932" y="288" text-anchor="middle" font-size="15" fill="#554b3c">users · medical_passes</text>
+    <text x="932" y="317" text-anchor="middle" font-size="14" fill="#554b3c">auditoría · membresías</text>
+    <text x="932" y="342" text-anchor="middle" font-size="14" fill="#554b3c">sedes · sesiones</text>
+    <path d="M305 200 C350 200 370 235 425 250" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M305 375 C360 375 370 345 425 330" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow)"/>
+    <path d="M700 290 L820 290" fill="none" stroke="#2563eb" stroke-width="3" marker-end="url(#arrow)"/>
+    <text x="356" y="177" text-anchor="middle" font-size="13" fill="#36577f">HTTP / JSON</text>
+    <text x="750" y="274" text-anchor="middle" font-size="13" fill="#36577f">driver MongoDB</text>
+    <text x="550" y="472" text-anchor="middle" font-size="14" fill="#52637a">La interfaz no accede directamente a la base de datos.</text>
+  </g>
+</svg>

@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1100" height="560" viewBox="0 0 1100 560">
+  <rect width="1100" height="560" rx="24" fill="#f4f7fb"/>
+  <text x="48" y="58" font-family="Arial,sans-serif" font-size="27" font-weight="700" fill="#10233f">Estructura real del repositorio PikaFit</text>
+  <rect x="50" y="95" width="1000" height="410" rx="18" fill="#fff" stroke="#d6deea" stroke-width="2"/>
+  <g font-family="Consolas,monospace" font-size="17" fill="#24364c">
+    <text x="90" y="140" font-weight="700" fill="#174082">PikaFit-Proyecto-Integrador/</text>
+    <text x="120" y="185">src/</text><text x="165" y="215">server.js · rutas API Express</text><text x="165" y="245">auth.js · users.js · passes.js</text><text x="165" y="275">training.js · workouts.js · clinic-reports.js</text><text x="165" y="305">db.js · conexión e índices MongoDB</text>
+    <text x="120" y="355">Web/</text><text x="165" y="385">index.html · app.js · styles.css</text>
+    <text x="120" y="425">Android/</text><text x="165" y="455">Kotlin · Jetpack Compose · cliente API</text>
+    <text x="640" y="185">MongoDB Compass/</text><text x="695" y="215">esquemas de colecciones</text>
+    <text x="640" y="275">tests/</text><text x="695" y="305">pruebas automatizadas de Node</text>
+    <text x="640" y="365">scripts/</text><text x="695" y="395">seed-admin.js</text>
+  </g>
+  <text x="550" y="535" text-anchor="middle" font-family="Arial,sans-serif" font-size="14" fill="#52637a">Esquema elaborado a partir del árbol y los archivos públicos del repositorio fuente.</text>
+</svg>

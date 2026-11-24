@@ -1,199 +1,192 @@
-# Semana 13 — Aplicaciones de comercio electrónico
+# Laboratorio 13 — Aplicaciones empresariales aplicadas a PikaFit
 
-Laboratorio de diseño y estructura inicial. La primera parte crea la base de una cafetería en línea; la segunda adapta los requisitos del ejercicio al proyecto clínico construido en las Semanas 8–12 de este repositorio.
+**Curso:** Desarrollo de Aplicaciones Empresariales  
+**Sección:** C24T  
+**Estudiante:** Jesus Castillo  
+**Proyecto integrador:** [PikaFit](https://github.com/JesusCastillo2026/PikaFit-Proyecto-Integrador)
 
-## Carpetas
+> Esta entrega aplica los ejercicios del laboratorio al proyecto integrador PikaFit, según la indicación del docente. El contenido anterior de cafetería se reemplaza por el análisis del proyecto real.
 
-- `practica/backend/`: proyecto Django base con las apps `catalogo` y `pedidos`.
-- `practica/frontend/`: base React + Vite con `components`, `pages` y Axios.
-- `integrador/`: análisis de requisitos, módulos, reglas y rutas de la clínica veterinaria del curso. El backend y el panel funcional se conservan en [Semana 12](../Semana_12/).
+## Alcance y tecnología comprobada
 
-## Ejecución de la práctica (cafetería)
+La rama `main` del repositorio consultado describe PikaFit como una plataforma de membresías, entrenamiento y pases médicos, con web, aplicación Android y API REST. Su arquitectura actual es **Node.js + Express + MongoDB** para servidor y datos, **HTML/CSS/JavaScript** para la web y **Kotlin + Jetpack Compose** para Android. La web usa `fetch()` en `Web/app.js` y la app móvil usa `HttpURLConnection` desde `Android/.../Api.kt`.
 
-Terminal 1:
+El enunciado trae ejemplos con Django y React. Para que la entrega represente PikaFit sin inventar tecnologías, se documentan las equivalencias reales: módulos Express en `src/`, secciones web en `Web/`, pantallas Android en `Android/` y colecciones de MongoDB. No se presenta PikaFit como una aplicación Django o React.
 
-```powershell
-cd Semana_13/practica/backend
-python -m venv .venv
-.\.venv\Scripts\Activate.ps1
-pip install -r requirements.txt
-python manage.py check
-python manage.py runserver
-```
+## 1. Tipos de comercio y canales
 
-Terminal 2:
-
-```powershell
-cd Semana_13/practica/frontend
-npm install
-npm run dev
-```
-
-Para verificar compilación y reglas de estilo, desde `frontend` ejecuta `npm run lint` y `npm run build`. El endpoint de productos es parte del diseño que se implementará junto con los modelos en Semana 14; esta semana establece estructura, requisitos y mapa de rutas.
-
-## Entregables documentados
-
-Las respuestas a los ejercicios 1–14, tablas de requisitos/roles/reglas/rutas y diagramas de arquitectura y flujo están en este README. Las imágenes vectoriales también están disponibles en [evidencias](evidencias/). El PDF `../Documentos 1-16/Semana 13.pdf` desarrolla el procedimiento con mayor detalle.
-
-> Evidencia: los SVG incluidos son diagramas de diseño elaborados para este laboratorio. No son capturas de terminal ni simulan resultados de ejecución. Las salidas de `python manage.py check`, `npm run lint` y `npm run build` deben capturarse al ejecutar el proyecto en el equipo.
-
-## Parte 1 — Cafetería en línea
-
-### Ejercicio 1. Tipo de comercio y canales
-
-| Tipo | Quién vende a quién | Ejemplo peruano |
+| Tipo | Quién ofrece y quién recibe | Ejemplo aplicado |
 |---|---|---|
-| B2C | Empresa a consumidor final | Tottus vende productos directamente a personas mediante su tienda en línea. |
-| B2B | Empresa a empresa | Makro vende productos al por mayor a negocios y compradores institucionales. |
-| C2C | Persona a persona, mediante una plataforma | Mercado Libre permite publicaciones de vendedores particulares para compradores particulares. |
+| B2C | Una empresa ofrece un servicio a una persona. | PikaFit ofrece una membresía y funciones de entrenamiento al socio. |
+| B2B | Una empresa ofrece servicios a otra organización. | PikaFit administra sedes, máquinas y accesos para gimnasios o clínicas afiliadas. |
+| C2C | Una persona ofrece a otra persona mediante una plataforma. | Una persona publica y vende un artículo usado a otra en un marketplace peruano como Mercado Libre. |
 
-La cafetería en línea es **B2C**: la cafetería ofrece productos al consumidor. Puede usar web, aplicación móvil y redes sociales conectadas a una misma API. *M-commerce* indica que la compra ocurre desde un dispositivo móvil; *social commerce* indica que el descubrimiento o compra se realiza dentro o desde una red social. Ambos describen canales de interacción y venta, mientras B2C/B2B/C2C identifican quién participa en la transacción.
+PikaFit combina una relación **B2C** para sus socios y una relación **B2B** para la administración de sedes y clínicas afiliadas. Los canales web y Android se conectan con la misma API. M-commerce describe el uso del canal móvil; social commerce describe la interacción comercial desde redes sociales. No sustituyen la clasificación de quién vende a quién.
 
-### Ejercicio 2. Módulos y roles
+## 2. Módulos y roles
 
-| Módulo | Alcance | Semana prevista |
-|---|---|---:|
-| Catálogo e inventario | Productos, precio vigente, disponibilidad y categorías | 14 |
-| Carrito | Selección temporal y cantidades antes de confirmar | 15 |
-| Clientes y acceso | Perfil, sesión y permisos por rol | 15 |
-| Pedidos | Confirmación, detalle y estados del pedido | 14–15 |
-| Pagos | Inicio y confirmación mediante proveedor externo | 16 |
-| Administración | Productos, stock, pedidos y reportes | 15 |
-| Seguridad y notificaciones | Validaciones, autorización y avisos de estado | 16 |
-
-| Rol | Puede hacer | Pantalla principal |
+| Módulo | Función | Estado según el repositorio |
 |---|---|---|
-| Visitante | Consultar y buscar productos; armar un carrito local | Catálogo |
-| Cliente | Confirmar pedido, consultar estado e historial | Catálogo, carrito y mis pedidos |
-| Administrador | Gestionar catálogo, inventario y pedidos | Panel administrativo |
+| Acceso y usuarios | Inicio de sesión, datos del perfil y roles. | Implementado en la API. |
+| Membresías | Vigencia, bloqueo de acciones vencidas y avisos. | Implementado en API y panel. |
+| Entrenamiento | Sedes, máquinas, rutinas, sesiones y seguimiento. | Implementado en módulos del servidor. |
+| Pases médicos | Emisión de QR/código temporal y validación de un solo uso. | Implementado. |
+| Gestión clínica | Evaluaciones, historial autorizado y reportes. | Implementado parcialmente por rol. |
+| Administración y auditoría | Gestión de cuentas, permisos e historial de cambios. | Implementado. |
+| Android | Acceso a funciones móviles mediante la API. | Aplicación nativa Kotlin. |
 
-### Ejercicio 3. Requisitos de la cafetería
+| Rol | Acciones principales |
+|---|---|
+| `SOCIO` | Consultar membresía, entrenar y generar un pase si está activo. |
+| `COACH` | Consultar miembros asignados y seguimiento. |
+| `ADMIN_B2B` | Gestionar sedes, máquinas y material de ejercicios. |
+| `ADMIN` | Administrar usuarios, roles y configuración. |
+| `MEDICO` | Registrar evaluaciones y consultar historiales autorizados. |
+| `RECEPCION_CLINICA` | Validar el pase médico de un socio en su clínica. |
+| `ADMIN_CLINICA` | Consultar historial de pases, membresías y reportes de su clínica. |
+| `AUDITOR` | Revisar eventos de auditoría permitidos. |
 
-**Requisito funcional** define una acción o respuesta del sistema; **no funcional** establece una cualidad medible o una restricción de calidad.
+## 3. Requisitos funcionales y no funcionales
 
-| ID | Tipo | Descripción | Prioridad | Criterio de aceptación |
+Un requisito funcional describe una acción que realiza el sistema. Uno no funcional especifica una cualidad o restricción que debe verificarse.
+
+| ID | Tipo | Requisito | Prioridad | Criterio de aceptación |
 |---|---|---|---|---|
-| RF-01 | Funcional | Mostrar el catálogo con nombre, descripción, precio y disponibilidad. | Alta | La página presenta los campos de cada producto activo recibido por la API. |
-| RF-02 | Funcional | Buscar productos por nombre y categoría. | Media | Una búsqueda devuelve coincidencias y un mensaje claro cuando no las hay. |
-| RF-03 | Funcional | Añadir y quitar productos del carrito y cambiar cantidades. | Alta | El subtotal se recalcula y ninguna cantidad queda por debajo de 1. |
-| RF-04 | Funcional | Confirmar un pedido con datos de entrega y resumen de compra. | Alta | Al confirmar, la API crea un pedido con detalle, total y estado inicial. |
-| RF-05 | Funcional | Permitir al administrador cambiar disponibilidad y revisar pedidos. | Alta | Solo el rol administrador puede guardar cambios en inventario o pedido. |
-| RNF-01 | No funcional | Responder al catálogo dentro del umbral acordado. | Media | En pruebas de carga, el percentil 95 de GET catálogo es menor a 2 s con 100 sesiones concurrentes. |
-| RNF-02 | No funcional | Proteger el tráfico fuera del entorno local. | Alta | El despliegue productivo redirige HTTP a HTTPS y no expone secretos en el cliente. |
-| RNF-03 | No funcional | Aplicar control de acceso en operaciones administrativas. | Alta | Las pruebas verifican que visitante y cliente reciben 403 al invocar cambios administrativos. |
-| RNF-04 | No funcional | Mantener el catálogo utilizable en móvil y escritorio. | Media | A 360 px y 1280 px no hay desplazamiento horizontal y las acciones principales siguen visibles. |
-| RNF-05 | No funcional | Mantener precisión monetaria. | Alta | El total calculado por servidor coincide con la suma decimal de las líneas del pedido a 2 decimales. |
+| RF-01 | Funcional | Iniciar sesión con correo o DNI y contraseña. | Alta | Credenciales válidas devuelven token y perfil; inválidas reciben error sin revelar si existe la cuenta. |
+| RF-02 | Funcional | Mostrar el panel según el rol autenticado. | Alta | Cada rol ve únicamente sus módulos habilitados. |
+| RF-03 | Funcional | Emitir un pase médico temporal a un socio con membresía activa. | Alta | La API devuelve código/QR y vencimiento; un socio vencido no puede emitirlo. |
+| RF-04 | Funcional | Validar el pase en recepción y evitar su reutilización. | Alta | El primer uso autorizado queda registrado; un segundo intento se rechaza. |
+| RF-05 | Funcional | Permitir que la administración clínica consulte actividad y reporte mensual. | Media | La respuesta incluye solo información de la clínica asociada y permite descarga CSV. |
+| RNF-01 | No funcional | Proteger rutas privadas con token y autorización por rol. | Alta | Las pruebas verifican que la petición sin sesión recibe 401 y el rol no autorizado recibe 403. |
+| RNF-02 | No funcional | No almacenar contraseñas en texto plano. | Alta | La base solo contiene un hash y el inicio de sesión valida contra él. |
+| RNF-03 | No funcional | Restringir los datos clínicos a personal autorizado de la clínica. | Alta | Un médico sin `clinicId` no accede al historial y la API responde 403. |
+| RNF-04 | No funcional | Evitar aceptar JSON de tamaño ilimitado. | Media | El servidor aplica límite de cuerpo de 32 KB y maneja JSON mal formado con respuesta 400. |
+| RNF-05 | No funcional | Mantener navegación utilizable en web y móvil. | Media | Las acciones principales son accesibles con teclado y los paneles responden a tamaños de pantalla usados en la verificación. |
 
-“Rápido y seguro” es vago: no ofrece medida ni prueba. Se reescribe como: **(1)** “El endpoint de catálogo debe completar el 95 % de GET en menos de 2 s con 100 sesiones concurrentes en el entorno de pruebas”; **(2)** “En producción todo tráfico se sirve por HTTPS y las rutas administrativas rechazan solicitudes sin rol autorizado con 403”.
+## 4. Arquitectura y flujo principal
 
-### Ejercicio 4. Arquitectura y flujo de compra
+![Arquitectura real de PikaFit](evidencias_pikafit/arquitectura-pikafit.svg)
 
-![Arquitectura de la cafetería](evidencias/arquitectura-cafeteria.svg)
+**Flujo de emisión y validación del pase:** el socio inicia sesión; la web o Android envía la petición autenticada a Express; el servidor comprueba rol y membresía; crea un pase de un solo uso en MongoDB; devuelve código/QR y vencimiento; recepción envía el código; la API valida clínica, vigencia y estado; MongoDB registra el uso; la interfaz presenta el resultado.
 
-React envía HTTP/JSON con Axios a Django REST Framework. El Router conduce a un ViewSet; el serializer valida y convierte datos, el ORM consulta SQLite y la respuesta vuelve con JSON y un código HTTP. En pago, Django crea una sesión en la pasarela y recibe un identificador/token y confirmación; el PAN y CVV se ingresan directamente en la pasarela, no se envían al sistema de la cafetería.
+![Flujo del pase médico](evidencias_pikafit/flujo-pase-medico.svg)
 
-| Paso de compra | React | Django / estado |
-|---:|---|---|
-| 1 | Consulta y muestra productos. | API devuelve catálogo disponible; no hay pedido. |
-| 2 | Cliente elige cantidades en el carrito. | El carrito sigue temporal en la interfaz; stock aún no se descuenta. |
-| 3 | Cliente ingresa contacto y entrega. | API valida formato, identidad y productos solicitados. |
-| 4 | Cliente confirma el resumen. | Servidor vuelve a leer precios y stock vigentes; crea pedido pendiente. |
-| 5 | React inicia pago y redirige/abre pasarela. | Django genera la sesión de pago con total e identificador del pedido. |
-| 6 | Pasarela recibe los datos de pago. | Django recibe token/resultado firmado, no los datos de tarjeta. |
-| 7 | React consulta confirmación y muestra el resultado. | Servidor verifica confirmación, marca pagado y reserva/actualiza stock. |
-| 8 | Cliente ve el seguimiento. | Pedido avanza a preparación, listo y entregado; cancelaciones liberan stock según regla. |
+La API recibe y devuelve JSON por HTTP. El servidor aplica las reglas y consulta MongoDB. Las credenciales de tarjeta no forman parte de este flujo ni deben guardarse en PikaFit. Si se añade un proveedor de pagos, la pasarela debe recibir los datos de pago y PikaFit conservar solo identificadores y estados necesarios.
 
-### Ejercicio 5. Reglas de negocio y errores que evitan
+## 5. Reglas de negocio y errores que previenen
 
 | Regla | Dónde se aplica | Error que evita |
 |---|---|---|
-| El precio definitivo se lee desde la base de datos al crear el pedido; no se confía en el valor enviado por React. | Django; React solo muestra una referencia. | Manipulación del total desde DevTools o una petición alterada. |
-| El servidor vuelve a comprobar stock y reserva unidades de forma atómica al confirmar el pedido. | Django/BD; React comunica disponibilidad. | Sobreventa por dos compras simultáneas o un cliente con una pantalla antigua. |
-| Los importes usan `Decimal` en servidor y campo decimal en BD; nunca `float` para dinero. | Django/BD. | Errores de redondeo acumulados en subtotales y total. |
-| La tarjeta se procesa en una pasarela certificada; la aplicación almacena solo referencia/token y resultado. | Pasarela y backend seguro. | Exposición de PAN/CVV y almacenamiento de datos de pago sensibles. |
-| El carrito es temporal y editable; el pedido es un registro confirmado, persistente y con estados. | React para carrito; Django para pedido. | Confundir una intención no confirmada con una compra realizada. |
+| Solo una membresía activa permite emitir un pase. | API: middleware/regla de membresía; la interfaz refleja el estado. | Emitir un pase para un usuario vencido. |
+| El pase vence y solo puede validarse una vez. | API y colección `medical_passes`. | Reutilizar un QR/código antiguo o duplicar una atención. |
+| Cada ruta exige rol y, en clínica, una `clinicId` asociada. | Middleware y controlador Express. | Acceso de una clínica a datos de otra o privilegios indebidos. |
+| La contraseña se almacena como hash; los tokens y secretos no van al cliente. | Servicio de autenticación y configuración del servidor. | Exposición de credenciales y suplantación por lectura directa de la base. |
+| La API determina permisos y datos válidos; ocultar botones en la web no es seguridad. | Servidor Express. | Que un usuario invoque directamente una ruta restringida. |
 
-No basta controlar stock en React: el navegador está bajo control del usuario, puede tener datos desactualizados y dos compradores pueden confirmar a la vez. La regla autoritativa y la actualización atómica deben ocurrir en el servidor/base de datos.
+## 6. Estructura del backend
 
-### Ejercicio 6. Apps Django
+En PikaFit, la carpeta `src/` cumple el papel de módulos de negocio. La configuración del servidor y sus dependencias están registradas en el proyecto Node, no en `INSTALLED_APPS` de Django.
 
-La práctica incluye las apps iniciales `catalogo` y `pedidos`, registradas en `INSTALLED_APPS`. El proyecto es la configuración global (`core/settings.py`, URL raíz y ASGI/WSGI); una aplicación agrupa una responsabilidad reutilizable del negocio (por ejemplo, catálogo). El scaffold no crea modelos ni API de tienda porque la guía reserva su implementación para Semana 14.
+```text
+PikaFit-Proyecto-Integrador/
+├── src/
+│   ├── server.js              # API REST y montaje de rutas
+│   ├── auth.js                # autenticación, roles y membresía
+│   ├── users.js               # usuarios y perfiles públicos
+│   ├── passes.js              # emisión y validación de pases
+│   ├── clinic-reports.js      # reportes de clínica
+│   ├── training.js            # sedes, máquinas y funciones clínicas
+│   ├── workouts.js            # rutinas y sesiones
+│   ├── sprint3.js             # funciones adicionales de entrenamiento
+│   ├── db.js                  # conexión e índices de MongoDB
+│   └── http.js                # errores y validación HTTP
+├── Web/                       # interfaz HTML, CSS y JavaScript
+├── Android/                   # cliente Kotlin / Jetpack Compose
+├── MongoDB Compass/           # referencia de colecciones e índices
+├── scripts/                   # tareas administrativas
+└── tests/                     # pruebas automatizadas
+```
 
-### Ejercicio 7. Estructura React
+En Django, un **proyecto** contiene configuración general y una **app** agrupa una capacidad. En PikaFit, el equivalente organizativo son el arranque del servidor en `src/server.js` y los módulos separados por dominio; no se crean apps Django ajenas al proyecto.
 
-![Estructura de React](evidencias/estructura-react.svg)
+## 7. Estructura de la interfaz y clientes
 
-`components/` contiene piezas reutilizables de interfaz, como `ProductoCard.jsx`; `pages/` agrupa pantallas completas, como `ProductosPage.jsx`; `api.js` centraliza el Axios base. La estructura creada conserva la integración de productos para la semana de API/modelos.
+La interfaz web existente es una página con secciones por rol. `Web/app.js` centraliza las peticiones en una función `api(path, options)`, añade el token de sesión y convierte errores HTTP en mensajes de interfaz. Android implementa su cliente en `Android/app/src/main/java/com/pikafit/mobile/Api.kt` y ejecuta solicitudes de red en `Dispatchers.IO`.
 
-### Ejercicio 8. Mapa de rutas y diferencias
+```text
+Web/
+├── index.html       # formularios y paneles
+├── app.js           # sesión, renderizado y llamadas fetch a /api
+└── styles.css       # estilos
 
-| Recurso / pantalla | Ruta Django propuesta | Ruta React propuesta |
+Android/app/src/main/java/com/pikafit/mobile/
+├── MainActivity.kt  # pantallas Compose
+├── Api.kt           # cliente HTTP y modelos de respuesta
+└── SessionStore.kt  # sesión local protegida
+```
+
+El enunciado propone `components/`, `pages/` y Axios para un cliente React. PikaFit no usa esa estructura en su web actual; sus equivalentes son las secciones DOM y módulos de `Web/app.js`, con `fetch`. No se añaden archivos React vacíos porque no representarían una función real.
+
+## 8. Mapa de rutas
+
+| Recurso / operación | Método y ruta API | Interfaz que la utiliza |
 |---|---|---|
-| Catálogo y productos | `GET /api/productos/` | `/productos` |
-| Detalle de producto | `GET /api/productos/{id}/` | `/productos/{id}` |
-| Carrito | `POST /api/carrito/items/` | `/carrito` |
-| Confirmar pedido | `POST /api/pedidos/` | `/checkout` |
-| Pedidos del cliente | `GET /api/pedidos/mios/` | `/mis-pedidos` |
-| Administración de productos | `POST/PATCH /api/productos/` | `/admin/productos` |
+| Estado del servicio | `GET /api/health` | verificación de servidor |
+| Inicio de sesión | `POST /api/auth/login` | formulario de acceso web y Android |
+| Perfil autenticado | `GET /api/me` | panel correspondiente al rol |
+| Notificaciones del socio | `GET /api/me/notifications` | panel del socio |
+| Emitir pase médico | `POST /api/medical-passes` | panel del socio y aplicación Android |
+| Validar pase en clínica | `POST /api/clinic/passes/validate` | pantalla de recepción |
+| Historial de pases | `GET /api/clinic/passes/history` | administración de clínica |
+| Membresías próximas a vencer | `GET /api/clinic/memberships/expiring` | administración de clínica |
+| Reporte mensual | `GET /api/clinic/reports/monthly` | administración de clínica |
+| Descargar reporte | `GET /api/clinic/reports/monthly.csv` | botón CSV de administración |
+| Sedes | `GET/POST /api/sites` | administración B2B |
+| Máquinas de una sede | `GET/POST /api/sites/:siteId/machines` | administración B2B y socio (lectura permitida) |
 
-La ruta de API identifica un recurso HTTP del servidor y responde JSON/códigos HTTP. La ruta de React selecciona una pantalla del cliente; no crea ni modifica datos por sí sola. La ruta de API del catálogo es una propuesta para Semana 14, no una función declarada como terminada en este scaffold.
+La web es una aplicación de una sola página servida desde `Web/index.html`; por ello, la columna de interfaz nombra la sección o pantalla, no una ruta React inexistente.
 
-## Parte 2 — Proyecto integrador del curso: clínica veterinaria
+## 9. Entidad principal y módulos del proyecto
 
-La equivalencia se realiza con la aplicación de clínica veterinaria ya construida en las semanas anteriores de este repositorio. El backend Django y panel React ejecutables están en Semana 12; este laboratorio documenta su diseño y la estructura incremental sin duplicar modelos ni alterar las entregas anteriores.
+La operación principal de este laboratorio es emitir y validar un pase médico. La entidad principal es `medical_passes`; sus registros se relacionan con `users` (socio) y con la clínica/recepción que valida. Las colecciones adicionales documentadas son `role_audit`, `membership_notifications`, `medical_evaluations`, `sites`, `machines`, `exercises`, `routines` y `workout_sessions`.
 
-### Ejercicio 9. Entidad, módulos y rutas
+## 10. Requisitos y reglas aplicados a PikaFit
 
-| Concepto | Equivalencia en el proyecto |
-|---|---|
-| Tipo y canales | Servicio B2C de clínica veterinaria; panel web actual y posibilidad futura de canal móvil consumiendo la misma API. |
-| Entidad principal | Cita veterinaria; detalle/relación: paciente, propietario, motivo y fecha. |
-| Módulos | Pacientes y propietarios (implementados), citas, servicios, historiales, medicamentos, reportes y administración. |
-| Roles | Administrador (gestiona catálogos y accesos), personal clínico (gestiona citas y fichas), propietario (consulta sus datos y citas; autenticación todavía pendiente). |
-| Reglas | Peso del paciente > 0 (serializer/API); una cita debe referir a un paciente existente y fecha válida (validación de servidor por completar). |
-| Rutas API / React | `/api/pacientes/` → `/pacientes`; `/api/propietarios/` → `/propietarios`; `/api/citas/` → `/citas`; `/api/servicios/` → `/servicios`. |
+Las tablas de los ejercicios 3 y 5 constituyen los requisitos verificables y reglas del proyecto. El criterio central es que la autorización se realiza en el servidor, con rol y pertenencia a clínica; la interfaz solo presenta acciones permitidas.
 
-### Ejercicio 10. Requisitos, módulos y reglas
+## 11. Arquitectura, flujo y entidades
 
-La clínica comparte el mapa de módulos de Semana 12. En el proyecto vigente ya existen pacientes, propietarios, citas, historiales, servicios, medicamentos y sus serializadores/endpoints. El panel permite buscar y hacer CRUD de pacientes. Autenticación con roles, vistas de citas y permisos por propietario son trabajo por implementar; no se presentan como funciones terminadas.
+La arquitectura y el flujo se ilustran en los diagramas anteriores. Para este alcance se consideran las entidades `users`, `medical_passes`, `role_audit`, `membership_notifications`, `medical_evaluations`, `sites`, `machines`, `routines` y `workout_sessions`. `medical_passes` representa el pase; `role_audit` e historial de validación conservan eventos relacionados.
 
-| ID | Requisito de la clínica | Prioridad | Criterio de aceptación |
-|---|---|---|---|
-| CF-01 | Buscar pacientes por nombre, especie o propietario. | Alta | La respuesta del filtro contiene solo coincidencias del parámetro `search`. |
-| CF-02 | Registrar un paciente vinculado a un propietario existente. | Alta | La API devuelve 201 y el nuevo paciente aparece en el listado. |
-| CF-03 | Actualizar y eliminar paciente. | Alta | PATCH devuelve 200; DELETE devuelve 204 y retira la fila. |
-| CF-04 | Registrar una cita asociada a un paciente. | Alta | La cita guarda paciente, fecha/hora y motivo; un paciente inexistente se rechaza. |
-| CF-05 | Consultar servicios e historial clínico autorizado. | Media | El personal obtiene datos del paciente seleccionado; un usuario sin permiso recibe 403. |
-| CNF-01 | Restringir acceso por rol y relación con la clínica. | Alta | Pruebas de autorización cubren las rutas y el 100 % de los roles definidos. |
-| CNF-02 | Responder búsqueda/listado dentro del umbral. | Media | El percentil 95 de consultas de prueba es menor a 2 s con 100 usuarios concurrentes. |
-| CNF-03 | Mantener el panel usable en escritorio y móvil. | Media | En ancho 360 px no hay desbordamiento horizontal ni controles inaccesibles. |
+## 12. Aplicaciones y módulos
 
-| Regla de negocio | Aplicación prevista |
-|---|---|
-| El peso del paciente debe ser mayor que cero. | Django serializer; también hay validación de ayuda en React. |
-| Toda cita debe tener paciente existente y fecha futura/formato válido. | Django API y base de datos. |
-| El propietario de una ficha solo puede consultar pacientes asociados a su cuenta. | Autorización del servidor; nunca solo filtro React. |
-| Una cita cancelada no ocupa una franja disponible. | Servicio de citas en Django al cambiar estado. |
-| Toda modificación clínica conserva responsable y momento de auditoría. | Backend; permiso de lectura/escritura según rol. |
+PikaFit conserva un único servidor Express y organiza el dominio en módulos independientes (`auth.js`, `users.js`, `passes.js`, `training.js`, `workouts.js`, `clinic-reports.js`). MongoDB crea colecciones e índices al conectar, mediante `src/db.js`. Esta organización se mantiene en lugar de registrar apps Django que el proyecto real no usa.
 
-### Ejercicio 11. Arquitectura, flujo y entidades
+## 13. Estructura de carpetas y mapa de rutas
 
-![Flujo de la clínica veterinaria](evidencias/flujo-clinica.svg)
+El árbol real está documentado en los ejercicios 6 y 7; el mapa API/interfaz está en el ejercicio 8. Las fuentes se pueden contrastar en el [repositorio de PikaFit](https://github.com/JesusCastillo2026/PikaFit-Proyecto-Integrador), particularmente `src/server.js`, `src/db.js`, `Web/app.js` y `Android/.../Api.kt`.
 
-Flujo principal: React consulta pacientes/citas; el usuario registra una cita; Django valida sesión, permiso, paciente y horario; el ORM guarda la cita; la API devuelve JSON y estado; React actualiza la pantalla. Entidades previstas o existentes: **Propietario, Paciente, Cita, Servicio, PacienteServicio, HistorialMedico, Medicamento y Veterinario**. Cita es la entidad principal de la operación; sus relaciones vinculan paciente, y paciente vincula propietario.
+## 14. Verificación y publicación
 
-### Ejercicio 12. Apps y core Django
+Comandos documentados por el proyecto:
 
-El proyecto de clínica ya conserva `core` como configuración y la app `gestion_clinica` registrada, con los modelos y rutas trabajados previamente. Para no dividir modelos existentes ni crear copias conflictivas, esta entrega documenta la estructura vigente y la reutiliza desde [Semana 12](../Semana_12/backend/). La cafetería sí incluye las apps iniciales independientes `catalogo` y `pedidos`, como solicita el ejercicio de estructura.
+```powershell
+npm ci
+Copy-Item .env.example .env
+# Completar .env local sin compartir secretos
+npm test
+npm start
+```
 
-### Ejercicio 13. Componentes, páginas y mapa de rutas
+Con MongoDB ejecutándose, `npm start` conecta la API y sirve la web. El informe contiene diagramas basados en la estructura y las rutas del repositorio, junto con fragmentos de código citados. No se presentan resultados de ejecución local: este paquete documenta el diseño y el código fuente, no una prueba ejecutada en esta sesión.
 
-El panel existente usa `frontend/src/components` y `frontend/src/api.js`. Se agrega `frontend/src/pages` con los espacios iniciales para las pantallas de pacientes, citas y servicios. La tabla de rutas del ejercicio 9 relaciona cada recurso API con su vista; la guía de la práctica también deja las rutas de cafetería documentadas.
+El informe se entrega como [`Semana 13.pdf`](../Documentos%201-16/Semana%2013.pdf).
 
-### Ejercicio 14. Verificación y publicación
+## Referencias verificables
 
-Las instrucciones reproducibles son `python manage.py check` para el proyecto de cafetería, `npm run lint` y `npm run build` para cada frontend. No afirmo una salida exitosa de comandos que no se ejecutaron en esta sesión. El repositorio excluye `node_modules`, `dist`, entornos virtuales y base SQLite local. El diseño, módulos, reglas, arquitectura, carpetas y rutas quedan documentados aquí y en el [README general](../README.md).
+- [README y estructura de PikaFit](https://github.com/JesusCastillo2026/PikaFit-Proyecto-Integrador)
+- [Rutas de la API — `src/server.js`](https://github.com/JesusCastillo2026/PikaFit-Proyecto-Integrador/blob/main/src/server.js)
+- [Conexión e índices — `src/db.js`](https://github.com/JesusCastillo2026/PikaFit-Proyecto-Integrador/blob/main/src/db.js)
+- [Cliente web — `Web/app.js`](https://github.com/JesusCastillo2026/PikaFit-Proyecto-Integrador/blob/main/Web/app.js)
+- [Cliente Android — `Api.kt`](https://github.com/JesusCastillo2026/PikaFit-Proyecto-Integrador/blob/main/Android/app/src/main/java/com/pikafit/mobile/Api.kt)
 
-## Fuentes del proyecto y alcance
-
-El proyecto base de clínica usado para la Parte 2 es [Semana 12](../Semana_12/), mientras que la cafetería es un scaffold estructural para Semana 14. No se implementa pago real, autenticación de tienda, modelos ni CRUD del catálogo en la Semana 13; esta etapa deja definiciones y estructura listas para avanzar.
