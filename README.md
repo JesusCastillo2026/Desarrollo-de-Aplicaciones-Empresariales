@@ -29,7 +29,7 @@ Documentar la evolución de aplicaciones de gestión y comercio electrónico. Ca
 | [10](Semana_10/) | Componentes e interacción | Props, estado, eventos, búsqueda y formularios controlados. |
 | [11](Semana_11/) | Comunicación entre componentes | Props, callbacks, estado elevado, datos derivados y `useEffect`; catálogo con carrito y panel de pacientes. |
 | [12](Semana_12/) | AJAX y servicios web | Integración React-Django con Axios y CORS; búsqueda, estados de carga/error y CRUD REST de pacientes. |
-| [13](Semana_13/) | Diseño de comercio electrónico | Tipos de comercio, módulos, roles, requisitos, reglas, flujo de compra, arquitectura, scaffold Django/React y mapa de rutas. |
+| [13](Semana_13/) | Proyecto integrador PikaFit | Análisis de roles, requisitos, reglas, arquitectura, rutas y flujo de pases; incluye el código fuente para abrir y recorrer en VS Code. |
 
 ## Estructura destacada
 
@@ -42,11 +42,9 @@ Documentar la evolución de aplicaciones de gestión y comercio electrónico. Ca
 │   └── frontend/                # React + Axios
 ├── Semana_13/
 │   ├── README.md                # Respuestas detalladas de ejercicios 1–14
-│   ├── practica/
-│   │   ├── backend/             # Scaffold de cafetería: catalogo y pedidos
-│   │   └── frontend/            # React: components, pages y api.js
-│   ├── integrador/              # Clínica: diseño y pantallas iniciales
-│   └── evidencias/              # Diagramas originales SVG
+│   ├── PikaFit/                 # Código fuente Node.js/Express, MongoDB, Web y Android
+│   │   └── GUIA_LABORATORIO_13.md
+│   └── evidencias_pikafit/      # Diagramas de arquitectura, estructura y flujo
 ├── Documentos 1-16/
 │   ├── README.md
 │   └── Semana 01.pdf … Semana 13.pdf
@@ -56,14 +54,14 @@ Documentar la evolución de aplicaciones de gestión y comercio electrónico. Ca
 
 ## Semana 13
 
-Las instrucciones de entorno, instalación y ejecución están en [Semana 13](Semana_13/README.md). La cafetería es una estructura inicial; los modelos y la API de comercio están planificados para Semana 14. La Parte 2 documenta la clínica veterinaria desarrollada en las semanas anteriores.
+La carpeta [Semana 13](Semana_13/) analiza el proyecto integrador PikaFit y contiene una copia del código fuente público para abrir en VS Code. Consulta la [guía de recorrido y ejecución](Semana_13/PikaFit/GUIA_LABORATORIO_13.md) para ubicar roles, autorización, rutas, pases y persistencia. La configuración `.env`, credenciales y base de datos local se crean por separado y no se incluyen en el repositorio.
 
 ## Estado de integración
 
 - Semanas 1 a 8: fundamentos, persistencia y API con Django.
 - Semanas 9 a 11: interfaces React y comunicación entre componentes.
 - Semana 12: React consume la API de clínica, con CRUD y búsqueda remota.
-- Semana 13: define el diseño de comercio electrónico y la estructura de práctica; documenta la arquitectura y módulos de la clínica.
+- Semana 13: analiza el proyecto PikaFit e incluye su código fuente, guía ejecutable y documentación.
 - La API de ejercicios conserva permisos de desarrollo abiertos. Configura autenticación y permisos antes de cualquier despliegue público.
 - `node_modules`, `dist`, entornos virtuales y bases SQLite locales no se publican.
 

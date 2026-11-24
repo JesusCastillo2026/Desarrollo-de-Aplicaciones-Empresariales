@@ -1,0 +1,58 @@
+const { MongoClient } = require('mongodb');
+const config = require('./config');
+
+let client;
+let db;
+
+async function connect() {
+  client = new MongoClient(config.mongoUri, { serverSelectionTimeoutMS: 5000 });
+  await client.connect();
+  db = client.db(config.mongoDb);
+  await Promise.all([
+    db.collection('users').createIndex({ email: 1 }, { unique: true }),
+    db.collection('users').createIndex({ dni: 1 }, { unique: true, sparse: true }),
+    db.collection('users').createIndex({ role: 1 }),
+    db.collection('role_audit').createIndex({ createdAt: -1 }),
+    db.collection('role_audit').createIndex({ targetUserId: 1, createdAt: -1 }),
+    db.collection('medical_passes').createIndex({ tokenDigest: 1 }, { unique: true }),
+    db.collection('medical_passes').createIndex({ codeDigest: 1 }, { unique: true }),
+    db.collection('medical_passes').createIndex({ retentionUntil: 1 }, { expireAfterSeconds: 0 }),
+    db.collection('medical_passes').createIndex({ memberId: 1, createdAt: -1 }),
+    db.collection('medical_passes').createIndex({ clinicId: 1, usedAt: -1 }),
+    db.collection('users').createIndex({ role: 1, clinicId: 1, membershipExpiresAt: 1 }),
+    db.collection('membership_notifications').createIndex({ memberId: 1, membershipExpiresAt: 1 }, { unique: true }),
+    db.collection('membership_notifications').createIndex({ memberId: 1, createdAt: -1 }),
+    db.collection('medical_evaluations').createIndex({ clinicId: 1, createdAt: 1 }),
+    db.collection('sites').createIndex({ name: 1 }, { unique: true }),
+    db.collection('machines').createIndex({ code: 1 }, { unique: true }),
+    db.collection('machines').createIndex({ serialNumber: 1 }, { unique: true }),
+    db.collection('machines').createIndex({ siteId: 1, state: 1, muscleGroup: 1 }),
+    db.collection('medical_evaluations').createIndex({ memberId: 1, createdAt: -1 }),
+    db.collection('push_outbox').createIndex({ status: 1, createdAt: 1 }),
+    db.collection('medical_notifications').createIndex({ memberId: 1, createdAt: -1 }),
+    db.collection('exercises').createIndex({ name: 1 }, { unique: true }),
+    db.collection('routines').createIndex({ memberId: 1, createdAt: -1 }),
+    db.collection('workout_sessions').createIndex({ memberId: 1, createdAt: -1 }),
+    db.collection('workout_sessions').createIndex({ memberId: 1, endedAt: 1 }),
+    db.collection('fatigue_reports').createIndex({ memberId: 1, createdAt: -1 }),
+    db.collection('discomfort_reports').createIndex({ memberId: 1, createdAt: -1 }),
+    db.collection('exercise_media').createIndex({ exerciseId: 1, active: 1, createdAt: -1 }),
+    db.collection('coach_members').createIndex({ coachId: 1, memberId: 1 }, { unique: true }),
+    db.collection('nutrition_guides').createIndex({ goal: 1 }, { unique: true }),
+  ]);
+  return db;
+}
+
+function database() {
+  if (!db) throw new Error('La base de datos aún no está conectada');
+  return db;
+}
+
+async function close() {
+  if (client) await client.close();
+  client = undefined;
+  db = undefined;
+}
+
+module.exports = { connect, database, close };
+

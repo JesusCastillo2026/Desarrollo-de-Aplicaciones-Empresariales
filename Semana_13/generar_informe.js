@@ -339,6 +339,7 @@ endPage();
 startPage('Verificación, evidencias y conclusión', 'Entrega reproducible y límites de esta documentación');
 heading('Procedimiento para obtener evidencias de ejecución');
 codeBlock([
+  'Set-Location Semana_13/PikaFit',
   'npm ci',
   'Copy-Item .env.example .env',
   '# Completar .env local sin compartir secretos',
@@ -346,10 +347,12 @@ codeBlock([
   'npm start',
 ], {size:8.5, limit:100});
 paragraph('Con MongoDB ejecutándose, npm start conecta la API y sirve la web en localhost. Los diagramas incluidos sintetizan la arquitectura, la estructura de carpetas y el flujo del pase médico, según el código revisado; no son capturas de pantalla de una ejecución.');
+heading('Archivos de código que se incluyen en Semana 13');
+paragraph('Abre Semana_13/PikaFit en VS Code. En src/users.js identifica ROLES; en src/auth.js revisa authenticate, requireRole y activeMembership; en src/server.js ubica las rutas protegidas; en src/passes.js sigue emisión y validación; y en src/db.js observa conexión e índices de MongoDB. La guía GUIA_LABORATORIO_13.md contiene el recorrido para exponerlo.');
 heading('Evidencias incluidas y estado');
 bullet('Diagrama de arquitectura web/Android/API/MongoDB basado en las fuentes del repositorio.');
 bullet('Diagrama del flujo del pase médico y esquema de estructura real de carpetas.');
-bullet('Fragmentos de código revisados en los archivos públicos enlazados.');
+bullet('Copia del proyecto ejecutable y guía con las ubicaciones de roles, permisos, API, pases y MongoDB.');
 bullet('No se adjuntan capturas de una ejecución local en este informe: no se inició PikaFit ni se conectó a MongoDB en esta sesión.');
 heading('Conclusión personal');
 paragraph('Al realizar este laboratorio comprendí que primero debo entender la estructura real del proyecto antes de proponer cambios. En PikaFit, la web y Android cumplen funciones distintas, pero ambas se comunican con la API, que valida los permisos y aplica las reglas antes de consultar MongoDB. También identifiqué que la documentación de rutas, roles y entidades ayuda a mantener el sistema ordenado y a evitar errores de acceso.');

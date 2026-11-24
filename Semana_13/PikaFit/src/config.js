@@ -1,0 +1,42 @@
+require('dotenv').config();
+
+function positiveInteger(name, fallback) {
+  const value = Number(process.env[name] ?? fallback);
+  if (!Number.isInteger(value) || value < 1) throw new Error(`${name} debe ser un entero positivo`);
+  return value;
+}
+
+function requiredSecret(name) {
+  const value = process.env[name] || '';
+  if (value.length < 32) throw new Error(`${name} debe tener al menos 32 caracteres`);
+  return value;
+}
+
+function optionalAesKey(name) {
+  const configured = process.env[name] || '';
+  // .env.example uses this marker; treat it as unset so a fresh local setup
+  // can start without clinical encryption configured. Clinical writes remain
+  // blocked by clinical-crypto.js until a real key is supplied.
+  const value = /^replace-with-/i.test(configured) ? '' : configured;
+  if (!value) return null;
+  if (!/^[a-f0-9]{64}$/i.test(value)) throw new Error(`${name} debe contener 64 caracteres hexadecimales`);
+  return Buffer.from(value, 'hex');
+}
+
+module.exports = {
+  port: positiveInteger('PORT', 3000),
+  mongoUri: process.env.MONGODB_URI || 'mongodb://127.0.0.1:27017',
+  mongoDb: process.env.MONGODB_DB || 'pikafit_jesus',
+  jwtSecret: requiredSecret('JWT_SECRET'),
+  passSecret: requiredSecret('PASS_SECRET'),
+  clinicalEncryptionKey: optionalAesKey('CLINICAL_ENCRYPTION_KEY'),
+  routineEngineUrl: process.env.ROUTINE_ENGINE_URL || '',
+  routineEngineToken: process.env.ROUTINE_ENGINE_TOKEN || '',
+  lockMaxAttempts: positiveInteger('LOCK_MAX_ATTEMPTS', 5),
+  lockMinutes: positiveInteger('LOCK_MINUTES', 15),
+  passMinutes: positiveInteger('PASS_MINUTES', 10),
+  membershipNoticeDays: positiveInteger('MEMBERSHIP_NOTICE_DAYS', 7),
+  fatigueHighReductionPercent: positiveInteger('FATIGUE_HIGH_REDUCTION_PERCENT', 20),
+  maxExerciseVideoBytes: positiveInteger('MAX_EXERCISE_VIDEO_BYTES', 25 * 1024 * 1024),
+};
+

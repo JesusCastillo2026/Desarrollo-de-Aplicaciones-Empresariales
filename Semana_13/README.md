@@ -13,6 +13,14 @@ La rama `main` del repositorio consultado describe PikaFit como una plataforma d
 
 El enunciado trae ejemplos con Django y React. Para que la entrega represente PikaFit sin inventar tecnologías, se documentan las equivalencias reales: módulos Express en `src/`, secciones web en `Web/`, pantallas Android en `Android/` y colecciones de MongoDB. No se presenta PikaFit como una aplicación Django o React.
 
+## Código para abrir y ejecutar en VS Code
+
+La subcarpeta [`PikaFit/`](PikaFit/) contiene una copia del código fuente público del proyecto integrador para que puedas recorrer los archivos reales de roles, autorización, API y MongoDB desde este repositorio del curso. La guía [`GUIA_LABORATORIO_13.md`](PikaFit/GUIA_LABORATORIO_13.md) señala los archivos y explica el recorrido para exponerlo. La copia corresponde a la revisión `ec57ff5f5615f094eaeaae5f388b54c96bd22994` del repositorio integrador.
+
+Abre `Semana_13/PikaFit` en VS Code. Requiere Node.js y MongoDB. En su terminal ejecuta `npm ci`, crea tu `.env` con `Copy-Item .env.example .env`, configura secretos locales y credenciales propias, inicia MongoDB y ejecuta `npm run seed:admin` y `npm start`. La aplicación web se abre en `http://localhost:3000`. No se incluye `.env` ni una base de datos con cuentas; crea usuarios de prueba en el panel para mostrar los roles.
+
+Para explicar el código, comienza en `PikaFit/src/users.js` (roles), continúa en `PikaFit/src/auth.js` (sesión y permisos), `PikaFit/src/server.js` (rutas), `PikaFit/src/passes.js` (flujo del pase) y `PikaFit/src/db.js` (conexión e índices). La guía enlazada indica qué buscar en cada archivo.
+
 ## 1. Tipos de comercio y canales
 
 | Tipo | Quién ofrece y quién recibe | Ejemplo aplicado |

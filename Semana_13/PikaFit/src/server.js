@@ -1,0 +1,288 @@
+const express = require('express');
+const path = require('node:path');
+const { database, connect, close } = require('./db');
+const config = require('./config');
+const { HttpError, asyncRoute, text, dateOrNull } = require('./http');
+const { login, authenticate, requireRole, activeMembership } = require('./auth');
+const { ROLES, createUser, publicUser, userId } = require('./users');
+const { createPass, validatePass, history } = require('./passes');
+const { notificationsForMember, startMembershipNoticeScheduler } = require('./membership-notices');
+const { expiringMemberships, monthlyClinicSummary, summaryCsv } = require('./clinic-reports');
+const training = require('./training');
+const workouts = require('./workouts');
+const sprint3 = require('./sprint3');
+
+const app = express();
+app.disable('x-powered-by');
+app.use(express.json({ limit: '32kb' }));
+app.use((_req, res, next) => {
+  res.setHeader('X-Content-Type-Options', 'nosniff');
+  res.setHeader('Referrer-Policy', 'no-referrer');
+  res.setHeader('Content-Security-Policy', "default-src 'self'; img-src 'self' data:; style-src 'self'; script-src 'self'; connect-src 'self'");
+  next();
+});
+
+app.get('/api/health', asyncRoute(async (_req, res) => {
+  await database().command({ ping: 1 });
+  res.json({ status: 'ok' });
+}));
+
+app.post('/api/auth/login', asyncRoute(async (req, res) => {
+  res.json(await login(req.body || {}));
+}));
+
+app.get('/api/me', authenticate, (req, res) => res.json({ user: publicUser(req.user) }));
+app.get('/api/me/notifications', authenticate, asyncRoute(async (req, res) => {
+  res.json({ items: await notificationsForMember(req.user._id) });
+}));
+app.get('/api/roles', authenticate, requireRole('ADMIN'), (_req, res) => res.json({ roles: ROLES }));
+
+app.get('/api/sites', authenticate, requireRole('ADMIN_B2B', 'ADMIN'), asyncRoute(async (_req, res) => {
+  res.json({ items: await training.listSites() });
+}));
+
+app.post('/api/sites', authenticate, requireRole('ADMIN_B2B', 'ADMIN'), asyncRoute(async (req, res) => {
+  res.status(201).json({ site: await training.createSite(req.body || {}) });
+}));
+
+app.get('/api/sites/:siteId/machines', authenticate, requireRole('ADMIN_B2B', 'ADMIN', 'SOCIO'), asyncRoute(async (req, res) => {
+  const availableOnly = req.user.role === 'SOCIO' || req.query.available === 'true';
+  res.json({ items: await training.listMachines(req.params.siteId, { availableOnly }) });
+}));
+
+app.post('/api/sites/:siteId/machines', authenticate, requireRole('ADMIN_B2B', 'ADMIN'), asyncRoute(async (req, res) => {
+  res.status(201).json({ machine: await training.createMachine(req.params.siteId, req.body || {}) });
+}));
+
+app.get('/api/machines/:machineId/qr', authenticate, requireRole('ADMIN_B2B', 'ADMIN'), asyncRoute(async (req, res) => {
+  res.json(await training.machineQr(req.params.machineId));
+}));
+
+app.patch('/api/machines/:machineId/status', authenticate, requireRole('ADMIN_B2B', 'ADMIN'), asyncRoute(async (req, res) => {
+  res.json({ machine: await training.setMachineState(req.params.machineId, req.body?.state) });
+}));
+
+app.get('/api/machines/:machineId/status-history', authenticate, requireRole('ADMIN_B2B', 'ADMIN'), asyncRoute(async (req, res) => {
+  res.json(await training.machineStateHistory(req.params.machineId));
+}));
+
+app.post('/api/medical/evaluations', authenticate, requireRole('MEDICO'), asyncRoute(async (req, res) => {
+  res.status(201).json({ evaluation: await training.saveEvaluation(req.user, req.body || {}) });
+}));
+
+app.get('/api/medical/members/:memberId/record', authenticate, requireRole('MEDICO'), asyncRoute(async (req, res) => {
+  if (!req.user.clinicId) throw new HttpError(403, 'Tu cuenta no está asociada con una clínica', 'clinic_required');
+  res.json({ items: await training.medicalRecord(req.params.memberId, req.user.clinicId) });
+}));
+
+app.get('/api/medical/members/:memberId/record.pdf', authenticate, requireRole('MEDICO'), asyncRoute(async (req, res) => {
+  if (!req.user.clinicId) throw new HttpError(403, 'Tu cuenta no está asociada con una clínica', 'clinic_required');
+  const pdf = await training.medicalRecordPdf(req.params.memberId, req.user.clinicId);
+  res.set({ 'Cache-Control': 'private, no-store', 'Content-Type': 'application/pdf', 'Content-Disposition': 'attachment; filename="pikafit-ficha-medica.pdf"' });
+  res.send(pdf);
+}));
+
+app.put('/api/me/push-token', authenticate, asyncRoute(async (req, res) => {
+  res.json(await training.registerPushToken(req.user._id, req.body?.token));
+}));
+
+app.get('/api/coach/members/:memberId/restrictions', authenticate, requireRole('COACH'), asyncRoute(async (req, res) => {
+  res.json(await training.coachRestrictions(req.params.memberId));
+}));
+
+app.get('/api/me/medical-notifications', authenticate, asyncRoute(async (req, res) => {
+  res.json({ items: await training.medicalNotifications(req.user._id) });
+}));
+
+app.post('/api/exercises', authenticate, requireRole('ADMIN_B2B', 'ADMIN'), asyncRoute(async (req, res) => {
+  res.status(201).json({ exercise: await training.createExercise(req.body || {}) });
+}));
+
+app.get('/api/exercises/:exerciseId/media', authenticate, requireRole('SOCIO', 'COACH', 'ADMIN_B2B', 'ADMIN'), asyncRoute(async (req, res) => {
+  res.json({ items: await sprint3.listExerciseMedia(req.params.exerciseId) });
+}));
+
+app.post('/api/exercises/:exerciseId/media', authenticate, requireRole('ADMIN_B2B', 'ADMIN'), asyncRoute(async (req, res) => {
+  res.status(201).json({ media: await sprint3.createExerciseMedia(req.user, req.params.exerciseId, req.body || {}, config.maxExerciseVideoBytes) });
+}));
+
+app.put('/api/exercise-media/:mediaId/content', authenticate, requireRole('ADMIN_B2B', 'ADMIN'), express.raw({ type: ['video/mp4', 'video/webm'], limit: config.maxExerciseVideoBytes }), asyncRoute(async (req, res) => {
+  res.json({ media: await sprint3.saveExerciseMedia(req.params.mediaId, req.body, config.maxExerciseVideoBytes) });
+}));
+
+app.get('/api/exercise-media/:mediaId/content', authenticate, requireRole('SOCIO', 'COACH', 'ADMIN_B2B', 'ADMIN'), asyncRoute(async (req, res) => {
+  const { media, buffer } = await sprint3.getExerciseMedia(req.params.mediaId);
+  res.set({ 'Content-Type': media.contentType, 'Content-Length': String(buffer.length), 'Cache-Control': 'private, no-store', 'X-Content-Type-Options': 'nosniff' }).send(buffer);
+}));
+
+app.patch('/api/exercise-media/:mediaId', authenticate, requireRole('ADMIN_B2B', 'ADMIN'), asyncRoute(async (req, res) => {
+  res.json({ media: await sprint3.setExerciseMediaActive(req.params.mediaId, req.body?.active) });
+}));
+
+app.post('/api/me/routines/generate', authenticate, requireRole('SOCIO'), asyncRoute(async (req, res) => {
+  res.status(201).json({ routine: await training.generateRoutine(req.user) });
+}));
+
+app.post('/api/me/training/sessions', authenticate, requireRole('SOCIO'), asyncRoute(async (req, res) => {
+  res.status(201).json({ session: await workouts.startSession(req.user._id, req.body?.routineId) });
+}));
+
+app.post('/api/me/training/sessions/:sessionId/sets', authenticate, requireRole('SOCIO'), asyncRoute(async (req, res) => {
+  res.status(201).json({ set: await workouts.recordSet(req.user._id, req.params.sessionId, req.body || {}) });
+}));
+
+app.post('/api/me/training/sessions/:sessionId/finish', authenticate, requireRole('SOCIO'), asyncRoute(async (req, res) => {
+  res.json({ session: await workouts.finishSession(req.user._id, req.params.sessionId, req.body?.rpe) });
+}));
+
+app.get('/api/me/training/sessions/active', authenticate, requireRole('SOCIO'), asyncRoute(async (req, res) => {
+  res.json({ session: await workouts.activeSession(req.user._id) });
+}));
+
+app.post('/api/me/fatigue-reports', authenticate, requireRole('SOCIO'), asyncRoute(async (req, res) => {
+  res.status(201).json({ adaptation: await sprint3.reportFatigue(req.user._id, req.body?.routineId, req.body?.level, config.fatigueHighReductionPercent) });
+}));
+
+app.post('/api/me/training/sessions/:sessionId/discomfort', authenticate, requireRole('SOCIO'), asyncRoute(async (req, res) => {
+  res.status(201).json(await sprint3.reportDiscomfort(req.user._id, req.params.sessionId, req.body || {}));
+}));
+
+app.get('/api/me/nutrition-guides', authenticate, requireRole('SOCIO'), asyncRoute(async (req, res) => {
+  res.json({ items: await sprint3.listNutritionGuides(req.query.goal) });
+}));
+
+app.post('/api/coach/members/:memberId/assign', authenticate, requireRole('ADMIN', 'ADMIN_B2B'), asyncRoute(async (req, res) => {
+  res.json(await sprint3.assignCoachMember(req.body?.coachId, req.params.memberId));
+}));
+
+app.get('/api/coach/dashboard', authenticate, requireRole('COACH'), asyncRoute(async (req, res) => {
+  res.json(await sprint3.coachDashboard(req.user._id));
+}));
+
+app.get('/api/me/training/sessions', authenticate, requireRole('SOCIO'), asyncRoute(async (req, res) => {
+  res.json({ items: await workouts.sessionHistory(req.user._id) });
+}));
+
+app.get('/api/users', authenticate, requireRole('ADMIN'), asyncRoute(async (_req, res) => {
+  const users = await database().collection('users').find({}).sort({ createdAt: -1 }).limit(100).toArray();
+  res.json({ items: users.map(publicUser) });
+}));
+
+app.post('/api/users', authenticate, requireRole('ADMIN'), asyncRoute(async (req, res) => {
+  const user = await createUser(req.body || {});
+  res.status(201).json({ user });
+}));
+
+app.post('/api/admin/medical-staff', authenticate, requireRole('ADMIN'), asyncRoute(async (req, res) => {
+  const user = await createUser({ ...req.body, role: 'MEDICO' });
+  res.status(201).json({ user });
+}));
+
+app.patch('/api/users/:id/role', authenticate, requireRole('ADMIN'), asyncRoute(async (req, res) => {
+  const role = text(req.body?.role, 'rol', 50);
+  if (!ROLES.includes(role)) throw new HttpError(400, 'Rol inválido', 'invalid_role');
+  const id = userId(req.params.id);
+  if (String(id) === String(req.user._id)) throw new HttpError(400, 'Otro administrador debe cambiar tu rol', 'self_role_change');
+  const users = database().collection('users');
+  const previous = await users.findOne({ _id: id });
+  if (!previous) throw new HttpError(404, 'Usuario no encontrado', 'user_not_found');
+  if (previous.role === role) return res.json({ user: publicUser(previous), changed: false });
+  const changedAt = new Date();
+  const updated = await users.findOneAndUpdate(
+    { _id: id, role: previous.role, tokenVersion: previous.tokenVersion },
+    { $set: { role, updatedAt: changedAt }, $inc: { tokenVersion: 1 }, $push: {
+      roleHistory: { at: changedAt, by: req.user._id, previousRole: previous.role, newRole: role },
+    } },
+    { returnDocument: 'after' },
+  );
+  if (!updated) throw new HttpError(409, 'El rol cambió durante la operación; vuelve a intentarlo', 'role_conflict');
+  await database().collection('role_audit').insertOne({
+    targetUserId: id, actorUserId: req.user._id,
+    previousRole: previous.role, newRole: role, createdAt: changedAt,
+  });
+  res.json({ user: publicUser(updated), changed: true });
+}));
+
+app.get('/api/audit/roles', authenticate, requireRole('AUDITOR', 'ADMIN'), asyncRoute(async (req, res) => {
+  const page = Math.max(1, Math.min(1000, Number(req.query.page) || 1));
+  const limit = 25;
+  const filter = {};
+  if (req.query.userId) filter.targetUserId = userId(String(req.query.userId));
+  if (req.query.from || req.query.to) {
+    filter.createdAt = {};
+    if (req.query.from) filter.createdAt.$gte = dateOrNull(req.query.from, 'Desde');
+    if (req.query.to) filter.createdAt.$lte = dateOrNull(req.query.to, 'Hasta');
+  }
+  const collection = database().collection('role_audit');
+  const [total, items] = await Promise.all([
+    collection.countDocuments(filter),
+    collection.find(filter).sort({ createdAt: -1 }).skip((page - 1) * limit).limit(limit).toArray(),
+  ]);
+  res.json({ page, limit, total, items: items.map(item => ({
+    id: String(item._id), targetUserId: String(item.targetUserId), actorUserId: String(item.actorUserId),
+    previousRole: item.previousRole, newRole: item.newRole, createdAt: item.createdAt,
+  })) });
+}));
+
+app.post('/api/medical-passes', authenticate, activeMembership, asyncRoute(async (req, res) => {
+  const pass = await createPass(req.user);
+  res.status(201).json({ pass });
+}));
+
+app.post('/api/clinic/passes/validate', authenticate, requireRole('RECEPCION_CLINICA'), asyncRoute(async (req, res) => {
+  if (!req.user.clinicId) throw new HttpError(403, 'Tu cuenta no está asociada con una clínica', 'clinic_required');
+  const result = await validatePass(req.body || {}, req.user);
+  res.json({ status: 'apto_para_atencion', validation: result });
+}));
+
+app.get('/api/clinic/passes/history', authenticate, requireRole('ADMIN_CLINICA'), asyncRoute(async (req, res) => {
+  if (!req.user.clinicId) throw new HttpError(403, 'Tu cuenta no está asociada con una clínica', 'clinic_required');
+  const page = Math.max(1, Math.min(1000, Number(req.query.page) || 1));
+  const from = dateOrNull(req.query.from, 'Desde');
+  const to = dateOrNull(req.query.to, 'Hasta');
+  res.json(await history({ clinicId: req.user.clinicId, from, to, page }));
+}));
+
+app.get('/api/clinic/memberships/expiring', authenticate, requireRole('ADMIN_CLINICA'), asyncRoute(async (req, res) => {
+  if (!req.user.clinicId) throw new HttpError(403, 'Tu cuenta no está asociada con una clínica', 'clinic_required');
+  res.json(await expiringMemberships({ clinicId: req.user.clinicId, days: req.query.days }));
+}));
+
+app.get('/api/clinic/reports/monthly', authenticate, requireRole('ADMIN_CLINICA'), asyncRoute(async (req, res) => {
+  if (!req.user.clinicId) throw new HttpError(403, 'Tu cuenta no está asociada con una clínica', 'clinic_required');
+  res.json(await monthlyClinicSummary({ clinicId: req.user.clinicId, month: req.query.month }));
+}));
+
+app.get('/api/clinic/reports/monthly.csv', authenticate, requireRole('ADMIN_CLINICA'), asyncRoute(async (req, res) => {
+  if (!req.user.clinicId) throw new HttpError(403, 'Tu cuenta no está asociada con una clínica', 'clinic_required');
+  const summary = await monthlyClinicSummary({ clinicId: req.user.clinicId, month: req.query.month });
+  res.type('text/csv; charset=utf-8').attachment(`pikafit-reporte-${summary.month}.csv`).send(summaryCsv(summary));
+}));
+
+app.use(express.static(path.join(__dirname, '..', 'Web')));
+app.use((req, res, next) => {
+  if (req.path.startsWith('/api/')) return next(new HttpError(404, 'Ruta no encontrada', 'not_found'));
+  res.sendFile(path.join(__dirname, '..', 'Web', 'index.html'));
+});
+app.use((err, _req, res, _next) => {
+  if (err instanceof SyntaxError && err.status === 400 && 'body' in err) {
+    return res.status(400).json({ error: 'JSON inválido', code: 'invalid_json' });
+  }
+  if (err instanceof HttpError) return res.status(err.status).json({ error: err.message, code: err.code });
+  console.error(err);
+  res.status(500).json({ error: 'Error interno del servidor', code: 'internal_error' });
+});
+
+if (require.main === module) {
+  connect().then(() => {
+    sprint3.ensureNutritionGuides().catch(error => console.error('No se pudieron inicializar las guías nutricionales:', error));
+    const reminderTimer = startMembershipNoticeScheduler();
+    const server = app.listen(config.port, () => console.log(`PikaFit disponible en http://localhost:${config.port}`));
+    const shutdown = async () => { clearInterval(reminderTimer); server.close(); await close(); };
+    process.on('SIGINT', shutdown);
+    process.on('SIGTERM', shutdown);
+  }).catch(error => { console.error(error); process.exitCode = 1; });
+}
+
+module.exports = { app };
+
